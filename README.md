@@ -14,4 +14,5 @@ Features:
 - comes with routing naming convention
 - supports lazy loading for better scalability
 - easy localization with JSON files
+- supports application state (hold in URL)
 
