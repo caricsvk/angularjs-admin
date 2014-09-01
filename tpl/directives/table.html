@@ -1,0 +1,86 @@
+<form ng-submit="updateRoute(state)">
+<table class="table" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr class="title">
+			<th class="{{column.filterType}}" ng-class="{sorting: column.isSortable && state.order!=column.name, 'sorting-asc': state.order==column.name && state.orderType=='ASC', 'sorting-desc': state.order==column.name && state.orderType =='DESC'}" ng-repeat="column in columns" ng-click="updateOrder(column.name)">
+				{{column.name}}
+				<i class="fa fa-caret-up"></i>
+				<i class="fa fa-caret-down"></i>
+			</th>
+			<th style="width: 250px; font-weight: normal; text-align: right;">
+				<button class="small" ng-click="showFilters=!showFilters" type="button">
+					<i class="fa fa-filter"></i>&nbsp;&nbsp; {{showFilters ? _('Hide filters') : _('Show filters')}}
+				</button>
+			</th>
+		</tr>
+		<tr class="filter" ng-if="showFilters">
+			<th class="{{column.filterType}}" ng-repeat="column in columns" ng-switch="column.filterType">
+				<div ng-show="column.isFilterable" ng-class="{'empty-handling': state[column.name + '_empty']}">
+					<span ng-switch-when="date">
+						<div ng-hide="show.date.substr(1)==column.name">
+							<button class="date-filter" ng-click="show.date='f'+column.name" type="button">
+								<span ng-if="state[column.name + '_min']">{{state[column.name + '_min'] | date:'shortDate'}}</span>
+								<span ng-if="! state[column.name + '_min']">{{_('From')}}</span></button> -
+							<button class="date-filter" ng-click="show.date='t'+column.name" type="button">
+								<span ng-if="state[column.name + '_max']">{{state[column.name + '_max'] | date:'shortDate'}}</span>
+								<span ng-if="! state[column.name + '_max']">{{_('To')}}</span>
+							</button>
+						</div>
+						<input type="date" ng-show="show.date=='f'+column.name" ng-model="state[column.name + '_min']" ng-change="onDateFilterChange(column.name + '_min')" />
+						<input type="date" ng-show="show.date=='t'+column.name" ng-model="state[column.name + '_max']" ng-change="onDateFilterChange(column.name + '_max')" />
+					</span>
+					<span ng-switch-when="number">
+						<input type="number" ng-model="state[column.name + '_min']" ng-change="changeCount()" placeholder="{{_('Min')}}" />
+						<input type="number" ng-model="state[column.name + '_max']" ng-change="changeCount()" placeholder="{{_('Max')}}" />
+					</span>
+					<div ng-switch-default>
+						<input ng-if="column.isEnum==false" type="text" style="width: 100%;" ng-model="state[column.name + '_wild']" ng-change="changeCount()" />
+						<div class="enum" ng-if="column.isEnum==true">
+							<select ng-model="state[column.name + '_wild']" ng-change="changeCount()" milo-enum="column.originalType"></select>
+						</div>
+					</div>
+				</div>
+				<div ng-show="column.isFilterable" class="empty-handler">
+					<i class="fa fa-circle fa-fw" ng-class="{active: state[column.name + '_empty'] == 'show'}" ng-click="setEmptyState(column.name, 'show')"></i>
+					<i class="fa fa-circle-o fa-fw" ng-class="{active: state[column.name + '_empty'] == 'hide'}" ng-click="setEmptyState(column.name, 'hide')"></i>
+					<i class="fa fa-refresh fa-fw" ng-show="column.filterType=='date'" ng-click="state[column.name + '_min']=null;state[column.name + '_max']=null;"></i>
+					<i class="fa fa-refresh fa-fw" ng-show="column.isEnum==true" ng-click="state[column.name + '_wild']=null;changeCount();"></i>
+				</div>
+			</th>
+			<th style="width: 250px;">
+				<input type="text" style="width: 145px;" placeholder="{{_('Search everywhere')}}" ng-model="state.filter" ng-change="changeCount()" />
+				<button ng-class="{disabled: dataCount || dataCount == 0}">{{_('Filter')}} = {{dataCount}}</button>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- <tr>
+			<td colspan="{{columns.length + 1}}" style="padding: 0; border-width: 0;">
+				<img src="img/ajax-loader.gif" ng-show="loadings.filtering" style="padding: 10px;" />
+			</td>
+		</tr> -->
+		<tr ng-repeat="row in data track by $index">
+			<td ng-repeat="column in columns">{{row[column.name + '_filtered']}}</td>
+			<td style="text-align: right; padding-right: 20px;">
+				<button type="button" ng-repeat="action in actions" class="{{action.class}}" ng-class="{hidden: row==null || action.hide(row)}" ng-click="action.trigger(row)">
+					{{action.name}}&nbsp;
+				</button>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td class="limits" colspan="{{columns.length / 2 + 1}}">
+		        <button type="button" class="small" ng-class="{active: limit == state.limit}" ng-repeat="limit in limits" ng-click="updateRoute('limit', limit)">{{limit}}</button>
+			    {{_('Entries per page')}}
+			</td>
+			<td class="cpagination" colspan="{{columns.length / 2 + (columns.length % 2)}}">
+				<button type="button" class="small" ng-class="{'disabled': state.page <= 1}" ng-click="updateRoute('page', state.page - 1)">{{_('Previous')}}</button>
+				<button type="button" class="small active">{{state.page}}</button>
+    			<span>{{_('of')}} {{getPagesCount()}}&nbsp;</span>
+    			<button type="button" class="small" ng-class="{'disabled': state.page >= getPagesCount()}" ng-click="updateRoute('page', 1 + 1*state.page)">{{_('Next')}}</button>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+</form>

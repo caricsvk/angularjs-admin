@@ -1,0 +1,5 @@
+<ul>
+	<li ng-class="{active: routeParams.view == view}" ng-repeat="view in views">
+		<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(view)}}</a>
+	</li>
+</ul>

@@ -1,0 +1,15 @@
+<div ng-controller="LoginCtrl">
+
+	<form style="margin-top: 20%;" class="g85 p2 pv2" ng-if="routeParams.view == 'login'" ng-submit="login()">
+		<div class="pv1">
+			<label class="pv1" for="login">{{_('User')}}</label>
+			<input type="text" id="login" ng-model="current.login" class="form-control" />
+		</div>
+		<div class="pv1">
+			<label class="pv1" for="pass">{{_('Password')}}</label>
+			<input type="password" id="pass" ng-model="current.password" class="form-control" />
+		</div>
+		<button>{{_('Log In')}}</button>
+	</form>
+
+</div>

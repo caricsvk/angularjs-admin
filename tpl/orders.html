@@ -1,0 +1,24 @@
+<div ng-controller="OrdersCtrl">
+
+	<div class="p2 pv2" ng-if="!routeParams.view || routeParams.view == 'list'" milo-table="table">
+	</div>
+
+	<form class="g85 p2 pv2" ng-if="routeParams.view == 'put'" ng-submit="put()">
+		<div>
+			<label class="pv1" for="fee">{{_('Fee')}}</label>
+			<input type="text" id="fee" ng-model="current.fee" class="form-control" placeholder="{{_('Fee')}}" />
+			<label class="pv1" for="client">{{_('Client')}}</label>
+			<select id="client" ng-model="current.client" class="form-control" milo-match-entity="'clients'"></select>
+		</div>
+		<label class="pv1" for="category">{{_('Products')}}</label>
+		<div class="pv1 input-group" ng-repeat="product in current.products track by $index">
+			<select ng-model="current.products[$index]" class="form-control" milo-match-entity="'products'"></select>
+			<span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="current.products.splice($index, 1);">{{_('Remove')}}</button></span>
+		</div>
+		<div class="pv1">
+			<select ng-model="productX" class="form-control" milo-match-entity="'products'" ng-change="current.products.push(productX);productX=null;"></select>
+		</div>
+		<button>{{_('Submit')}}</button>
+	</form>
+
+</div>

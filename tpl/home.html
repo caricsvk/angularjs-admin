@@ -1,0 +1,101 @@
+<div class="p2 pv1" ng-controller="HomeCtrl">
+
+	<article ng-if="! routeParams.view || routeParams.view == 'Intro'">
+		<h1>{{_('Welcome You, enthusiastic developer!')}}</h1>
+		<p class="lead">I would like to share with you some toughts and sources which makes my programming simpler. It aims to creation of application's administration (frontend and backend too). It uses AngularJS + jQuery and J2EE + Jersey. I made it in a way you should be able to use either frontend or backend one without another.</p>
+
+		<h2>Main features</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">Scalability (lazy loading)</div>
+			<div class="panel-body">As administration interface gets bigger you don't have to worry about scalability, most content is downloaded lazyli on demand which saves server's and client's resources too.</div>
+			<div class="panel-heading">Entity management setup in minutes</div>
+			<div class="panel-body">
+				<p>Application uses miloTable heavyweight directive which is highly customizable and with right REST endpoint it will do 90% of work when you do:</p>
+				<ul>
+					<li>Entities preview,</li>
+					<li>filtering,</li>
+					<li>sorting,</li>
+					<li>create,</li>
+					<li>update,</li>
+					<li>or delete.</li>
+				</ul>
+			</div>
+			<div class="panel-heading">Stateless</div>
+			<div class="panel-body">Altough this is fully one-page Javascript application it holds important state in URL so you can reload anytime and stay in same state. Nice thing is that there are always loaded only needed sources.</div>
+			<div class="panel-heading">Routing conventions</div>
+			<div class="panel-body">Makes creating new pages very fast</div>
+			<div class="panel-heading">Easy localization</div>
+			<div class="panel-heading">Easy CSS animations</div>
+			<div class="panel-heading">Extendable color scheme</div>
+			<div class="panel-body">Every color scheme is less than 50 lines CSS (if you create new one and wanna share, please make a pull request at github)</div>
+			<div class="panel-heading">Validation</div>
+			<div class="panel-body">Validation is not used since I wanted to keep these examples simple. Of course I use client and server validation in real projects. If someone would be interested just ask, I would provide some easy validation examples (even combination of server and client validation, which is today somehow neccessary).</div>
+		</div>
+
+		<p>Take a look how it runs in. Select one of other sections in main menu (Clients, Orders, ...). It is worth to look at background (very few lines do lots of magic), so take a look at "Frontend Scenario" and "Backend Scenario" in submenu, or just dive into source code at github. </p>
+	</article>
+
+	<article ng-if="routeParams.view == 'Frontend Scenario'">
+		<h2>Html for Clients</h2>
+		<pre>{{clientsHtml}}</pre>
+		<h2>Javascript for Clients</h2>
+		<pre>{{clientsCtrl}}</pre>
+	</article>
+
+	<article ng-if="routeParams.view == 'Backend Scenario'">
+		<h2>Backend for Clients</h2>
+		<p class="lead">Just as "Behind every great man there's a great woman" there must be a great backend behind a great frontend.</p>
+		<h3>REST Endpoint resource for Client entity</h3>
+		<pre>
+/**
+ * LICENCE, AUTHOR, PACKAGE, IMPORTS, but look, all resource functionality in few lines!
+ * well of course, EntityResource does the magic
+ */
+@Path("clients")
+@Stateless
+public class ClientsResource extends EntityResource&lt;User&gt; {
+
+	public UsersResource() {
+		super(User.class);
+	}
+
+}
+		</pre>
+		<h3>Client enitity</h3>
+		<pre>
+/**
+ * LICENCE, AUTHOR, PACKAGE, IMPORTS
+ */
+@Entity
+public class Client implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String name;
+	private String surname;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar birth;
+	@Enumerated(EnumType.STRING)
+	private GenderType gender;
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonView(JsonViews.Detailed.class)
+	private Collection&gt;Order&lt; orders;
+
+	/**
+	 * getters and setters, take a look at github for full sources
+	 */
+
+ 	/**
+	 * And that's it, there is nothing more to write and these two classes provide CRUD operations, sorting, pagination, full entity filtering and of course it can return basic information about entity
+	 */
+
+}
+		</pre>
+		<p>Today's Java Enterprise Edition APIs are excellent. If you did not look at it since now, you should certaily take a look and with Jersey it gets even better!</p>
+	</article>
+
+	<article ng-if="routeParams.view == 'Table Directive'">
+		// TODO
+	</article>
+
+</div>

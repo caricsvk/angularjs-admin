@@ -1,0 +1,60 @@
+<nav>
+	<ul>
+		<li ng-class="{active: routeParams.nav == 'home'}">
+			<a href="#/home"><i class="fa fa-home fa-fw"></i>&nbsp; {{_('Home')}}</a>
+		</li>
+		<li ng-class="{active: routeParams.nav == 'clients'}">
+			<a href="#/clients"><i class="fa fa-user fa-fw"></i>&nbsp; {{_('Clients')}}</a>
+		</li>
+		<li ng-class="{active: routeParams.nav == 'orders'}">
+			<a href="#/orders"><i class="fa fa-truck fa-fw"></i>&nbsp; {{_('Orders')}}</a>
+		</li>
+		<li ng-class="{active: routeParams.nav == 'products'}">
+			<a href="#/products"><i class="fa fa-newspaper-o fa-fw"></i>&nbsp; {{_('Products')}}</a>
+		</li>
+		<li ng-class="{active: routeParams.nav == 'categories'}">
+			<a href="#/categories"><i class="fa fa-list-alt fa-fw"></i>&nbsp; {{_('Categories')}}</a>
+		</li>
+	</ul>
+</nav>
+
+<nav class="login p2 pv2">
+	<ul>
+		<li class="p2 pv2" ng-class="{active: routeParams.view == 'login'}">
+			<a ng-href="#/login/login">{{_('Log In')}}</a>
+		</li>
+		<li class="p2 pv2" ng-class="{active: routeParams.view == 'signup'}">
+			<a ng-href="#/login/signup">{{_('Sign Up')}}</a>
+		</li>
+	</ul>
+</nav>
+
+<nav class="nav-2">
+	<ul>
+		<li ng-click="show.settings=!show.settings">
+			<a href="javascript:void();"><i class="fa fa-cogs fa-fw"></i>&nbsp; {{_('Preferences')}}</a>
+		</li>
+	</ul>
+</nav>
+
+<section class="settings" ng-show="show.settings">
+	<h4>{{_('Layout')}}</h4>
+	<ul class="layouts">
+		<li ng-repeat="layout in getConfig('layouts')" ng-class="{'active': layout == getConfig('layout')}" ng-click="setConfig('layout', layout, true);" class="{{layout}}"><a></a></li>
+	</ul>
+	<h4>{{_('Color')}}</h4>
+	<ul class="colors">
+		<li ng-repeat="color in getConfig('colors')"><button ng-click="setConfig('color', color, true);" ng-class="{'active': color == getConfig('color')}" class="small {{color}}">{{_(color)}}</button></li>
+	</ul>
+	<h4>{{_('Language')}}</h4>
+	<ul class="languages">
+		<li ng-repeat="language in getConfig('languages')"><button ng-click="setConfig('language', language, true);" onclick="location.reload()" ng-class="{'active': language == getConfig('language')}" class="small {{language}}">{{_(language)}}</button></li>
+	</ul>
+	<h4>{{_('User')}}</h4>
+	<!-- <button type="button" class="btn btn-default btn-sm">
+  		<i class="fa fa-pencil"></i>&nbsp; {{_('Edit profile')}}
+  	</button> -->
+	<button type="button" class="btn btn-default btn-sm" ng-click="updateRoute({'nav': 'login', 'view': 'login'});">
+  		<i class="fa fa-power-off"></i>&nbsp; {{_('Log Out')}}
+  	</button>
+</section>

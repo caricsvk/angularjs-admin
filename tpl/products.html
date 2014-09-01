@@ -1,0 +1,36 @@
+<div ng-controller="ProductsCtrl">
+
+	<div class="p2 pv2" ng-if="!routeParams.view || routeParams.view == 'list'" milo-table="table">
+	</div>
+
+	<form class="g85 p2 pv2" ng-if="routeParams.view == 'put'" ng-submit="put()">
+		<div>
+			<label class="pv1" for="name">{{_('Name')}}</label>
+			<input type="text" id="name" ng-model="current.name" class="form-control" placeholder="{{_('name')}}" />
+			<label class="pv1" for="price">{{_('Price')}}</label>
+			<input type="text" id="price" ng-model="current.price" class="form-control" placeholder="{{_('price')}}" />
+			<label class="pv1" for="stock">{{_('Stock amount')}}</label>
+			<input type="text" id="stock" ng-model="current.stock" class="form-control" placeholder="{{_('stock')}}" />
+			<label class="pv1" for="shortDescription">{{_('Short description')}}</label>
+			<textarea id="shortDescription" ng-model="current.shortDescription" class="form-control">
+			</textarea>
+			<label class="pv1" for="longDescription">{{_('Long description')}}</label>
+			<textarea ui-tinymce id="longDescription" ng-model="current.longDescription" class="form-control">
+			</textarea>
+			<label class="pv1" for="sellFrom">{{_('sellFrom')}}</label>
+			<input type="date" id="sellFrom" ng-model="current.sellFrom" class="form-control" placeholder="{{_('sellFrom')}}" />
+			<label class="pv1" for="sellUntil">{{_('Sell until')}}</label>
+			<input type="date" id="sellUntil" ng-model="current.sellUntil" class="form-control" placeholder="{{_('sellUntil')}}" />
+		</div>
+		<label class="pv1" for="category">{{_('Categories')}}</label>
+		<div class="pv1 input-group" ng-repeat="cat in current.categories track by $index">
+			<select ng-model="current.categories[$index]" class="form-control" milo-match-entity="'categories'"></select>
+			<span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="current.categories.splice($index, 1);">{{_('Remove')}}</button></span>
+		</div>
+		<div class="pv1">
+			<select ng-model="category" class="form-control" milo-match-entity="'categories'" ng-change="current.categories.push(category);category=null;"></select>
+		</div>
+		<button>{{_('Submit')}}</button>
+	</form>
+
+</div>

@@ -1,0 +1,192 @@
+/* layout variants */
+body.top header {min-height: 0;}
+body.top header nav li.active:after {border-width: 0 25px 10px 25px; top: 11.3ex;}
+body.top nav.nav-2 {right: 20px;}
+body.top nav.pane {min-height: 0;}
+body.top .pane {width: 100%; float: none;}
+body.top nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
+body.top nav li.active:after {border-width: 0 20px 10px 20px; top: 10.8ex; left: 50%; margin-left: -15px;}
+body.top .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
+body.top .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
+body.top.login header {height: 40%; text-align: left;}
+body.top.login header > * {margin-top: 0;}
+
+body.top-left header {min-height: 0; width: 100%;}
+body.top-left header nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
+body.top-left header nav li.active:after {display: none;}
+body.top-left nav.nav-2 {right: 20px;}
+body.top-left .wrapper.pane {width: 100%;}
+body.top-left .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
+body.top-left .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
+
+body.left header {position: fixed;}
+body.left nav.pane {position: fixed; width: 12.75%;}
+body.left nav li a {padding-right: 15px;}
+body.left main {left: 15%;}
+body.left footer {width: 68.25% !important;}
+body.left .wrapper {left: 15%;}
+
+body.left-top header {position: fixed;}
+body.left-top header nav li.active:after {display: none;}
+body.left-top nav li.active:after {border-width: 0 20px 10px 20px; top: auto; left: 50%; margin-left: -15px; margin-top: 18.26%;}
+body.left-top nav li a {padding-right: 15px;}
+body.left-top footer {width: 81% !important;}
+body.left-top .wrapper {left: 15%;}
+body.left-top .wrapper .pane {width: 100%; min-height: 0;}
+body.left-top .wrapper nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
+
+/* bootstrap extension */
+.panel * {color: #555;}
+input[type=date], input[type=time], input[type=datetime-local], input[type=month] {line-height: normal;}
+
+/* common */
+html, body {margin: 0; padding: 0; height: 100%; width: 100; font-size: 14px; overflow-x: hidden; position: relative;}
+
+body.login header {width: 36%; text-align: right; padding: 2%;}
+body.login header > * {display: none; margin-top: 40%;}
+body.login header .login {display: block;}
+body.login .wrapper {width: 56%; padding: 2%;}
+
+* {
+	font-family: 'Source Sans Pro', sans-serif;
+	/*font-family: 'PT Sans', sans-serif;*/
+	/*font-family: 'Noto Sans', sans-serif;*/
+	/*font-family: 'Open Sans', sans-serif;*/
+	position: relative;
+	font-size: 1rem;
+}
+
+.wrapper {min-height: 100vh;}
+
+.pane {float: left;}
+
+body .login {display: none;}
+
+.languages {float: left; padding: 0;}
+.languages li {list-style-type: none; float: left; display: inline-block;}
+
+.colors {float: left; padding: 0;}
+.colors li {list-style-type: none; float: left; display: inline-block;}
+
+.layouts {float: left; padding: 0;}
+.layouts li {list-style-type: none; margin: 10px; float: left; display: inline-block; width: 20px; height: 20px; cursor: pointer;}
+.layouts li a {width: 12px; height: 12px; display: inline-block;}
+.layouts li.top {border-top: 3px solid;}
+.layouts li.top a {border-top: 2px solid; margin: 3px 3px 3px 0;}
+.layouts li.top-left {border-top: 3px solid;}
+.layouts li.top-left a {border-left: 2px solid; margin: 3px 3px 3px 0;}
+.layouts li.left {border-left: 3px solid;}
+.layouts li.left a {border-left: 2px solid; margin: 0 3px 3px 3px;}
+.layouts li.left-top {border-left: 3px solid;}
+.layouts li.left-top a {border-top: 2px solid; margin: 0 3px 3px 3px;}
+
+.settings {position: absolute; left: 100%; width: 230px; bottom: 2%; margin-left: 15px; padding: 8px 16px;}
+.settings:before {position: absolute; bottom: 15px; left: -15px; content: ''; width: 0; height: 0; border-style: solid; border-width: 15px 15px 15px 0; }
+.settings h4 {clear: both;}
+
+header {min-height: 100vh; z-index: 2;}
+header nav li a {font-size: 1.4rem;}
+header nav li.active:after {border-width: 15px 15px 15px 0;}
+
+nav.nav-2 {position: absolute; bottom: 20px; min-width: 185px;}
+nav.pane {min-height: 100vh; z-index: 1; position: initial;} 
+nav li {list-style-type: none; padding: 4% 0;}
+nav li.active:after {position: absolute; top: 50%; margin-top: -12px; right: 0; content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 12px 12px 0; }
+nav li a {text-decoration: none; font-size: 1.3rem; display: block;}
+
+button {padding: 5px 15px; border-size: 2px; border-style: solid; font-weight: bold; border-radius: 4px;}
+button.active,
+button:hover {cursor: pointer;}
+button.small {padding: 4px 10px; margin: 2px;}
+
+table.table thead tr th {border-bottom: 6px double;}
+table.table thead tr.filter th {font-size: 1rem; font-weight: normal; padding: 4px 2px; vertical-align: baseline;}
+table.table thead tr.filter th.date {min-width: 165px;}
+table.table thead tr.filter th.number input {width: 40%;}
+table.table thead tr.filter th button {padding: 4px 10px; margin: 2px;}
+table.table thead tr.filter th input {padding: 2px; margin: 2px;}
+table.table thead tr.filter th .empty-handling {visibility: hidden;}
+table.table thead tr.filter th .empty-handler {}
+table.table thead tr.filter th .empty-handler i {cursor: pointer;}
+table.table thead tr.title th {font-size: 1.1rem; text-transform: capitalize; font-weight: 600;}
+table.table thead tr.title th i.fa {display: none; position: absolute; right: 5px; bottom: 33%;}
+table.table thead tr.title th.sorting,
+table.table thead tr.title th.sorting-asc,
+table.table thead tr.title th.sorting-desc {padding-right: 25px; cursor: pointer;}
+table.table thead tr.title th.sorting i.fa-caret-up {display: block;}
+table.table thead tr.title th.sorting i.fa-caret-down {display: block; margin-bottom: -10px;}
+table.table thead tr.title th.sorting-desc i.fa-caret-down {display: block; margin-bottom: -10px;}
+table.table thead tr.title th.sorting-asc i.fa-caret-up {display: block;}
+table.table tbody tr td {border-top: 2px solid; vertical-align: middle;}
+table.table tbody tr td .hidden {display: block !important; visibility: hidden !important;}
+table.table tfoot tr td { border-top: 6px double; vertical-align: middle;}
+table.table tfoot tr td.cpagination {text-align: right;}
+
+footer {clear: both; border-top: 1px solid #0A2929; float: right;}
+
+.p0 {padding-right: 0.5%; padding-left: 0.5%; box-sizing: content-box;}
+.p1 {padding-right: 1%; padding-left: 1%; box-sizing: content-box;}
+.p2 {padding-right: 2%; padding-left: 2%; box-sizing: content-box;}
+.pv0 {padding-bottom: 0.5%; padding-top: 0.5%;}
+.pv1 {padding-bottom: 1%; padding-top: 1%;}
+.pv2 {padding-bottom: 2%; padding-top: 2%;}
+
+.g10 {width: 10%;}
+.g15 {width: 15%;}
+.g20 {width: 20%;}
+.g25 {width: 25%;}
+.g30 {width: 30%;}
+.g35 {width: 35%;}
+.g40 {width: 40%;}
+.g45 {width: 45%;}
+.g50 {width: 50%;}
+.g55 {width: 55%;}
+.g60 {width: 60%;}
+.g65 {width: 65%;}
+.g70 {width: 70%;}
+.g75 {width: 75%;}
+.g80 {width: 80%;}
+.g85 {width: 85%;}
+.g90 {width: 90%;}
+.g95 {width: 95%;}
+.g100 {width: 100%;}
+
+.g10.p1 {width: 8%;}
+.g15.p1 {width: 13%;}
+.g20.p1 {width: 18%;}
+.g25.p1 {width: 23%;}
+.g30.p1 {width: 28%;}
+.g35.p1 {width: 33%;}
+.g40.p1 {width: 38%;}
+.g45.p1 {width: 43%;}
+.g50.p1 {width: 48%;}
+.g55.p1 {width: 53%;}
+.g60.p1 {width: 58%;}
+.g65.p1 {width: 63%;}
+.g70.p1 {width: 68%;}
+.g75.p1 {width: 73%;}
+.g80.p1 {width: 78%;}
+.g85.p1 {width: 83%;}
+.g90.p1 {width: 88%;}
+.g95.p1 {width: 93%;}
+.g100.p1 {width: 98%;}
+
+.g10.p2 {width: 6%;}
+.g15.p2 {width: 11%;}
+.g20.p2 {width: 18%;}
+.g25.p2 {width: 21%;}
+.g30.p2 {width: 26%;}
+.g35.p2 {width: 31%;}
+.g40.p2 {width: 36%;}
+.g45.p2 {width: 41%;}
+.g50.p2 {width: 46%;}
+.g55.p2 {width: 51%;}
+.g60.p2 {width: 56%;}
+.g65.p2 {width: 61%;}
+.g70.p2 {width: 66%;}
+.g75.p2 {width: 71%;}
+.g80.p2 {width: 76%;}
+.g85.p2 {width: 81%;}
+.g90.p2 {width: 86%;}
+.g95.p2 {width: 91%;}
+.g100.p2 {width: 96%;}
