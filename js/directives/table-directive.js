@@ -1,6 +1,7 @@
 APP.directive('miloTable', function() {
+	var tplUrl = 'tpl/directives/table.html';
 	return {
-		templateUrl: 'tpl/directives/table.html',
+		templateUrl: window.SETTINGS && window.SETTINGS.miloLibPrefix ? window.SETTINGS.miloLibPrefix + tplUrl : tplUrl,
 		scope: {init: '=miloTable'}, 
 		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', 
 			function($scope, $rootScope, $filter, $location, $q) {
