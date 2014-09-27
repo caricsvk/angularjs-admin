@@ -3,11 +3,12 @@ APP.directive('miloMatchEntity', function() {
 		scope: {
 			entityEndpoint: '=miloMatchEntity',
 			entityName: '=?miloEntityName',
+			entityId: '=?miloEntityId',
 			ngModel: '='
 		}, controller: ['$scope', '$element', '$attrs', 'GlobalService', function($scope, $element, $attrs, GlobalService) {
 			var matchEntity = function (instances) {
-				for (var i = 0; i < instances.length; i ++) {
-					if ($scope.ngModel && instances[i].id === $scope.ngModel.id) {
+				for (var i = 0; instances && i < instances.length; i ++) {
+					if ($scope.ngModel && instances[i][$scope.entityId] === $scope.ngModel[$scope.entityId]) {
 						$scope.ngModel = instances[i];
 					}
 				}
@@ -19,6 +20,9 @@ APP.directive('miloMatchEntity', function() {
 			if (! $scope.entityName) {
 				$scope.entityName = 'name';
 			}
+			if (! $scope.entityId) {
+				$scope.entityId = 'id';
+			}
 			if (! scope.miloSelectData[$scope.entityEndpoint]) {
 				GlobalService.getEntityInstances($scope.entityEndpoint).$promise.then(function (data) {
 					scope.miloSelectData[$scope.entityEndpoint] = data;
@@ -28,6 +32,10 @@ APP.directive('miloMatchEntity', function() {
 				matchEntity(scope.miloSelectData[$scope.entityEndpoint]);
 			}
 			$attrs['ngOptions'] = 'value.' + $scope.entityName + ' for value in miloSelectData["' + $scope.entityEndpoint + '"]';
+
+			$scope.$watch('ngModel', function (newData) {
+					matchEntity(scope.miloSelectData[$scope.entityEndpoint]);
+			});
     	}]
 	};
 });

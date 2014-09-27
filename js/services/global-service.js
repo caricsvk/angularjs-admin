@@ -71,7 +71,7 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 	self.getTableService = function (name) {
 		var service = tableServices[name];
 		if (! service) {
-			service = $resource(self.getConfig("servicesLocation") + "/" + name + "/:param", null, {'put': {method: "PUT"}});
+			service = $resource(self.getConfig("servicesLocation") + "/" + name + "/:param/:param1/:param2", null, {'put': {method: "PUT"}});
 			service.getColumnIsEnum = self.getColumnIsEnum;
 		}
 		return service;

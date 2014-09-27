@@ -6,7 +6,7 @@ window.SETTINGS = {
 	initCtrl: 'home',
 	urlHeader: 'tpl/header.html',
 	urlFooter: 'tpl/footer.html',
-	servicesLocation: '//localhost/gf/jersey-1.0.1',
+	servicesLocation: '//localhost/gf/jersey',
 	layouts: ['top', 'top-left', 'left', 'left-top'],
 	layout: 'top',
 	colors: ['green', 'blue', 'brown', 'gray'],
