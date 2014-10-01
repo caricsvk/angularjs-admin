@@ -1,18 +1,18 @@
 /* gray #000000 #0D0D0D #1A1A1A #272727 #343434 #404040 #4D4D4D #5A5A5A #676767 #747474 
 #818181 #8E8E8E #9A9A9A #A7A7A7 #B3B3B3 #C0C0C0 #CDCDCD #D9D9D9 #E6E6E6 #F2F2F2 #FFFFFF */
-body.gray {background-color: #404040; color: #bbb;}
-body.gray button {background-color: #343434; border-color: #272727; color: #bbb; font-weight: normal;}
+body.gray {background-color: #404040; color: #ccc;}
+body.gray button {background-color: #343434; border-color: #272727; color: #ccc; font-weight: normal;}
 body.gray button.active,
 body.gray button:hover { background-color: #4D4D4D; border-color: #4D4D4D; color: #272727;}
 /*body.gray i.fa {color: #272727;}*/
 body.gray i.active,
 body.gray a:hover {color: #ccc;}
 body.gray header {background-color: #272727;}
-body.gray header i.fa {color: #bbb;}
+body.gray header i.fa {color: #ccc;}
 body.gray header nav li.active:after {border-color: transparent #343434 transparent transparent;}
 body.gray nav.pane {background-color: #343434;}
 body.gray nav li.active:after {border-color: transparent #404040 transparent transparent;}
-body.gray nav li a {color: #bbb;}
+body.gray nav li a {color: #ccc;}
 body.gray table.table thead tr th {/*color: #051414;*/ /*background-color: #4D4D4D;*/ border-color: #343434;}
 body.gray table.table tbody tr:nth-child(2n+1) td {background-color: #4D4D4D;}
 body.gray table.table tbody tr td {border-color: #343434;}
@@ -25,8 +25,8 @@ body.gray.top-left .settings:before {border-color: transparent transparent #2727
 body.gray .settings {background-color: #272727; border-radius: 4px;}
 body.gray .settings:before {border-color: transparent #272727 transparent transparent;}
 body.gray .layouts li,
-body.gray .layouts li a {border-color: #bbb;}
-body.gray .layouts li a {border-color: #bbb;}
+body.gray .layouts li a {border-color: #ccc;}
+body.gray .layouts li a {border-color: #ccc;}
 body.gray .layouts li.active,
 body.gray .layouts li.active a {/*background-color: #4D4D4D;*/ border-color: #4D4D4D;}
 body.gray .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
@@ -37,19 +37,19 @@ body.gray .mce-tinymce button {background-color: transparent;}
 
 /* brown  #000000 #0A0807 #15110D #1F1A14 #29221B #342A22 #3E3328 #483B2F #524436 #5D4C3C #675543 
 #766656 #857769 #95887B #A4998E #B3AAA1 #C2BBB4 #D1CCC7 #E1DDD9 #F0EEEC #FFFFFF */
-body.brown {background-color: #3E3328; color: #bbb;}
-body.brown button {background-color: #342A22; border-color: #1F1A14; color: #bbb; font-weight: normal;}
+body.brown {background-color: #3E3328; color: #ccc;}
+body.brown button {background-color: #342A22; border-color: #1F1A14; color: #ccc; font-weight: normal;}
 body.brown button.active,
 body.brown button:hover { background-color: #483B2F; border-color: #483B2F; color: #1F1A14;}
 /*body.brown i.fa {color: #1F1A14;}*/
 body.brown i.active,
 body.brown a:hover {color: #ccc;}
 body.brown header {background-color: #1F1A14;}
-body.brown header i.fa {color: #bbb;}
+body.brown header i.fa {color: #ccc;}
 body.brown header nav li.active:after {border-color: transparent #342A22 transparent transparent;}
 body.brown nav.pane {background-color: #342A22;}
 body.brown nav li.active:after {border-color: transparent #3E3328 transparent transparent;}
-body.brown nav li a {color: #bbb;}
+body.brown nav li a {color: #ccc;}
 body.brown table.table thead tr th {/*color: #051414;*/ /*background-color: #483B2F;*/ border-color: #342A22;}
 body.brown table.table tbody tr:nth-child(2n+1) td {background-color: #483B2F;}
 body.brown table.table tbody tr td {border-color: #342A22;}
@@ -62,8 +62,8 @@ body.brown.top-left .settings:before {border-color: transparent transparent #1F1
 body.brown .settings {background-color: #1F1A14; border-radius: 4px;}
 body.brown .settings:before {border-color: transparent #1F1A14 transparent transparent;}
 body.brown .layouts li,
-body.brown .layouts li a {border-color: #bbb;}
-body.brown .layouts li a {border-color: #bbb;}
+body.brown .layouts li a {border-color: #ccc;}
+body.brown .layouts li a {border-color: #ccc;}
 body.brown .layouts li.active,
 body.brown .layouts li.active a {/*background-color: #483B2F;*/ border-color: #483B2F;}
 body.brown .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
@@ -74,19 +74,19 @@ body.brown .mce-tinymce button {background-color: transparent;}
 
 /* blue	#000000 #050A0F #0A141F #0F1F2E #14293D #1A334C #1F3D5C #24476B #29527A #2E5C8A #336699
 #4775A3 #5C85AD #7094B8 #85A3C2 #99B2CC #ADC2D6 #C2D1E0 #D6E0EB #EBF0F5 #FFFFFF */
-body.blue {background-color: #1F3D5C; color: #bbb;}
-body.blue button {background-color: #1A334C; border-color: #0F1F2E; color: #bbb; font-weight: normal;}
+body.blue {background-color: #1F3D5C; color: #ccc;}
+body.blue button {background-color: #1A334C; border-color: #0F1F2E; color: #ccc; font-weight: normal;}
 body.blue button.active,
 body.blue button:hover { background-color: #24476B; border-color: #24476B; color: #0F1F2E;}
 /*body.blue i.fa {color: #0F1F2E;}*/
 body.blue i.active,
 body.blue a:hover {color: #ccc;}
 body.blue header {background-color: #0F1F2E;}
-body.blue header i.fa {color: #bbb;}
+body.blue header i.fa {color: #ccc;}
 body.blue header nav li.active:after {border-color: transparent #1A334C transparent transparent;}
 body.blue nav.pane {background-color: #1A334C;}
 body.blue nav li.active:after {border-color: transparent #1F3D5C transparent transparent;}
-body.blue nav li a {color: #bbb;}
+body.blue nav li a {color: #ccc;}
 body.blue table.table thead tr th {/*color: #051414;*/ /*background-color: #24476B;*/ border-color: #1A334C;}
 body.blue table.table tbody tr:nth-child(2n+1) td {background-color: #24476B;}
 body.blue table.table tbody tr td {border-color: #1A334C;}
@@ -99,8 +99,8 @@ body.blue.top-left .settings:before {border-color: transparent transparent #0F1F
 body.blue .settings {background-color: #0F1F2E; border-radius: 4px;}
 body.blue .settings:before {border-color: transparent #0F1F2E transparent transparent;}
 body.blue .layouts li,
-body.blue .layouts li a {border-color: #bbb;}
-body.blue .layouts li a {border-color: #bbb;}
+body.blue .layouts li a {border-color: #ccc;}
+body.blue .layouts li a {border-color: #ccc;}
 body.blue .layouts li.active,
 body.blue .layouts li.active a {/*background-color: #24476B;*/ border-color: #24476B;}
 body.blue .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
@@ -111,19 +111,19 @@ body.blue .mce-tinymce button {background-color: transparent;}
 
 /* green #000000 #051414 #0A2929 #0F3D3D #145252 #1A6666 #1F7A7A #248F8F #29A3A3 
 #2EB8B8 #33CCCC #47D1D1 #5CD6D6 #70DBDB #85E0E0 #99E6E6 #ADEBEB #C2F0F0 #D6F5F5 #EBFAFA */
-body.green {background-color: #145252; color: #bbb;}
-body.green button {background-color: #0F3D3D; border-color: #0A2929; color: #bbb; font-weight: normal;}
+body.green {background-color: #145252; color: #ccc;}
+body.green button {background-color: #0F3D3D; border-color: #0A2929; color: #ccc; font-weight: normal;}
 body.green button.active,
 body.green button:hover { background-color: #1A6666; border-color: #1A6666; color: #0A2929;}
 /*body.green i.fa {color: #0A2929;}*/
 body.green i.active,
 body.green a:hover {color: #ccc;}
 body.green header {background-color: #0A2929;}
-body.green header i.fa {color: #bbb;}
+body.green header i.fa {color: #ccc;}
 body.green header nav li.active:after {border-color: transparent #0F3D3D transparent transparent;}
 body.green nav.pane {background-color: #0F3D3D;}
 body.green nav li.active:after {border-color: transparent #145252 transparent transparent;}
-body.green nav li a {color: #bbb;}
+body.green nav li a {color: #ccc;}
 body.green table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #0F3D3D;}
 body.green table.table tbody tr:nth-child(2n+1) td {background-color: #1A6666;}
 body.green table.table tbody tr td {border-color: #0F3D3D;}
@@ -137,10 +137,17 @@ body.green.top-left .settings:before {border-color: transparent transparent #0A2
 body.green .settings {background-color: #0A2929; border-radius: 4px;}
 body.green .settings:before {border-color: transparent #0A2929 transparent transparent;}
 body.green .layouts li,
-body.green .layouts li a {border-color: #bbb;}
-body.green .layouts li a {border-color: #bbb;}
+body.green .layouts li a {border-color: #ccc;}
+body.green .layouts li a {border-color: #ccc;}
 body.green .layouts li.active,
 body.green .layouts li.active a {/*background-color: #1A6666;*/ border-color: #1A6666;}
 body.green .loading { border-color: transparent #0F3D3D transparent transparent;}
 body.green .loading .spinner-1 .spinner {background-color: #1A6666;}
 body.green .mce-tinymce button {background-color: transparent;}
+
+body.light {background-color: #eee; color: #222;}
+body.light table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #888;}
+body.light table.table tbody tr:nth-child(2n+1) td {background-color: #DDD;}
+body.light table.table tbody tr td {border-color: #888;}
+body.light table.table tfoot tr td { color: #051414; border-color: #888;}
+

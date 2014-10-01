@@ -9,8 +9,8 @@ window.SETTINGS = {
 	servicesLocation: '//localhost/gf/jersey',
 	layouts: ['top', 'top-left', 'left', 'left-top'],
 	layout: 'top',
-	colors: ['green', 'blue', 'brown', 'gray'],
-	color: 'green',
+	colors: ['green', 'light green', 'blue', 'light blue', 'brown', 'light brown', 'gray', 'light gray'],
+	color: 'light green',
 	languages: ['en', 'sk', 'cz'],
 	language: 'en',
 	animations: {
