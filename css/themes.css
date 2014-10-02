@@ -3,7 +3,7 @@
 body.gray {background-color: #404040; color: #ccc;}
 body.gray button {background-color: #343434; border-color: #272727; color: #ccc; font-weight: normal;}
 body.gray button.active,
-body.gray button:hover { background-color: #4D4D4D; border-color: #4D4D4D; color: #272727;}
+body.gray button:hover { background-color: #4D4D4D; border-color: #4D4D4D; color: #ddd;}
 /*body.gray i.fa {color: #272727;}*/
 body.gray i.active,
 body.gray a:hover {color: #ccc;}
@@ -40,7 +40,7 @@ body.gray .mce-tinymce button {background-color: transparent;}
 body.brown {background-color: #3E3328; color: #ccc;}
 body.brown button {background-color: #342A22; border-color: #1F1A14; color: #ccc; font-weight: normal;}
 body.brown button.active,
-body.brown button:hover { background-color: #483B2F; border-color: #483B2F; color: #1F1A14;}
+body.brown button:hover { background-color: #483B2F; border-color: #483B2F; color: #ddd;}
 /*body.brown i.fa {color: #1F1A14;}*/
 body.brown i.active,
 body.brown a:hover {color: #ccc;}
@@ -77,7 +77,7 @@ body.brown .mce-tinymce button {background-color: transparent;}
 body.blue {background-color: #1F3D5C; color: #ccc;}
 body.blue button {background-color: #1A334C; border-color: #0F1F2E; color: #ccc; font-weight: normal;}
 body.blue button.active,
-body.blue button:hover { background-color: #24476B; border-color: #24476B; color: #0F1F2E;}
+body.blue button:hover { background-color: #24476B; border-color: #24476B; color: #ddd;}
 /*body.blue i.fa {color: #0F1F2E;}*/
 body.blue i.active,
 body.blue a:hover {color: #ccc;}
@@ -114,7 +114,7 @@ body.blue .mce-tinymce button {background-color: transparent;}
 body.green {background-color: #145252; color: #ccc;}
 body.green button {background-color: #0F3D3D; border-color: #0A2929; color: #ccc; font-weight: normal;}
 body.green button.active,
-body.green button:hover { background-color: #1A6666; border-color: #1A6666; color: #0A2929;}
+body.green button:hover { background-color: #1A6666; border-color: #1A6666; color: #ddd;}
 /*body.green i.fa {color: #0A2929;}*/
 body.green i.active,
 body.green a:hover {color: #ccc;}
@@ -146,8 +146,8 @@ body.green .loading .spinner-1 .spinner {background-color: #1A6666;}
 body.green .mce-tinymce button {background-color: transparent;}
 
 body.light {background-color: #eee; color: #222;}
-body.light table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #888;}
+body.light table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #888; border-width: 1px;}
 body.light table.table tbody tr:nth-child(2n+1) td {background-color: #DDD;}
-body.light table.table tbody tr td {border-color: #888;}
-body.light table.table tfoot tr td { color: #051414; border-color: #888;}
+body.light table.table tbody tr td {border-color: #888; border-width: 1px;}
+body.light table.table tfoot tr td { color: #051414; border-color: #888; border-width: 1px;}
 
