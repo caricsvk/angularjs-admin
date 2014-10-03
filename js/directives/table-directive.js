@@ -3,12 +3,15 @@ APP.directive('miloTable', function() {
 	return {
 		templateUrl: window.SETTINGS && window.SETTINGS.miloLibPrefix ? window.SETTINGS.miloLibPrefix + tplUrl : tplUrl,
 		scope: {init: '=miloTable'}, 
-		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', 
-			function($scope, $rootScope, $filter, $location, $q) {
+		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce', 
+			function($scope, $rootScope, $filter, $location, $q, $sce) {
 
 			// console.log('controller', $scope);
 			if ($scope.init) {
 				$scope.service = $scope.init.service;
+				for (var i = 0; $scope.init.actions && i < $scope.init.actions.length; i ++) {
+					$scope.init.actions[i].name = $sce.trustAsHtml($scope.init.actions[i].name);	
+				}
 			}
 			$scope.filter = function () {
 

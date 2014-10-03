@@ -62,8 +62,8 @@
 		<tr ng-repeat="row in data track by $index">
 			<td ng-repeat="column in columns">{{row[column.name + '_filtered']}}</td>
 			<td style="text-align: right; padding-right: 20px;">
-				<button type="button" ng-repeat="action in actions" class="{{action.class}}" ng-class="{hidden: row==null || action.hide(row)}" ng-click="action.trigger(row)">
-					{{action.name}}&nbsp;
+				<button type="button" ng-repeat="action in actions" class="{{action.class}}" ng-class="{hidden: row==null || action.hide(row)}" ng-click="action.trigger(row)" ng-bind-html="action.name">
+					&nbsp;
 				</button>
 			</td>
 		</tr>
