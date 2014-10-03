@@ -85,14 +85,14 @@ body .login {display: none;}
 .settings h4 {clear: both;}
 
 header {min-height: 100vh; z-index: 2;}
-header nav li a {font-size: 1.4rem;}
+header nav li a {font-size: 1.25rem; font-weight: 500;}
 header nav li.active:after {border-width: 15px 15px 15px 0;}
 
 nav.nav-2 {position: absolute; bottom: 20px; min-width: 185px;}
 nav.pane {min-height: 100vh; z-index: 1; position: initial;} 
 nav li {list-style-type: none; padding: 4% 0;}
 nav li.active:after {position: absolute; top: 50%; margin-top: -12px; right: 0; content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 12px 12px 0; }
-nav li a {text-decoration: none; font-size: 1.3rem; display: block;}
+nav li a {text-decoration: none; font-size: 1.1rem; display: block; font-weight: 700;}
 
 button {padding: 5px 15px; border-size: 2px; border-style: solid; font-weight: bold; border-radius: 4px;}
 button.active,
