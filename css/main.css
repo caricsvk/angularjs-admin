@@ -118,7 +118,7 @@ table.table thead tr.title th.sorting i.fa-caret-down {display: block; margin-bo
 table.table thead tr.title th.sorting-desc i.fa-caret-down {display: block; margin-bottom: -10px;}
 table.table thead tr.title th.sorting-asc i.fa-caret-up {display: block;}
 table.table tbody tr td {border-top: 2px solid; vertical-align: middle;}
-table.table tbody tr td .hidden {display: block !important; visibility: hidden !important;}
+table.table tbody tr td .hidden {display: inline-block !important; visibility: hidden !important;}
 table.table tfoot tr td { border-top: 6px double; vertical-align: middle;}
 table.table tfoot tr td.cpagination {text-align: right;}
 
