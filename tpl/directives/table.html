@@ -3,7 +3,7 @@
 	<thead>
 		<tr class="title">
 			<th class="{{column.filterType}}" ng-class="{sorting: column.isSortable && state.order!=column.name, 'sorting-asc': state.order==column.name && state.orderType=='ASC', 'sorting-desc': state.order==column.name && state.orderType =='DESC'}" ng-repeat="column in columns" ng-click="updateOrder(column.name)">
-				{{column.name}}
+				{{_(column.name)}}
 				<i class="fa fa-caret-up"></i>
 				<i class="fa fa-caret-down"></i>
 			</th>
