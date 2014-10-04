@@ -1,17 +1,17 @@
 /* layout variants */
-body.top header {min-height: 0;}
-body.top header nav li.active:after {border-width: 0 25px 10px 25px; top: 11.3ex;}
+body.top header {min-height: 0; padding: 2ex 0;}
+body.top header nav li.active:after {border-width: 0 25px 10px 25px; top: 10ex;}
 body.top nav.nav-2 {right: 20px;}
-body.top nav.pane {min-height: 0;}
+body.top nav.pane {min-height: 0; padding: 1ex 0;}
 body.top .pane {width: 100%; float: none;}
-body.top nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
-body.top nav li.active:after {border-width: 0 20px 10px 20px; top: 10.8ex; left: 50%; margin-left: -15px;}
+body.top nav li {list-style-type: none; padding: 1.5ex 2%; display: inline-block;}
+body.top nav li.active:after {border-width: 0 20px 10px 20px; top: 8.5ex; left: 50%; margin-left: -15px;}
 body.top .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
 body.top .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
 body.top.login header {height: 40%; text-align: left;}
 body.top.login header > * {margin-top: 0;}
 
-body.top-left header {min-height: 0; width: 100%;}
+body.top-left header {min-height: 0; width: 100%; padding: 2ex 0;}
 body.top-left header nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
 body.top-left header nav li.active:after {display: none;}
 body.top-left nav.nav-2 {right: 20px;}
@@ -28,7 +28,8 @@ body.left .wrapper {left: 15%;}
 
 body.left-top header {position: fixed;}
 body.left-top header nav li.active:after {display: none;}
-body.left-top nav li.active:after {border-width: 0 20px 10px 20px; top: auto; left: 50%; margin-left: -15px; margin-top: 18.26%;}
+body.left-top nav.pane {min-height: 0; padding: 1ex 0;}
+body.left-top nav li.active:after {border-width: 0 20px 10px 20px; top: 8.5ex; left: 50%; margin-left: -15px;}
 body.left-top nav li a {padding-right: 15px;}
 body.left-top footer {width: 81% !important;}
 body.left-top .wrapper {left: 15%;}
