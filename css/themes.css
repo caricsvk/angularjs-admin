@@ -150,10 +150,12 @@ body.light table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6
 body.light table.table tbody tr:nth-child(2n+1) td {background-color: #DDD;}
 body.light table.table tbody tr td {border-color: #888; border-width: 1px;}
 body.light table.table tfoot tr td { color: #051414; border-color: #888; border-width: 1px;}
+body.light nav li.active:after {border-color: transparent #eee transparent transparent;}
+body.light .loading {color: #bbb;}
+body.light .settings h4 {color: #ccc;}
+body.light.top nav li.active:after,
+body.light.left-top nav li.active:after {border-color: transparent transparent #eee transparent;}
 body.light.green button {background-color: #145252; border-color: #0F3D3D; color: #ddd; font-weight: normal;}
 body.light.green button.active,
 body.light.green button:hover { background-color: #1F7A7A; border-color: #1F7A7A; color: #ddd;}
-body.green nav li.active:after {border-color: transparent #eee transparent transparent;}
-body.light.green.top nav li.active:after,
-body.light.green.left-top nav li.active:after {border-color: transparent transparent #eee transparent;}
 
