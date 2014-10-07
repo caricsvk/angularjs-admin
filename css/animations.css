@@ -9,7 +9,7 @@
 
 div.loading { -webkit-transition:all linear 0.5s; transition:all linear 0.5s; right: 0px; top: 0px; }
 div.loading.ng-hide { top: -75px; right: -75px; }
-div.loading {position: absolute; width: 0; height: 0; border-style: solid; border-width: 0 150px 150px 0; }
+div.loading {position: fixed; width: 0; height: 0; border-style: solid; border-width: 0 150px 150px 0; }
 div.loading .spinner-1 { position: relative; height: 60px; position: absolute; top: 10px; right: -75px;}
 div.loading .spinner-1 .spinner { position: absolute; }
 div.loading .spinner-1 .spinner { width: 60px; height: 60px; border-radius: 60%; }
