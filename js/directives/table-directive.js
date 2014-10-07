@@ -68,15 +68,26 @@ APP.directive('miloTable', function() {
 
 			$scope.onDateFilterChange = function (stateKey) {
 				$scope.show.date = null;
-				$scope.state[stateKey] = new Date($scope.state[stateKey]).getTime();
+				$scope.state[stateKey] = $scope.stateDate[stateKey] ? new Date($scope.stateDate[stateKey]).getTime() : null;
 				$scope.changeCount();
+			};
+
+			$scope.initDate = function (stateKey) {
+				return $scope.state[stateKey] ? new Date($scope.state[stateKey]) : null;
 			}
+
+			$scope.clearDateFilter = function (stateKey) {
+				$scope.stateDate[stateKey + '_min']=null;
+				$scope.stateDate[stateKey + '_max']=null;
+				$scope.onDateFilterChange(stateKey + '_max');
+				$scope.onDateFilterChange(stateKey + '_min');
+			};
 
 			$scope.setEmptyState = function (stateKey, value) {
 				$scope.state[stateKey + '_max'] = $scope.state[stateKey + '_min'] = $scope.state[stateKey + '_wild'] = null;
 				$scope.state[stateKey + "_empty"] = $scope.state[stateKey + "_empty"] == value ? null : value;
 				$scope.changeCount();	
-			}
+			};
 
 			//private
 			var self = this;
@@ -161,13 +172,14 @@ APP.directive('miloTable', function() {
     		//inherit parent scope methods
     		var parentScope = $element.scope();
 			for (var key in parentScope) {
-				if (! $scope[key] && typeof parentScope[key] === 'function') {
+				if (! $scope[key] && typeof parentScope[key] === 'function' && key.substr(0, 1) != '$') {
 					$scope[key] = parentScope[key];
 				}
 			}
     		
     		//set defaults
     		$scope.state = jQuery.extend({}, $scope.state);
+    		$scope.stateDate = {};
 			$scope.loadings = {};
 			$scope.limits = $scope.init.limits ? $scope.init.limits : [5, 10, 20, 50, 100];
 			$scope.actions = $scope.init.actions ? $scope.init.actions : [];

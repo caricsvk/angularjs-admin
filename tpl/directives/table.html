@@ -19,15 +19,15 @@
 					<span ng-switch-when="date">
 						<div ng-hide="show.date.substr(1)==column.name">
 							<button class="date-filter" ng-click="show.date='f'+column.name" type="button">
-								<span ng-if="state[column.name + '_min']">{{state[column.name + '_min'] | date:'shortDate'}}</span>
-								<span ng-if="! state[column.name + '_min']">{{_('From')}}</span></button> -
+								<span ng-if="stateDate[column.name + '_min']">{{stateDate[column.name + '_min'] | date:'shortDate'}}</span>
+								<span ng-if="! stateDate[column.name + '_min']">{{_('From')}}</span></button> -
 							<button class="date-filter" ng-click="show.date='t'+column.name" type="button">
-								<span ng-if="state[column.name + '_max']">{{state[column.name + '_max'] | date:'shortDate'}}</span>
-								<span ng-if="! state[column.name + '_max']">{{_('To')}}</span>
+								<span ng-if="stateDate[column.name + '_max']">{{stateDate[column.name + '_max'] | date:'shortDate'}}</span>
+								<span ng-if="! stateDate[column.name + '_max']">{{_('To')}}</span>
 							</button>
 						</div>
-						<input type="date" ng-show="show.date=='f'+column.name" ng-model="state[column.name + '_min']" ng-change="onDateFilterChange(column.name + '_min')" />
-						<input type="date" ng-show="show.date=='t'+column.name" ng-model="state[column.name + '_max']" ng-change="onDateFilterChange(column.name + '_max')" />
+						<input type="date" ng-init="stateDate[column.name + '_min']=initDate(column.name + '_min')" ng-show="show.date=='f'+column.name" ng-model="stateDate[column.name + '_min']" ng-change="onDateFilterChange(column.name + '_min')" />
+						<input type="date" ng-init="stateDate[column.name + '_min']=initDate(column.name + '_min')" ng-show="show.date=='t'+column.name" ng-model="stateDate[column.name + '_max']" ng-change="onDateFilterChange(column.name + '_max')" />
 					</span>
 					<span ng-switch-when="number">
 						<input type="number" ng-model="state[column.name + '_min']" ng-change="changeCount()" placeholder="{{_('Min')}}" />
@@ -43,7 +43,7 @@
 				<div ng-show="column.isFilterable" class="empty-handler">
 					<i class="fa fa-circle fa-fw" ng-class="{active: state[column.name + '_empty'] == 'show'}" ng-click="setEmptyState(column.name, 'show')"></i>
 					<i class="fa fa-circle-o fa-fw" ng-class="{active: state[column.name + '_empty'] == 'hide'}" ng-click="setEmptyState(column.name, 'hide')"></i>
-					<i class="fa fa-refresh fa-fw" ng-show="column.filterType=='date'" ng-click="state[column.name + '_min']=null;state[column.name + '_max']=null;"></i>
+					<i class="fa fa-refresh fa-fw" ng-show="column.filterType=='date'" ng-click="clearDateFilter(column.name)"></i>
 					<i class="fa fa-refresh fa-fw" ng-show="column.isEnum==true" ng-click="state[column.name + '_wild']=null;changeCount();"></i>
 				</div>
 			</th>
