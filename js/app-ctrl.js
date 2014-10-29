@@ -1,7 +1,7 @@
 'use strict';
 
-APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', 'GlobalService',
-					function ($scope, $rootScope, $route, $routeParams, $location, $http, GlobalService) {
+APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', 'GlobalService',
+					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, GlobalService) {
 
 	//common public methods
 	var i18n = {};
@@ -79,8 +79,11 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	};
 
 	$scope.showAjaxMessage = function(message, type) {
-		$scope.ajax.message = $scope.t(message);
-		$scope.ajax.type = type;
+        $scope.ajax.message = null;
+        $timeout(function () {
+            $scope.ajax.message = $scope._(message);
+            $scope.ajax.type = type || "info";
+        }, 500);
 	};
 
 	$scope.setViewAnimation = function(ctrlFrom, ctrlTo, viewFrom, viewTo) {
@@ -137,7 +140,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	$scope.isOverlayShowed = null;
 	$scope.ajax = {
 		message: "",
-		type: "error|success"
+		type: "success|info|warning|danger"
 	};
 	$scope.show = {};
 	// var routeUpdateHit

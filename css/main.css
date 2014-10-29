@@ -59,6 +59,9 @@ body.login.left-top .wrapper{left: 36%;}
 body.login.left .wrapper main,
 body.login.left-top .wrapper main {left: 0}
 
+body .ajax-message {position: fixed; bottom: 0; width: 96%; border-radius: 0;}
+body .ajax-message i {float: right; cursor: pointer;}
+
 * {
 	font-family: 'Source Sans Pro', sans-serif;
 	/*font-family: 'PT Sans', sans-serif;*/

@@ -5,9 +5,13 @@ APP.controller('LoginCtrl', ['$scope', '$rootScope', '$resource', '$routeParams'
 
 	//public methods
 	$scope.login = function () {
-		// GlobalService.setUser(GlobalService.getRandomUser());
-		$location.path("/home");
+        $scope.showAjaxMessage('Wrong login or password!','danger');
 	};
+
+    $scope.anonymousLogin = function () {
+        // GlobalService.setUser(GlobalService.getRandomUser());
+		$location.path("/home");
+    };
 
 	//routing processing
 	$scope.$on('$routeUpdate', function() {

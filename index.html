@@ -58,6 +58,14 @@
 		</section>
 	</div>
 
+    <!--<div class=" p2 pv1 bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.-->
+        <!--<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+    <!--</div>-->
+    <div ng-show="ajax.message" class="ajax-message p2 pv1 alert alert-{{ajax.type}} alert-dismissible" role="alert">
+        <i class="fa fa-close fa-2x" ng-click="ajax.message=null"></i>
+        <strong>{{ajax.message}}</strong>
+    </div>
+
 	<script type="text/ng-template" id="url-router.html">
 		<div ng-include="templateUrl"></div>
 		<div class="clear">&nbsp;</div>
