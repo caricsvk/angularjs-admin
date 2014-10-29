@@ -8,8 +8,6 @@ body.top nav li {list-style-type: none; padding: 1.5ex 2%; display: inline-block
 body.top nav li.active:after {border-width: 0 20px 10px 20px; top: 8.5ex; left: 50%; margin-left: -15px;}
 body.top .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
 body.top .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
-body.top.login header {height: 40%; text-align: left;}
-body.top.login header > * {margin-top: 0;}
 
 body.top-left header {min-height: 0; width: 100%; padding: 2ex 0;}
 body.top-left header nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
@@ -43,10 +41,23 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
 /* common */
 html, body {margin: 0; padding: 0; height: 100%; width: 100; font-size: 14px; overflow-x: hidden; position: relative;}
 
-body.login header {width: 36%; text-align: right; padding: 2%;}
-body.login header > * {display: none; margin-top: 40%;}
-body.login header .login {display: block;}
+body.login header {height: 300px; width: 100%; text-align: left;}
+body.login header > * {margin-top: 0; display: none;}
+body.login header .login {display: block; margin-top: 20px; position: absolute; bottom: 0; width: 100%;}
 body.login .wrapper {width: 56%; padding: 2%;}
+body.login footer {display: none;}
+body.login header nav li.active:after {border-width: 0;}
+
+body.login.left > *,
+body.login.left-top > * {padding-top: 200px !important;}
+body.login.left header,
+body.login.left-top header{width: 36%; text-align: right; padding: 2%;}
+body.login.left header .login,
+body.login.left-top header .login {position: relative; bottom: auto; width: auto;}
+body.login.left .wrapper,
+body.login.left-top .wrapper{left: 36%;}
+body.login.left .wrapper main,
+body.login.left-top .wrapper main {left: 0}
 
 * {
 	font-family: 'Source Sans Pro', sans-serif;
