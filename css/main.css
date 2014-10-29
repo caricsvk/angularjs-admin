@@ -48,8 +48,10 @@ body.login .wrapper {width: 56%; padding: 2%;}
 body.login footer {display: none;}
 body.login header nav li.active:after {border-width: 0;}
 
-body.login.left > *,
-body.login.left-top > * {padding-top: 200px !important;}
+body.login.left > header,
+body.login.left > section,
+body.login.left-top > header,
+body.login.left-top > section {padding-top: 200px !important;}
 body.login.left header,
 body.login.left-top header{width: 36%; text-align: right; padding: 2%;}
 body.login.left header .login,
@@ -59,7 +61,7 @@ body.login.left-top .wrapper{left: 36%;}
 body.login.left .wrapper main,
 body.login.left-top .wrapper main {left: 0}
 
-body .ajax-message {position: fixed; bottom: 0; width: 96%; border-radius: 0;}
+body .ajax-message {position: fixed; bottom: 0; width: 96%; border-radius: 0; z-index: 99;}
 body .ajax-message i {float: right; cursor: pointer;}
 
 * {

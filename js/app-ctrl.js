@@ -83,7 +83,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
         $timeout(function () {
             $scope.ajax.message = $scope._(message);
             $scope.ajax.type = type || "info";
-        }, 500);
+        }, 200);
 	};
 
 	$scope.setViewAnimation = function(ctrlFrom, ctrlTo, viewFrom, viewTo) {

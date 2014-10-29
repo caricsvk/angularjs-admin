@@ -1,3 +1,6 @@
+.ajax-message {-webkit-animation: bounceInUp 0.8s; animation: bounceInUp 0.8s;}
+.ajax-message.ng-hide { -webkit-animation: fadeOut 0.4s; animation: fadeOut 0.4s;}
+
 .submenu-prev.ng-enter { -webkit-animation: fadeInRight 1s; animation: bounceInRight 1s; position: absolute; right: 0; }
 .submenu-prev.ng-leave { -webkit-animation: fadeOutRight 0.6s; animation: bounceOutRight 0.6s; position: absolute; right: 0;}
 .submenu-next.ng-enter { -webkit-animation: fadeInLeft 1s; animation: bounceInLeft 1s; position: absolute; right: 0; }
