@@ -46,7 +46,7 @@
 						return response;
 					},'responseError': function(rejection) {
 						$rootScope.loadings.global --;
-						if (rejection.status == 404 || rejection.status == 500) {
+						if (rejection.status >= 404) {
 							$rootScope.$broadcast('responseError', rejection);
 						}
 						return $q.reject(rejection);
