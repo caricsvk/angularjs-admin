@@ -136,6 +136,26 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		routeUpdate();
 	});
 
+	//listners
+	$scope.$on('responseError', function (e, rejection) {
+		responseErrors.push(rejection);
+		responseErrorLastTime = new Date().getTime();
+		$timeout(function () {
+			var messageStart = responseErrors.length + " resources has failed to load ("+ responseErrors[0].status
+				+ " " + responseErrors[0].statusText + "). ";
+			if (responseErrors.length > 2) {
+				$scope.showAjaxMessage(messageStart + "There is probably an issue with server.", 'danger');
+			} else {
+				$scope.showAjaxMessage(messageStart + "Reload your page and try again, or continue when everything is OK.", 'warning');
+			}
+		}, 500);
+		$timeout(function () {
+			if (new Date().getTime() - responseErrorLastTime > 1990) {
+				responseErrors = [];
+			}
+		}, 2000);
+	});
+
 	//construct
 	$scope.isOverlayShowed = null;
 	$scope.ajax = {
@@ -146,6 +166,8 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	// var routeUpdateHit
 
 	var animationClassMap = GlobalService.getConfig('animations');;
+	var responseErrors = [];
+	var responseErrorLastTime = 0;
 	$scope.animationClass = animationClassMap.default;
 	$scope.layout = GlobalService.getConfig('layout');
 	$scope.color = GlobalService.getConfig('color');

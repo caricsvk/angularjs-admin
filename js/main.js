@@ -40,12 +40,15 @@
 						return config;
 					}, 'response': function(response) {
 						// $timeout(function () {
-							$rootScope.loadings.global --;	
+							$rootScope.loadings.global --;
 						// }, 3000);
 						
 						return response;
 					},'responseError': function(rejection) {
 						$rootScope.loadings.global --;
+						if (rejection.status == 404 || rejection.status == 500) {
+							$rootScope.$broadcast('responseError', rejection);
+						}
 						return $q.reject(rejection);
 					}
 				};
