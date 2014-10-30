@@ -48,6 +48,8 @@
 						$rootScope.loadings.global --;
 						if (rejection.status >= 404) {
 							$rootScope.$broadcast('responseError', rejection);
+						} else if (rejection.status >= 401) {
+							$rootScope.$broadcast('authError', rejection);
 						}
 						return $q.reject(rejection);
 					}
