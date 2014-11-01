@@ -9,7 +9,7 @@ APP.controller('OrdersCtrl', ['$scope', '$rootScope', '$resource', '$routeParams
 				$scope.updateRoute('view', 'list');
 				GlobalService.removeEntityInstances('articles');
 			}, function () {
-				alert('Oops, something went wrong, please try again.');
+				$scope.showAjaxMessage('Oops, something went wrong, please try again.');
 			});
 	};
 
@@ -19,7 +19,7 @@ APP.controller('OrdersCtrl', ['$scope', '$rootScope', '$resource', '$routeParams
 	// 		function () {
 	// 			$scope.tableData.splice(index, 1);
 	// 		}, function () {
-	// 			alert('Oops, something went wrong, please try again.');
+	// 			$scope.showAjaxMessage('Oops, something went wrong, please try again.');
 	// 		});
 	// };
 

@@ -10,7 +10,7 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 				$scope.updateRoute('view', 'list');
 				GlobalService.removeEntityInstances('users');
 			}, function () {
-				alert('Oops, something went wrong, please try again.');
+				$scope.showAjaxMessage('Oops, something went wrong, please try again.');
 			});
 	};
 
@@ -20,7 +20,7 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 			function () {
 				$scope.tableData.splice(index, 1);
 			}, function () {
-				alert('Oops, something went wrong, please try again.');
+				$scope.showAjaxMessage('Oops, something went wrong, please try again.');
 			});
 	};
 

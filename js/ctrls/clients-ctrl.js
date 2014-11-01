@@ -15,7 +15,7 @@ APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParam
 				if ($scope.current.birth) {
 					$scope.current.birth = new Date($scope.current.birth);
 				}
-				alert('Oops, something went wrong, please try again.');
+				$scope.showAjaxMessage('Oops, something went wrong, please try again.');
 			});
 	};
 
@@ -25,7 +25,7 @@ APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParam
 			function () {
 				$scope.tableData.splice(index, 1);
 			}, function () {
-				alert('Oops, something went wrong, please try again.');
+				$scope.showAjaxMessage('Oops, something went wrong, please try again.');
 			});
 	};
 

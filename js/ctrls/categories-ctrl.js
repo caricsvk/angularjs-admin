@@ -17,7 +17,7 @@ APP.controller('CategoriesCtrl', ['$scope', '$rootScope', '$resource', '$routePa
 				$scope.updateRoute('view', 'list');
 				GlobalService.removeEntityInstances('categories');
 			}, function () {
-				alert($scope._('Oops, something went wrong, please try again.'));
+				$scope.showAjaxMessage($scope._('Oops, something went wrong, please try again.'));
 			});
 	};
 
@@ -27,7 +27,7 @@ APP.controller('CategoriesCtrl', ['$scope', '$rootScope', '$resource', '$routePa
 			function () {
 				// $scope.tableData.splice(index, 1);
 			}, function () {
-				alert($scope._('Oops, something went wrong, please try again.'));
+				$scope.showAjaxMessage($scope._('Oops, something went wrong, please try again.'));
 			});
 	};
 
