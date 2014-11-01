@@ -202,7 +202,7 @@ APP.directive('miloTable', function() {
 
 					if (typeof entityFieldTypes[key] === 'object' 
 						|| typeof entityFieldTypes[key] === 'function'
-						|| key.substr(0, 1) === "_"
+						|| key.indexOf("_") > -1 //means that is static
 						|| key.substr(0, 1) === "$"
 						|| key === "serialVersionUID") {
 
