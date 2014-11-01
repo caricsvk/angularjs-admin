@@ -1,6 +1,6 @@
-<div ng-controller="LoginCtrl">
+<div ng-controller="AuthCtrl">
 
-	<form class="g85 p2 pv2" ng-if="routeParams.view == 'login'" ng-submit="login()">
+	<form class="g85 p2 pv2" ng-if="!routeParams.view || routeParams.view == 'login'" ng-submit="login()">
 		<div class="pv1">
 			<label class="pv1" for="login">{{_('User')}}</label>
 			<input type="text" id="login" ng-model="current.login" class="form-control" />

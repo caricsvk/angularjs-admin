@@ -1,7 +1,7 @@
 'use strict';
 
-APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', 'GlobalService',
-					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, GlobalService) {
+APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', 'GlobalService', 'AuthService',
+					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, GlobalService, AuthService) {
 
 	//common public methods
 	var i18n = {};
@@ -127,7 +127,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		$scope.show.settings = false;
 		$scope.ajax.message = "";
 		//check if is route empty
-		if (! $location.path()) {
+		if (! location.hash && location.hash !== '#/' + $scope.getConfig('initCtrl')) {
 			location.href = '#/' + $scope.getConfig('initCtrl');
 		}
 	};

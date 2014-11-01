@@ -79,10 +79,14 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 
 	self.getColumnIsEnum = function (type) {
 		var deferred = $q.defer();
-		$http.get(self.getConfig('servicesLocation') + '/reflection/' + type + '/is-enum')
-			.success(function (data) {
-				deferred.resolve(data.isEnum)
-			});
+		if (type) {
+			$http.get(self.getConfig('servicesLocation') + '/reflection/' + type + '/is-enum')
+				.success(function (data) {
+					deferred.resolve(data.isEnum)
+				});
+		} else {
+			deferred.resolve(false);
+		}
 		return deferred.promise;
 	}
 

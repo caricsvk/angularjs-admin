@@ -41,25 +41,25 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
 /* common */
 html, body {margin: 0; padding: 0; height: 100%; width: 100; font-size: 14px; overflow-x: hidden; position: relative;}
 
-body.login header {height: 300px; width: 100%; text-align: left;}
-body.login header > * {margin-top: 0; display: none;}
-body.login header .login {display: block; margin-top: 20px; position: absolute; bottom: 0; width: 100%;}
-body.login .wrapper {width: 56%; padding: 2%;}
-body.login footer {display: none;}
-body.login header nav li.active:after {border-width: 0;}
+body.auth header {height: 300px; width: 100%; text-align: left;}
+body.auth header > * {margin-top: 0; display: none;}
+body.auth header .login {display: block; margin-top: 20px; position: absolute; bottom: 0; width: 100%;}
+body.auth .wrapper {width: 56%; padding: 2%;}
+body.auth footer {display: none;}
+body.auth header nav li.active:after {border-width: 0;}
 
-body.login.left > header,
-body.login.left > section,
-body.login.left-top > header,
-body.login.left-top > section {padding-top: 200px !important;}
-body.login.left header,
-body.login.left-top header{width: 36%; text-align: right; padding: 2%;}
-body.login.left header .login,
-body.login.left-top header .login {position: relative; bottom: auto; width: auto;}
-body.login.left .wrapper,
-body.login.left-top .wrapper{left: 36%;}
-body.login.left .wrapper main,
-body.login.left-top .wrapper main {left: 0}
+body.auth.left > header,
+body.auth.left > section,
+body.auth.left-top > header,
+body.auth.left-top > section {padding-top: 200px !important;}
+body.auth.left header,
+body.auth.left-top header{width: 36%; text-align: right; padding: 2%;}
+body.auth.left header .login,
+body.auth.left-top header .login {position: relative; bottom: auto; width: auto;}
+body.auth.left .wrapper,
+body.auth.left-top .wrapper{left: 36%;}
+body.auth.left .wrapper main,
+body.auth.left-top .wrapper main {left: 0}
 
 body .ajax-message {position: fixed; bottom: 0; width: 96%; border-radius: 0; z-index: 99;}
 body .ajax-message i {float: right; cursor: pointer;}
