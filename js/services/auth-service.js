@@ -10,18 +10,22 @@ APP.service('AuthService', ['$rootScope', '$resource', '$http', '$q', 'GlobalSer
 	var Service = $resource(GlobalService.getConfig("servicesLocation") + "/auth/:param", null, {'put': {method: "PUT"}});
 
 	self.login = function (user) {
+		var deferred = $q.defer();
 		Service.save(user, function (response) {
 			principal = response;
 			location.href = lastHit && lastHit != loginUrl ? lastHit : "#";
 		}, function () {
-			$scope.showAjaxMessage('Your login or password is incorrect.','danger');
+			deferred.resolve(false);
 		});
+		return deferred.promise;
 	};
 
 	self.logout = function () {
+		var deferred = $q.defer();
 		Service.delete(function () {}, function () {
-			$scope.showAjaxMessage('Logout unsucessful, please try again.','danger');
+			deferred.resolve(false);
 		});
+		return deferred.promise;
 	};
 
 	self.getPrincipal = function () {

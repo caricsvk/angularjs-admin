@@ -5,7 +5,9 @@ APP.controller('AuthCtrl', ['$scope', '$rootScope', '$resource', '$routeParams',
 
 		//public methods
 		$scope.login = function () {
-			AuthService.login($scope.current);
+			AuthService.login($scope.current).then(function () {
+				$scope.showAjaxMessage('Your login or password is incorrect.','danger');
+			});
 		};
 
 		//routing processing
@@ -18,7 +20,9 @@ APP.controller('AuthCtrl', ['$scope', '$rootScope', '$resource', '$routeParams',
 			switch ($scope.routeParams.view) {
 
 				case "logout":
-					AuthService.logout();
+					AuthService.logout(function () {
+						$scope.showAjaxMessage('Logout unsucessful, please try again.','danger');
+					});
 					break;
 
 				default:
