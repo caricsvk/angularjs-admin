@@ -46,9 +46,9 @@
 						return response;
 					},'responseError': function(rejection) {
 						$rootScope.loadings.global --;
-						if (rejection.status >= 404) {
+						if (rejection.status >= 500 || rejection.status === 404) {
 							$rootScope.$broadcast('responseError', rejection);
-						} else if (rejection.status >= 401) {
+						} else if (rejection.status <= 403 && rejection.status >= 401) {
 							$rootScope.$broadcast('authError', rejection);
 						}
 						return $q.reject(rejection);
