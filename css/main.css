@@ -116,6 +116,8 @@ button.active,
 button:hover {cursor: pointer;}
 button.small {padding: 4px 10px; margin: 2px;}
 
+form.table-form {overflow: scroll;}
+
 table.table thead tr th {border-bottom: 6px double;}
 table.table thead tr.filter th {font-size: 1rem; font-weight: normal; padding: 4px 2px; vertical-align: baseline;}
 table.table thead tr.filter th.date {min-width: 165px;}
