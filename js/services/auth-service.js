@@ -13,7 +13,7 @@ APP.service('AuthService', ['$rootScope', '$resource', '$http', '$q', 'GlobalSer
 		var deferred = $q.defer();
 		Service.save(user, function (response) {
 			principal = response;
-			location.href = lastHit && lastHit != loginUrl ? lastHit : "#";
+			deferred.resolve(lastHit && lastHit != loginUrl ? lastHit : "#");
 		}, function () {
 			deferred.resolve(false);
 		});

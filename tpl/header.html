@@ -48,7 +48,7 @@
 	</ul>
 	<h4>{{_('Language')}}</h4>
 	<ul class="languages">
-		<li ng-repeat="language in getConfig('languages')"><button ng-click="setConfig('language', language, true);" onclick="location.reload()" ng-class="{'active': language == getConfig('language')}" class="small {{language}}">{{_(language)}}</button></li>
+		<li ng-repeat="language in getConfig('languages')"><button ng-click="setConfig('language', language, true);updateRoute();" ng-class="{'active': language == getConfig('language')}" class="small {{language}}">{{_(language)}}</button></li>
 	</ul>
 	<h4>{{_('User')}}</h4>
 	<!-- <button type="button" class="btn btn-default btn-sm">

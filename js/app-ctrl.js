@@ -1,12 +1,10 @@
 'use strict';
 
-APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', 'GlobalService', 'AuthService',
-					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, GlobalService, AuthService) {
+APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', '$q', 'GlobalService',
+					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, $q, GlobalService) {
 
 	//common public methods
-	var i18n = {};
 	var errors = {};
-	var globals = {};
 	$scope._ = function (index) {
 		return GlobalService.i18n($routeParams.nav, index);
 	};
@@ -126,6 +124,11 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	var routeUpdate = function () {
 
 		// console.log("APP routeUpdate");
+		// abort/cancel all connections when route is updated
+		if ($rootScope.httpRequestTimeout) {
+			$rootScope.httpRequestTimeout.resolve();
+		}
+		$rootScope.httpRequestTimeout = $q.defer();
 		$scope.show.settings = false;
 		$scope.ajax.message = "";
 		//check if is route empty
@@ -177,7 +180,6 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	$rootScope.loadings = {
 		global: 0
 	};
-
 	// var locale = location.pathname.split("/")[1];
 	// var locale = locale.length === 2 ? locale : 'en';
 

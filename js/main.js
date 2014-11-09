@@ -36,13 +36,13 @@
 			$httpProvider.interceptors.push(function($q, $injector, $rootScope, $timeout) {
 				return {
 			    	'request': function(config) {
+						if ($rootScope.httpRequestTimeout) {
+							config.timeout = $rootScope.httpRequestTimeout.promise;
+						}
 			    		$rootScope.loadings.global ++;
 						return config;
 					}, 'response': function(response) {
-						// $timeout(function () {
-							$rootScope.loadings.global --;
-						// }, 3000);
-						
+						$rootScope.loadings.global --;
 						return response;
 					},'responseError': function(rejection) {
 						$rootScope.loadings.global --;
@@ -50,8 +50,10 @@
 							$rootScope.$broadcast('responseError', rejection);
 						} else if (rejection.status <= 403 && rejection.status >= 401) {
 							$rootScope.$broadcast('authError', rejection);
+						} else if (rejection.status !== 0) {
+							// when is not one of [unexpected,not found,unauthorized,canceled,aborted] then propagate rejection
+							return $q.reject(rejection);
 						}
-						return $q.reject(rejection);
 					}
 				};
 			});
