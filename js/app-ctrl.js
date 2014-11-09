@@ -52,13 +52,15 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		function processParam(name, value) {
 			if (name == 'url') {
 				$location.path(value);
-			} else if (name != "nav" && name !== "view" && name !== "id") {
+			} else if (typeof name !== 'undefined' && name != "nav" && name !== "view" && name !== "id") {
 				$location.search(name, value);
 			} else {
 				var currentPath = $location.path();
 				var newBuildPath = "/" + $routeParams.nav + "/" + ($routeParams.view ? $routeParams.view + "/" : "") + ($routeParams.id ? $routeParams.id : "");
 				if (currentPath !== newBuildPath) {
 					$location.path(newBuildPath);
+				} else {
+					$route.reload();
 				}
 			}
 		}
