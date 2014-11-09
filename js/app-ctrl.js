@@ -1,7 +1,7 @@
 'use strict';
 
-APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', '$q', 'GlobalService',
-					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, $q, GlobalService) {
+APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$location', '$http', '$timeout', '$q', 'GlobalService', 'AuthService',
+					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, $q, GlobalService, AuthService) {
 
 	//common public methods
 	var errors = {};
