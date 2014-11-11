@@ -7,7 +7,7 @@ APP.controller('AuthCtrl', ['$scope', '$rootScope', '$resource', '$routeParams',
 		$scope.login = function () {
 			AuthService.login($scope.current).then(function (redirectUrl) {
 				if (redirectUrl) {
-					location.href = "#";
+					location.href = redirectUrl;
 				} else {
 					$scope.showAjaxMessage('Your login or password is incorrect.','danger');
 				}
