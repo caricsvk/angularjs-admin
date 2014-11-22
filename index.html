@@ -33,17 +33,10 @@
 
 <body class="g100 {{getConfig('layout')}} {{getConfig('color')}} {{routeParams.nav}}" ng-controller="AppCtrl">
 
-	<header class="g15 pane pv1" ng-include="getConfig('urlHeader')">
+	<header class="g15 pane" ng-include="getConfig('urlHeader')">
 	</header>
 
 	<section class="g85 pane wrapper" ng-cloak class="ng-cloak">
-		<nav ng-if="views" class="g15 pane pv1" milo-submenu="views">
-			<ul>
-				<li ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views">
-					<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(view)}}</a>
-				</li>
-			</ul>
-		</nav>
 		<main class="pane {{animationClass}}" ng-class="{g100: !views, g85: views}" ng-view="" role="main">
 		</main>
 	</section>
@@ -66,10 +59,10 @@
 		<div ng-include="templateUrl"></div>
 		<div class="clear">&nbsp;</div>
 	</script>
-	<script type="text/javascript" src="lib/angular-1.3.0/angular.min.js"></script>
-	<script type="text/javascript" src="lib/angular-1.3.0/angular-resource.min.js"></script>
-	<script type="text/javascript" src="lib/angular-1.3.0/angular-animate.min.js"></script>
-	<script type="text/javascript" src="lib/angular-1.3.0/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/angular-1.3.3/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular-1.3.3/angular-resource.min.js"></script>
+	<script type="text/javascript" src="lib/angular-1.3.3/angular-animate.min.js"></script>
+	<script type="text/javascript" src="lib/angular-1.3.3/angular-route.min.js"></script>
 	<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="lib/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript" src="lib/angular-ui/tinymce.js"></script>	
@@ -89,7 +82,7 @@
 		window.REQUIRE.load('directives/match-entity-directive.js');
 		window.REQUIRE.load('../lib/bootstrap-3.2.0-dist/js/bootstrap.min.js');
 		window.REQUIRE.load('../lib/ui-bootstrap-0.11.0.min.js');
-		window.REQUIRE.load('../lib/angular-1.3.0/i18n/angular-locale_' + window.SETTINGS.language + '.js');
+		window.REQUIRE.load('../lib/angular-1.3.3/i18n/angular-locale_' + window.SETTINGS.language + '.js');
 	</script>
 
 </body>

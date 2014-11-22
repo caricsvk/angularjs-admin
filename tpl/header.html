@@ -1,21 +1,18 @@
 <nav>
 	<ul>
-		<li ng-class="{active: routeParams.nav == 'home'}">
-			<a href="#/home"><i class="fa fa-home fa-fw"></i>&nbsp; {{_('Home')}}</a>
-		</li>
-		<li ng-class="{active: routeParams.nav == 'clients'}">
-			<a href="#/clients"><i class="fa fa-user fa-fw"></i>&nbsp; {{_('Clients')}}</a>
-		</li>
-		<li ng-class="{active: routeParams.nav == 'orders'}">
-			<a href="#/orders"><i class="fa fa-truck fa-fw"></i>&nbsp; {{_('Orders')}}</a>
-		</li>
-		<li ng-class="{active: routeParams.nav == 'products'}">
-			<a href="#/products"><i class="fa fa-newspaper-o fa-fw"></i>&nbsp; {{_('Products')}}</a>
-		</li>
-		<li ng-class="{active: routeParams.nav == 'categories'}">
-			<a href="#/categories"><i class="fa fa-list-alt fa-fw"></i>&nbsp; {{_('Categories')}}</a>
+		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name}">
+			<a ng-href="#/{{item.name}}"><i class="fa {{item.class}} fa-fw fa-2x"></i>{{_(item.name)}}</a>
+			<nav class="submenu" ng-if="routeParams.nav == item.name">
+				<i class="fa {{item.class}} fa-fw fa-2x"></i>
+				<ul ng-init="clonedViews=views">
+					<li ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views">
+						<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(view)}}</a>
+					</li>
+				</ul>
+			</nav>
 		</li>
 	</ul>
+	<div style="clear: both;"></div>
 </nav>
 
 <nav class="login p2 pv2">

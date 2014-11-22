@@ -7,7 +7,7 @@ window.SETTINGS = {
 	urlHeader: 'tpl/header.html',
 	urlFooter: 'tpl/footer.html',
 	loginUrl: '#/auth',
-	servicesLocation: '//localhost/gf/jersey',
+	servicesLocation: '//127.0.0.1/gf/jersey',
 	layouts: ['top', 'top-left', 'left', 'left-top'],
 	layout: 'top',
 	colors: ['green', 'light green', 'blue', 'light blue', 'brown', 'light brown', 'gray', 'light gray'],

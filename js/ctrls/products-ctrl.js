@@ -83,6 +83,6 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 	$scope.setViews(['list', 'put']);
 	routeUpdate();
 
-	console.log("UsersCtrl", $scope);
+	console.log("ProductsCtrl", $scope);
 
 }]);

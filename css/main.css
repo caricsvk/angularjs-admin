@@ -1,17 +1,14 @@
 /* layout variants */
-body.top header {min-height: 0; padding: 2ex 0;}
-body.top header nav li.active:after {border-width: 0 25px 10px 25px; top: 10ex;}
+body.top header {min-height: 0;}
 body.top nav.nav-2 {right: 20px;}
 body.top nav.pane {min-height: 0; padding: 1ex 0;}
 body.top .pane {width: 100%; float: none;}
-body.top nav li {list-style-type: none; padding: 1.5ex 2%; display: inline-block;}
-body.top nav li.active:after {border-width: 0 20px 10px 20px; top: 8.5ex; left: 50%; margin-left: -15px;}
+body.top nav li {list-style-type: none; padding: 1.5ex 1%; display: inline-block;}
 body.top .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
 body.top .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
 
 body.top-left header {min-height: 0; width: 100%; padding: 2ex 0;}
 body.top-left header nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
-body.top-left header nav li.active:after {display: none;}
 body.top-left nav.nav-2 {right: 20px;}
 body.top-left .wrapper.pane {width: 100%;}
 body.top-left .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
@@ -25,9 +22,7 @@ body.left footer {width: 68.25% !important;}
 body.left .wrapper {left: 15%;}
 
 body.left-top header {position: fixed;}
-body.left-top header nav li.active:after {display: none;}
 body.left-top nav.pane {min-height: 0; padding: 1ex 0;}
-body.left-top nav li.active:after {border-width: 0 20px 10px 20px; top: 8.5ex; left: 50%; margin-left: -15px;}
 body.left-top nav li a {padding-right: 15px;}
 body.left-top footer {width: 81% !important;}
 body.left-top .wrapper {left: 15%;}
@@ -46,7 +41,6 @@ body.auth header > * {margin-top: 0; display: none;}
 body.auth header .login {display: block; margin-top: 20px; position: absolute; bottom: 0; width: 100%;}
 body.auth .wrapper {width: 56%; padding: 2%;}
 body.auth footer {display: none;}
-body.auth header nav li.active:after {border-width: 0;}
 
 body.auth.left > header,
 body.auth.left > section,
@@ -101,15 +95,17 @@ body .login {display: none;}
 .settings:before {position: absolute; bottom: 15px; left: -15px; content: ''; width: 0; height: 0; border-style: solid; border-width: 15px 15px 15px 0; }
 .settings h4 {clear: both;}
 
-header {min-height: 100vh; z-index: 2;}
-header nav li a {font-size: 1.25rem; font-weight: 500;}
-header nav li.active:after {border-width: 15px 15px 15px 0;}
+header {z-index: 2; display: inline-block;}
+header nav li {text-align: center; float: left; padding-bottom: 0 !important; }
+header nav li.active {border-radius: 5px 5px 0 0;}
+header nav li a {font-size: 1rem; font-weight: 500; width: 70px; float: left;}
+header nav li nav {display: inline-block; vertical-align: bottom;}
+header nav li nav i {display: block !important; visibility: hidden;}
+header nav li nav ul {float: left; padding: 0; margin-left: 10px;}
+header nav li nav ul li {padding: 0 !important; border-radius: 5px 5px 0 0; height: 51px; overflow: hidden;}
+header nav li nav ul li a {padding: 6px;}
 
 nav.nav-2 {position: absolute; bottom: 20px; min-width: 185px;}
-nav.pane {min-height: 100vh; z-index: 1; position: initial;} 
-nav li {list-style-type: none; padding: 4% 0;}
-nav li.active:after {position: absolute; top: 50%; margin-top: -12px; right: 0; content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 12px 12px 0; }
-nav li a {text-decoration: none; font-size: 1.1rem; display: block; font-weight: 700;}
 
 button {padding: 5px 15px; border-size: 2px; border-style: solid; font-weight: bold; border-radius: 4px;}
 button.active,

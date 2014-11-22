@@ -9,7 +9,6 @@ body.gray i.active,
 body.gray a:hover {color: #ccc;}
 body.gray header {background-color: #272727;}
 body.gray header i.fa {color: #ccc;}
-body.gray header nav li.active:after {border-color: transparent #343434 transparent transparent;}
 body.gray nav.pane {background-color: #343434;}
 body.gray nav li.active:after {border-color: transparent #404040 transparent transparent;}
 body.gray nav li a {color: #ccc;}
@@ -18,8 +17,6 @@ body.gray table.table tbody tr:nth-child(2n+1) td {background-color: #4D4D4D;}
 body.gray table.table tbody tr td {border-color: #343434;}
 body.gray table.table tfoot tr td { color: #051414; border-color: #343434;}
 body.gray footer {background-color: #4D4D4D;}
-body.gray.top nav li.active:after {border-color: transparent transparent #404040 transparent;}
-body.gray.top header nav li.active:after {border-color: transparent transparent #343434 transparent;}
 body.gray.top .settings:before,
 body.gray.top-left .settings:before {border-color: transparent transparent #272727 transparent;}
 body.gray .settings {background-color: #272727; border-radius: 4px;}
@@ -46,17 +43,13 @@ body.brown i.active,
 body.brown a:hover {color: #ccc;}
 body.brown header {background-color: #1F1A14;}
 body.brown header i.fa {color: #ccc;}
-body.brown header nav li.active:after {border-color: transparent #342A22 transparent transparent;}
 body.brown nav.pane {background-color: #342A22;}
-body.brown nav li.active:after {border-color: transparent #3E3328 transparent transparent;}
 body.brown nav li a {color: #ccc;}
 body.brown table.table thead tr th {/*color: #051414;*/ /*background-color: #483B2F;*/ border-color: #342A22;}
 body.brown table.table tbody tr:nth-child(2n+1) td {background-color: #483B2F;}
 body.brown table.table tbody tr td {border-color: #342A22;}
 body.brown table.table tfoot tr td { color: #051414; border-color: #342A22;}
 body.brown footer {background-color: #483B2F;}
-body.brown.top nav li.active:after {border-color: transparent transparent #3E3328 transparent;}
-body.brown.top header nav li.active:after {border-color: transparent transparent #342A22 transparent;}
 body.brown.top .settings:before,
 body.brown.top-left .settings:before {border-color: transparent transparent #1F1A14 transparent;}
 body.brown .settings {background-color: #1F1A14; border-radius: 4px;}
@@ -83,17 +76,13 @@ body.blue i.active,
 body.blue a:hover {color: #ccc;}
 body.blue header {background-color: #0F1F2E;}
 body.blue header i.fa {color: #ccc;}
-body.blue header nav li.active:after {border-color: transparent #1A334C transparent transparent;}
 body.blue nav.pane {background-color: #1A334C;}
-body.blue nav li.active:after {border-color: transparent #1F3D5C transparent transparent;}
 body.blue nav li a {color: #ccc;}
 body.blue table.table thead tr th {/*color: #051414;*/ /*background-color: #24476B;*/ border-color: #1A334C;}
 body.blue table.table tbody tr:nth-child(2n+1) td {background-color: #24476B;}
 body.blue table.table tbody tr td {border-color: #1A334C;}
 body.blue table.table tfoot tr td { color: #051414; border-color: #1A334C;}
 body.blue footer {background-color: #24476B;}
-body.blue.top nav li.active:after {border-color: transparent transparent #1F3D5C transparent;}
-body.blue.top header nav li.active:after {border-color: transparent transparent #1A334C transparent;}
 body.blue.top .settings:before,
 body.blue.top-left .settings:before {border-color: transparent transparent #0F1F2E transparent;}
 body.blue .settings {background-color: #0F1F2E; border-radius: 4px;}
@@ -120,8 +109,12 @@ body.green i.active,
 body.green a:hover {color: #ccc;}
 body.green header {background-color: #0A2929;}
 body.green header i.fa {color: #ccc;}
-body.green header nav li.active:after {border-color: transparent #0F3D3D transparent transparent;}
-body.green nav.pane {background-color: #0F3D3D;}
+body.green header nav li.active {background-color: #0F3D3D;}
+body.green header nav li nav ul {}
+body.green header nav li nav ul li {}
+body.green header nav li nav ul li.active {background-color: #EEEEEE;}
+body.green header nav li nav ul li.active a {color: #0A2929;}
+/*body.green nav.pane {background-color: #0F3D3D;}*/
 body.green nav li.active:after {border-color: transparent #145252 transparent transparent;}
 body.green nav li a {color: #ccc;}
 body.green table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #0F3D3D;}
@@ -129,9 +122,6 @@ body.green table.table tbody tr:nth-child(2n+1) td {background-color: #1A6666;}
 body.green table.table tbody tr td {border-color: #0F3D3D;}
 body.green table.table tfoot tr td { color: #051414; border-color: #0F3D3D;}
 body.green footer {background-color: #1A6666;}
-body.green.top nav li.active:after,
-body.green.left-top nav li.active:after {border-color: transparent transparent #145252 transparent;}
-body.green.top header nav li.active:after {border-color: transparent transparent #0F3D3D transparent !important;}
 body.green.top .settings:before,
 body.green.top-left .settings:before {border-color: transparent transparent #0A2929 transparent;}
 body.green .settings {background-color: #0A2929; border-radius: 4px;}
@@ -150,7 +140,6 @@ body.light table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6
 body.light table.table tbody tr:nth-child(2n+1) td {background-color: #DDD;}
 body.light table.table tbody tr td {border-color: #888; border-width: 1px;}
 body.light table.table tfoot tr td { color: #051414; border-color: #888; border-width: 1px;}
-body.light nav li.active:after {border-color: transparent #eee transparent transparent;}
 body.light .loading {color: #bbb;}
 body.light .settings h4 {color: #ccc;}
 body.light.top nav li.active:after,

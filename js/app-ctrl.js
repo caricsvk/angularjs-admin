@@ -180,6 +180,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	$rootScope.loadings = {
 		global: 0
 	};
+	$scope.menu = [{name: 'home', class: 'fa-home'}, {name: 'clients', class: 'fa-user'}, {name: 'orders', class: 'fa-truck'}, {name: 'products', class: 'fa-newspaper-o'}, {name: 'categories', class: 'fa-list-alt'}];
 	// var locale = location.pathname.split("/")[1];
 	// var locale = locale.length === 2 ? locale : 'en';
 
