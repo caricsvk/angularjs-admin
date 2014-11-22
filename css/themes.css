@@ -58,7 +58,7 @@ body.brown .layouts li,
 body.brown .layouts li a {border-color: #ccc;}
 body.brown .layouts li a {border-color: #ccc;}
 body.brown .layouts li.active,
-body.brown .layouts li.active a {/*background-color: #483B2F;*/ border-color: #483B2F;}
+body.brown .layouts li.active a {border-color: #483B2F;}
 body.brown .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
 body.brown .panel * {background-color: #EEE;}
 body.brown .loading { border-color: transparent #342A22 transparent transparent;}
@@ -109,13 +109,12 @@ body.green i.active,
 body.green a:hover {color: #ccc;}
 body.green header {background-color: #0A2929;}
 body.green header i.fa {color: #ccc;}
-body.green header nav li.active {background-color: #0F3D3D;}
+body.green header > nav > ul > li.active {background-color: #0F3D3D;}
 body.green header nav li nav ul {}
 body.green header nav li nav ul li {}
-body.green header nav li nav ul li.active {background-color: #EEEEEE;}
-body.green header nav li nav ul li.active a {color: #0A2929;}
+body.green header nav li.active nav ul li.active {background-color: #EEEEEE;}
+body.green header nav li.active nav ul li.active a {color: #0A2929;}
 /*body.green nav.pane {background-color: #0F3D3D;}*/
-body.green nav li.active:after {border-color: transparent #145252 transparent transparent;}
 body.green nav li a {color: #ccc;}
 body.green table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #0F3D3D;}
 body.green table.table tbody tr:nth-child(2n+1) td {background-color: #1A6666;}
@@ -130,7 +129,7 @@ body.green .layouts li,
 body.green .layouts li a {border-color: #ccc;}
 body.green .layouts li a {border-color: #ccc;}
 body.green .layouts li.active,
-body.green .layouts li.active a {/*background-color: #1A6666;*/ border-color: #1A6666;}
+body.green .layouts li.active a {border-color: #1A6666;}
 body.green .loading { border-color: transparent #0F3D3D transparent transparent;}
 body.green .loading .spinner-1 .spinner {background-color: #1A6666;}
 body.green .mce-tinymce button {background-color: transparent;}

@@ -2,11 +2,11 @@
 	<ul>
 		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name}">
 			<a ng-href="#/{{item.name}}"><i class="fa {{item.class}} fa-fw fa-2x"></i>{{_(item.name)}}</a>
-			<nav class="submenu" ng-if="routeParams.nav == item.name">
+			<nav>
 				<i class="fa {{item.class}} fa-fw fa-2x"></i>
-				<ul ng-init="clonedViews=views">
-					<li ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views">
-						<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(view)}}</a>
+				<ul>
+					<li class="submenu" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views[item.name]">
+						<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(item.name + ' ' +  view)}}</a>
 					</li>
 				</ul>
 			</nav>

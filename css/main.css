@@ -99,7 +99,7 @@ header {z-index: 2; display: inline-block;}
 header nav li {text-align: center; float: left; padding-bottom: 0 !important; }
 header nav li.active {border-radius: 5px 5px 0 0;}
 header nav li a {font-size: 1rem; font-weight: 500; width: 70px; float: left;}
-header nav li nav {display: inline-block; vertical-align: bottom;}
+header nav li nav {display: inline-block; vertical-align: bottom; height: 79px;}
 header nav li nav i {display: block !important; visibility: hidden;}
 header nav li nav ul {float: left; padding: 0; margin-left: 10px;}
 header nav li nav ul li {padding: 0 !important; border-radius: 5px 5px 0 0; height: 51px; overflow: hidden;}

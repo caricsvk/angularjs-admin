@@ -3,22 +3,22 @@
 
 .submenu {max-height: 80px; overflow: hidden;}
 .submenu.ng-enter {
-    -webkit-transition: all linear 0.5s;
-    transition: all linear 0.5s;
+    -webkit-transition: all linear 0.4;
+    transition: all linear 0.4s;
 }
 .submenu.ng-leave {
-    -webkit-transition: all linear 0.5s;
-    transition: all linear 0.5s;
+    -webkit-transition: all linear 0.23s;
+    transition: all linear 0.23s;
 }
 .submenu.ng-enter,
 .submenu.ng-leave.ng-leave-active {
-    /*opacity:0;*/
-    max-width: 0;
+    opacity:0;
+    width: 0;
 }
 .submenu.ng-leave,
 .submenu.ng-enter.ng-enter-active {
-    /*opacity:1;*/
-    max-width: 200px;
+    opacity:1;
+    width: 58px;
 }
 
 .submenu-prev.ng-enter { -webkit-animation: fadeInRight 1s; animation: bounceInRight 1s; position: absolute; right: 0; }

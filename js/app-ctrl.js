@@ -110,8 +110,32 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	};
 
 	$scope.setViews = function (views) {
-		$scope.views = views;
+		if (views && (! $scope.views[$routeParams.nav] || $scope.views[$routeParams.nav].length == 0)) {
+			for (var key in $scope.views) { //release views
+				setView(key, null);
+			}
+			$scope.views[$routeParams.nav] = [];
+			setView($routeParams.nav, views || []);
+		}
 	};
+
+	var setView = function (key, views) {
+		var release = ! views;
+		if (release) {
+			views = $scope.views[key];
+		}
+		for (var i = 0; i < views.length; i ++) {
+			(function (i) {
+				$timeout(function () {
+					if (release) {
+						views.splice(views.length - 1, 1);
+					} else {
+						$scope.views[key].push(views[i]);
+					}
+				}, 500 / views.length * i)
+			} (i));
+		}
+	}
 
 	$scope.setCookie = function (key, value) {
 		return GlobalService.setCookie(key, value);
@@ -180,6 +204,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	$rootScope.loadings = {
 		global: 0
 	};
+	$scope.views = {};
 	$scope.menu = [{name: 'home', class: 'fa-home'}, {name: 'clients', class: 'fa-user'}, {name: 'orders', class: 'fa-truck'}, {name: 'products', class: 'fa-newspaper-o'}, {name: 'categories', class: 'fa-list-alt'}];
 	// var locale = location.pathname.split("/")[1];
 	// var locale = locale.length === 2 ? locale : 'en';
