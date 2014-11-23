@@ -110,6 +110,7 @@ body.green a:hover {color: #ccc;}
 body.green header {background-color: #0A2929;}
 body.green header i.fa {color: #ccc;}
 body.green header > nav > ul > li.active {background-color: #0F3D3D;}
+body.green header > nav > ul > li.active > a {background-color: #0F3D3D;}
 body.green header nav li nav ul {}
 body.green header nav li nav ul li {}
 body.green header nav li.active nav ul li.active {background-color: #EEEEEE;}

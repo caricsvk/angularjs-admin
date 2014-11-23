@@ -1,15 +1,18 @@
 <nav>
 	<ul>
 		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name}">
-			<a ng-href="#/{{item.name}}"><i class="fa {{item.class}} fa-fw fa-2x"></i>{{_(item.name)}}</a>
-			<nav>
-				<i class="fa {{item.class}} fa-fw fa-2x"></i>
+			<h3 class="submenu-h3" ng-if="routeParams.nav == item.name">{{_(item.name)}}</h3>
+			<nav class="submenu">
 				<ul>
-					<li class="submenu" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views[item.name]">
+					<li class="submenu-li" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views[item.name]">
 						<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(item.name + ' ' +  view)}}</a>
 					</li>
 				</ul>
 			</nav>
+			<a ng-class="{'menu-a-notactive': routeParams.nav != item.name}" ng-href="#/{{item.name}}">
+				<i class="fa {{item.class}} fa-fw fa-{{routeParams.nav == item.name ? 3 : 3}}x"></i>
+				<span>{{_(item.name)}}</span>
+			</a>
 		</li>
 	</ul>
 	<div style="clear: both;"></div>
