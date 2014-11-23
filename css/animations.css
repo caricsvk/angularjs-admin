@@ -9,12 +9,13 @@
 .submenu-li.ng-leave,
 .submenu-li.ng-enter.ng-enter-active { opacity:1; width: 80px; }
 
-.menu-a-notactive {-webkit-transition: all linear 0.1; transition: all linear 0.1s;}
-.menu-a-notactive:hover {padding-top: 47px;}
+.menu-a-notactive {-webkit-transition: all linear 0.15; transition: all linear 0.15s;}
+.menu-a-notactive:hover {padding-top: 12px;}
 .menu-a-notactive:hover span {opacity: 0;}
+.menu-a-notactive:hover span.open {opacity: 1; display: inline-block;}
 
 .submenu-h3.ng-enter { -webkit-animation: fadeInLeft 0.4s; animation: fadeInLeft 0.4s; }
-.submenu-h3.ng-leave { -webkit-animation: fadeOutLeft 0.4s; animation: fadeOutLeft 0.4s; }
+.submenu-h3.ng-leave { -webkit-animation: fadeOut 0.6s; animation: fadeOut 0.6s; }
 
 .submenu-prev.ng-enter { -webkit-animation: fadeInRight 1s; animation: bounceInRight 1s; position: absolute; right: 0; }
 .submenu-prev.ng-leave { -webkit-animation: fadeOutRight 0.6s; animation: bounceOutRight 0.6s; position: absolute; right: 0;}

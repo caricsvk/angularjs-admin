@@ -10,6 +10,7 @@
 				</ul>
 			</nav>
 			<a ng-class="{'menu-a-notactive': routeParams.nav != item.name}" ng-href="#/{{item.name}}">
+				<span class="open">{{_('Open')}}</span>
 				<i class="fa {{item.class}} fa-fw fa-{{routeParams.nav == item.name ? 3 : 3}}x"></i>
 				<span>{{_(item.name)}}</span>
 			</a>
