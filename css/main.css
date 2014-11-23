@@ -7,27 +7,12 @@ body.top nav li {list-style-type: none; display: inline-block;}
 body.top .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
 body.top .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
 
-body.top-left header {min-height: 0; width: 100%; padding: 2ex 0;}
-body.top-left header nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
-body.top-left nav.nav-2 {right: 20px;}
-body.top-left .wrapper.pane {width: 100%;}
-body.top-left .settings {left: auto; right: 15px; top: 100%; bottom: auto; margin-top: 15px;}
-body.top-left .settings:before {top: -15px; right: 15px; left: auto; border-style: solid; border-width: 0 15px 15px 15px;}
-
 body.left header {position: fixed;}
 body.left nav.pane {position: fixed; width: 12.75%;}
 body.left nav li a {padding-right: 15px;}
 body.left main {left: 15%;}
 body.left footer {width: 68.25% !important;}
 body.left .wrapper {left: 15%;}
-
-body.left-top header {position: fixed;}
-body.left-top nav.pane {min-height: 0; padding: 1ex 0;}
-body.left-top nav li a {padding-right: 15px;}
-body.left-top footer {width: 81% !important;}
-body.left-top .wrapper {left: 15%;}
-body.left-top .wrapper .pane {width: 100%; min-height: 0;}
-body.left-top .wrapper nav li {list-style-type: none; padding: 10px 2%; display: inline-block;}
 
 /* bootstrap extension */
 .panel * {color: #555;}
