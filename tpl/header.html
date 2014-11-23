@@ -7,6 +7,9 @@
 					<li class="submenu-li" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views[item.name]">
 						<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(item.name + ' ' +  view)}}</a>
 					</li>
+					<li class="submenu-li-id" ng-show="routeParams.id" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views['id' + item.name]">
+						<a ng-href="{{'#/' + routeParams.nav + '/' + view + '/' + routeParams.id}}">{{_(item.name + ' ' +  view)}}</a>
+					</li>
 				</ul>
 			</nav>
 			<a ng-class="{'menu-hover': routeParams.nav != item.name}" ng-href="#/{{item.name}}">

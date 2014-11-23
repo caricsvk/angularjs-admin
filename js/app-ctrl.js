@@ -109,13 +109,15 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		$scope.isOverlayShowed = null;
 	};
 
-	$scope.setViews = function (views) {
+	$scope.setViews = function (views, idViews) {
 		if (views && (! $scope.views[$routeParams.nav] || $scope.views[$routeParams.nav].length == 0)) {
 			for (var key in $scope.views) { //release views
 				setView(key, null);
 			}
 			$scope.views[$routeParams.nav] = [];
 			setView($routeParams.nav, views || []);
+			$scope.views['id' + $routeParams.nav] = [];
+			setView('id' + $routeParams.nav, idViews || []);
 		}
 	};
 

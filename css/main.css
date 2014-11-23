@@ -92,7 +92,7 @@ header nav li.active a span {display: none;}
 header nav li nav {display: inline-block; vertical-align: bottom;}
 header nav li nav i {display: block !important; visibility: hidden;}
 header nav li nav ul {float: left; padding: 0;}
-header nav li nav ul li {padding: 0 !important; border-radius: 5px 5px 0 0; height: 51px; overflow: hidden;}
+header nav li nav ul li {padding: 0 !important; border-radius: 5px 5px 0 0; height: 51px; width: 80px; overflow: hidden;}
 header nav li nav ul li a {padding: 6px;}
 
 nav.nav-2 {position: absolute; top: 10px; }
