@@ -117,7 +117,7 @@ body.green header nav li.active nav ul li.active {background-color: #EEEEEE;}
 body.green header nav li.active nav ul li.active a {color: #0A2929;}
 /*body.green nav.pane {background-color: #0F3D3D;}*/
 body.green nav li a {color: #ccc;}
-body.green nav li a.menu-a-notactive:hover {background-color: #0F3D3D;}
+body.green nav.menu li:hover {background-color: #0F3D3D;}
 body.green table.table thead tr th {/*color: #051414;*/ /*background-color: #1A6666;*/ border-color: #0F3D3D;}
 body.green table.table tbody tr:nth-child(2n+1) td {background-color: #1A6666;}
 body.green table.table tbody tr td {border-color: #0F3D3D;}

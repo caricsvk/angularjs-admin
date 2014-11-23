@@ -9,13 +9,15 @@
 .submenu-li.ng-leave,
 .submenu-li.ng-enter.ng-enter-active { opacity:1; width: 80px; }
 
-.menu-a-notactive {-webkit-transition: all linear 0.15; transition: all linear 0.15s;}
-.menu-a-notactive:hover {padding-top: 47px;}
-.menu-a-notactive:hover span {opacity: 0;}
-.menu-a-notactive:hover span.open {opacity: 1;}
+.menu > ul > li {-webkit-transition: all linear 0.35; transition: all linear 0.35s;}
 
-.submenu-h3.ng-enter { -webkit-animation: fadeInLeft 0.4s; animation: fadeInLeft 0.4s; }
-.submenu-h3.ng-leave { -webkit-animation: fadeOut 0.6s; animation: fadeOut 0.6s; }
+.menu > ul > li a.menu-hover {-webkit-transition: all linear 0.15; transition: all linear 0.15s;}
+.menu > ul > li a.menu-hover:hover {padding-top: 47px;}
+.menu > ul > li a.menu-hover:hover span {opacity: 0;}
+
+.menu > ul > li h3 {-webkit-transition: all linear 0.65; transition: all linear 0.65s;}
+.menu > ul > li.active h3 {padding-top: 3px; width: 100%; font-size: 21px; white-space: nowrap; opacity: 1;}
+.menu > ul > li:hover h3 {opacity: 1;}
 
 .submenu-prev.ng-enter { -webkit-animation: fadeInRight 1s; animation: bounceInRight 1s; position: absolute; right: 0; }
 .submenu-prev.ng-leave { -webkit-animation: fadeOutRight 0.6s; animation: bounceOutRight 0.6s; position: absolute; right: 0;}

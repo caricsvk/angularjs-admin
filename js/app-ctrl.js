@@ -132,7 +132,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 					} else {
 						$scope.views[key].push(views[i]);
 					}
-				}, 500 / views.length * i)
+				}, 260 / views.length * i)
 			} (i));
 		}
 	}
