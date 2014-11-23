@@ -205,7 +205,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		global: 0
 	};
 	$scope.views = {};
-	$scope.menu = [{name: 'home', class: 'fa-home'}, {name: 'clients', class: 'fa-user'}, {name: 'orders', class: 'fa-truck'}, {name: 'products', class: 'fa-newspaper-o'}, {name: 'categories', class: 'fa-list-alt'}];
+	$scope.menu = GlobalService.getConfig('menu');
 	// var locale = location.pathname.split("/")[1];
 	// var locale = locale.length === 2 ? locale : 'en';
 

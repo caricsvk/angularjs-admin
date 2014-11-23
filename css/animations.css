@@ -9,7 +9,7 @@
 .submenu-li.ng-leave,
 .submenu-li.ng-enter.ng-enter-active { opacity:1; width: 80px; }
 
-.menu > ul > li {-webkit-transition: all linear 0.35; transition: all linear 0.35s;}
+.menu > ul > li.notactive {-webkit-transition: all linear 0.35; transition: all linear 0.35s;}
 
 .menu > ul > li a.menu-hover {-webkit-transition: all linear 0.15; transition: all linear 0.15s;}
 .menu > ul > li a.menu-hover:hover {padding-top: 47px;}

@@ -1,6 +1,6 @@
 <nav class="menu">
 	<ul>
-		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name}">
+		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name, notactive: routeParams.nav != item.name}">
 			<h3 class="submenu-h3">{{_(item.name)}}</h3>
 			<nav class="submenu">
 				<ul>

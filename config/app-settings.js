@@ -14,7 +14,13 @@ window.SETTINGS = {
 	color: 'light green',
 	languages: ['en', 'sk', 'cz'],
 	language: 'en',
-	animations: {
+	menu: [
+		{name: 'home', class: 'fa-home'},
+		{name: 'clients', class: 'fa-user'},
+		{name: 'orders', class: 'fa-truck'},
+		{name: 'products', class: 'fa-newspaper-o'},
+		{name: 'categories', class: 'fa-list-alt'}
+	], animations: {
 		'default': "submenu-next",
 		'clients->orders': 'menu-next',
 		'clients->products': 'menu-next',
