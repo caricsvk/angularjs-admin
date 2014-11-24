@@ -2,8 +2,8 @@ APP.directive('miloTable', function() {
 	return {
 		templateUrl: 'tpl/directives/table.html',
 		scope: {init: '=miloTable'}, 
-		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce', 
-			function($scope, $rootScope, $filter, $location, $q, $sce) {
+		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce', '$timeout',
+			function($scope, $rootScope, $filter, $location, $q, $sce, $timeout) {
 
 			// console.log('controller', $scope);
 			if ($scope.init) {
@@ -28,7 +28,7 @@ APP.directive('miloTable', function() {
 				$scope.loadings.filtering = true;
 				$scope.state.offset = ($scope.state.page - 1) * $scope.state.limit;
 				$scope.state.param = null;
-	    		$scope.data = $scope.service.query($scope.state, function () {	
+	    		$scope.data = $scope.service.query($scope.state, function (response) {
 					$scope.loadings.filtering = false;
 				});		
 				$scope.changeCount(); 
@@ -183,7 +183,7 @@ APP.directive('miloTable', function() {
 			$scope.limits = $scope.init.limits ? $scope.init.limits : [5, 10, 20, 50, 100];
 			$scope.actions = $scope.init.actions ? $scope.init.actions : [];
 			$scope.show = {};
-			$scope.columns = $scope.init.columns ? $scope.init.columns : [];
+			var columns = $scope.init.columns ? $scope.init.columns : [];
 
 			var knownState = ['limit', 'offset', 'page', 'order', 'orderType', 'param'];
 			$scope.showFilters = false;
@@ -221,25 +221,25 @@ APP.directive('miloTable', function() {
 					};
 
 					// update column if exists
-					for (var i = 0; i < $scope.columns.length; i ++) {
-						if (typeof $scope.columns[i] !== 'string' && $scope.columns[i].name == key) {
+					for (var i = 0; i < columns.length; i ++) {
+						if (typeof columns[i] !== 'string' && columns[i].name == key) {
 							for (var mergeKey in column) {
-								if (typeof $scope.columns[i][mergeKey] === 'undefined') {
-									$scope.columns[i][mergeKey] = column[mergeKey];
+								if (typeof columns[i][mergeKey] === 'undefined') {
+									columns[i][mergeKey] = column[mergeKey];
 								}
 							}
 							break;
-						} else if ($scope.columns[i] === key) {
-							$scope.columns[i] = column;
+						} else if (columns[i] === key) {
+							columns[i] = column;
 							break;
 						}
 					}	
 					//remove column
-					if ($scope.columns.indexOf('-' + key) > -1) {
-						$scope.columns.splice($scope.columns.indexOf('-' + key), 1);
+					if (columns.indexOf('-' + key) > -1) {
+						columns.splice(columns.indexOf('-' + key), 1);
 					// add column
-					} else if (i === $scope.columns.length) {
-						$scope.columns.push(column);
+					} else if (i === columns.length) {
+						columns.push(column);
 					}
 				}
 
@@ -250,15 +250,16 @@ APP.directive('miloTable', function() {
 				});
 
 
-				for (var i = 0; i < $scope.columns.length; i ++) {
-					if ($scope.columns[i].filterType == 'string') {
+				for (var i = 0; i < columns.length; i ++) {
+					if (columns[i].filterType == 'string') {
 						(function (column) {
 							$scope.service.getColumnIsEnum(column.originalType).then(function (isEnum) {
 								column.isEnum = isEnum;
 							});
-						} ($scope.columns[i]));
+						} (columns[i]));
 					}
 				}
+				$scope.columns = columns;
 			});
 
 			//just because HTML 5 input:number does not show number when they are as strings in angular

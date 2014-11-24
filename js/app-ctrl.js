@@ -79,11 +79,11 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	};
 
 	$scope.showAjaxMessage = function(message, type) {
-        $scope.ajax.message = null;
-        $timeout(function () {
-            $scope.ajax.message = $scope._(message);
-            $scope.ajax.type = type || "info";
-        }, 200);
+		$scope.ajax.message = null;
+		$timeout(function () {
+			$scope.ajax.message = $scope._(message);
+			$scope.ajax.type = type || "info";
+		}, 200);
 	};
 
 	$scope.setViewAnimation = function(ctrlFrom, ctrlTo, viewFrom, viewTo) {
@@ -91,10 +91,10 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 			return;
 		}
 		if (ctrlFrom === ctrlTo && typeof animationClassMap[ctrlFrom] == 'object') {
-			$scope.animationClass = typeof animationClassMap[ctrlFrom][viewFrom + '->' + viewTo] !== 'undefined' 
+			$scope.animationClass = typeof animationClassMap[ctrlFrom][viewFrom + '->' + viewTo] !== 'undefined'
 				? animationClassMap[ctrlFrom][viewFrom + '->' + viewTo] : animationClassMap.default;
 		} else {
-			$scope.animationClass = typeof animationClassMap[ctrlFrom + '->' + ctrlTo] !== 'undefined' 
+			$scope.animationClass = typeof animationClassMap[ctrlFrom + '->' + ctrlTo] !== 'undefined'
 				? animationClassMap[ctrlFrom + '->' + ctrlTo] : animationClassMap.default;
 		}
 	};

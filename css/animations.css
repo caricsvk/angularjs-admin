@@ -31,6 +31,19 @@
 .menu-next.ng-enter { -webkit-animation: bounceInUp 1s; animation: bounceInUp 1s; position: absolute; right: 0; }
 .menu-next.ng-leave {-webkit-animation: bounceOutUp 0.6s; animation: bounceOutUp 0.6s; position: absolute; right: 0;}
 
+.reveal-animation.ng-enter { -webkit-animation: fadeIn 1s; animation: fadeIn 1s; }
+.reveal-animation.ng-leave { -webkit-animation: fadeOut 0.6s; animation: fadeout 0.6s; position: absolute;}
+
+/*.milotable-animation-tr.ng-enter,*/
+/*.milotable-animation-tr.ng-leave,*/
+/*.milotable-animation-tr.ng-move { -webkit-transition:all linear 1.5s; transition:all linear 1.5s; }*/
+/*.milotable-animation-tr.ng-leave.ng-leave-active,*/
+/*.milotable-animation-tr.ng-move,*/
+/*.milotable-animation-tr.ng-enter { opacity:0; max-height:0; }*/
+/*.milotable-animation-tr.ng-leave,*/
+/*.milotable-animation-tr.ng-move.ng-move-active,*/
+/*.milotable-animation-tr.ng-enter.ng-enter-active { opacity:1; max-height:40px; }*/
+
 div.loading { -webkit-transition:all linear 0.5s; transition:all linear 0.5s; right: 0px; top: 0px; position: fixed; width: 0; height: 0; border-style: solid; border-width: 0 150px 150px 0; }
 div.loading.ng-hide { top: -75px; right: -75px; }
 div.loading .spinner-1 { position: relative; height: 60px; position: absolute; top: 10px; right: -75px;}
