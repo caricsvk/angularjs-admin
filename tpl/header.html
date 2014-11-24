@@ -1,7 +1,7 @@
 <nav class="menu">
 	<ul>
-		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name, notactive: routeParams.nav != item.name}">
-			<h3 class="submenu-h3">{{_(item.name)}}</h3>
+		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name, notactive: routeParams.nav != item.name, 'menu-hover': routeParams.nav != item.name}">
+			<h3 class="submenu-h3"><a ng-href="#/{{item.name}}">{{_(item.name)}}</a></h3>
 			<nav class="submenu">
 				<ul>
 					<li class="submenu-li" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views[item.name]">
@@ -12,7 +12,7 @@
 					</li>
 				</ul>
 			</nav>
-			<a ng-class="{'menu-hover': routeParams.nav != item.name}" ng-href="#/{{item.name}}">
+			<a ng-href="#/{{item.name}}">
 				<i class="fa {{item.class}} fa-fw fa-3x"></i>
 				<span>{{_(item.name)}}</span>
 			</a>
