@@ -54,10 +54,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="row in data track by $index">
-			<td ng-repeat="column in ::columns">{{::row[column.name + '_filtered']}}</td>
+		<tr ng-repeat="index in getTrEmptyArray() track by $index" ng-init="outerIndex=$index">
+			<td ng-repeat="column in ::columns">{{data[outerIndex][column.name + '_filtered']}}</td>
 			<td style="text-align: right; padding-right: 20px;">
-				<button type="button" ng-repeat="action in ::actions" class="{{::action.class}}" ng-class="{hidden: row==null || action.hide(row)}" ng-click="action.trigger(row)" ng-bind-html="::action.name">
+				<button type="button" ng-repeat="action in ::actions" class="{{::action.class}}" ng-class="{hidden: data[outerIndex]==null || action.hide(data[outerIndex])}" ng-click="action.trigger(data[outerIndex])" ng-bind-html="::action.name">
 					&nbsp;
 				</button>
 			</td>

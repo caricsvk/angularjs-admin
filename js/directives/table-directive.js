@@ -32,6 +32,10 @@ APP.directive('miloTable', function() {
 					$scope.loadings.filtering = false;
 				});		
 				$scope.changeCount(); 
+			};
+
+			$scope.getTrEmptyArray = function () {
+				return new Array(parseInt($scope.state.limit));
 			}
 
 			$scope.changeCount = function () {
@@ -44,15 +48,16 @@ APP.directive('miloTable', function() {
 				});
 			};
 
-			$scope.applyAngularFilters = function () {
+			$scope.applyFilters = function () {
 
 				for (var i = 0; i < $scope.data.length; i ++) {
 					var row = $scope.data[i];
-					for (var key in row) {
-						row[key + "_filtered"] = applyNgFilter(row[key], key);
+					for (var j = 0; j < $scope.columns.length; j ++) {
+						var key = $scope.columns[j].name;
+						row[key + "_filtered"] = $scope.columns[j].filter ?
+							$scope.columns[j].filter(row) : applyNgFilter(row[key], key);
 					}
 				}
-				self.addEmptyLines($scope.data);
 			};
 
 			$scope.updateOrder = function (columnName) {
@@ -119,22 +124,6 @@ APP.directive('miloTable', function() {
 			};
  
 			//public
-			self.addEmptyLines = function (newValue) {
-				if (! newValue) {
-					newValue = [];
-				}
-				for (var i = 0; i < $scope.state.limit; i ++) {
-					if (i >= newValue.length) {
-						newValue.push(undefined);
-					} else {
-						for (var j = 0; j < $scope.columns.length; j ++) {
-							if ($scope.columns[j].filter) {
-								newValue[i][$scope.columns[j].name + "_filtered"] = $scope.columns[j].filter(newValue[i]);
-							}
-						}
-					}
-				}
-			};
 			self.getFilterType = function (type) {
 				switch (type) {
 					case 'long':
@@ -245,8 +234,7 @@ APP.directive('miloTable', function() {
 
 				//must be here because of it need to have all column params
 				$scope.$watch('data', function (newData) {
-					ctrl.addEmptyLines(newData);
-					newData.$promise.then($scope.applyAngularFilters);
+					newData.$promise.then($scope.applyFilters);
 				});
 
 
