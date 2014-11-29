@@ -1,4 +1,5 @@
 {
-"put": "Create Order",
+"orders create": "Create",
+"orders edit": "Edit",
 "list": "List Orders"
 }

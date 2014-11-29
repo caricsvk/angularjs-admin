@@ -33,7 +33,8 @@ APP.controller('OrdersCtrl', ['$scope', '$rootScope', '$resource', '$routeParams
 		$scope.currentView = $routeParams.view;
 		switch ($scope.routeParams.view) {
 
-			case "put":
+			case "create":
+			case "edit":
 				showPut();
 				break;
 
@@ -55,7 +56,7 @@ APP.controller('OrdersCtrl', ['$scope', '$rootScope', '$resource', '$routeParams
 							}
 						}
 					], actions: [
-						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'put', id: row.id})}}
+						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'edit', id: row.id})}}
 					], 
 				};
 				break;
@@ -81,7 +82,7 @@ APP.controller('OrdersCtrl', ['$scope', '$rootScope', '$resource', '$routeParams
 
 	$scope.routeParams = $routeParams;
 
-	$scope.setViews(['list', 'put']);
+	$scope.setViews(['list', 'create'], ['edit']);
 	var oldView = $routeParams.view;
 	routeUpdate();
 

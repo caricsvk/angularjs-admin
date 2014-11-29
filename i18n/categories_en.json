@@ -1,4 +1,5 @@
 {
-"put":"Create Category",
+"categories create":"Create",
+"categories edit":"Edit",
 "list":"List Categories"
 }

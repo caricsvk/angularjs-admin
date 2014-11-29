@@ -1,4 +1,5 @@
 {
-"put": "Create Client",
+"clients create": "Create",
+"clients edit": "Edit",
 "list": "List Clients"
 }

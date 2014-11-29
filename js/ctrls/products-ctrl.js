@@ -34,7 +34,8 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 		$scope.currentView = $routeParams.view;
 		switch ($scope.routeParams.view) {
 
-			case "put":
+			case "create":
+			case "edit":
 				showPut();
 				break;
 
@@ -53,7 +54,7 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 							}
 						}],
 					actions: [
-						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'put', id: row.id})}}
+						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'edit', id: row.id})}}
 					]
 				};
 				break;
@@ -84,7 +85,7 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 
 	$scope.routeParams = $routeParams;
 
-	$scope.setViews(['list', 'put']);
+	$scope.setViews(['list', 'create'], ['edit']);
 	routeUpdate();
 
 	console.log("ProductsCtrl", $scope);

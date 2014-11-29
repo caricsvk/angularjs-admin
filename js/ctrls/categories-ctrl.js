@@ -40,7 +40,8 @@ APP.controller('CategoriesCtrl', ['$scope', '$rootScope', '$resource', '$routePa
 
 		switch ($scope.routeParams.view) {
 
-			case "put":
+			case "create":
+			case "edit":
 				$scope.showPut();
 				break;
 
@@ -50,8 +51,8 @@ APP.controller('CategoriesCtrl', ['$scope', '$rootScope', '$resource', '$routePa
 					service: Service,
 					columns: ['id', 'name', {name: 'parent', filter: function (row) {return row.parent ? row.parent.name : '';}}],
 					actions: [
-						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'put', id: row.id})}}
-					], 
+						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'edit', id: row.id})}}
+					]
 				};
 				break;
 		}
@@ -60,7 +61,7 @@ APP.controller('CategoriesCtrl', ['$scope', '$rootScope', '$resource', '$routePa
 	//construct
 	var Service = GlobalService.getTableService('categories');
 	$scope.routeParams = $routeParams;
-	$scope.setViews(['list', 'put']);
+	$scope.setViews(['list', 'create'], ['edit']);
 	routeUpdate();
 
 	console.log("CategoriesCtrl", $scope);
