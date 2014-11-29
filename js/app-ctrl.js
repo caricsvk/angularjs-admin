@@ -50,7 +50,6 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	$scope.updateRoute = function(name, value) {
 		// console.log("APP updateRoute");
 		errors = {};
-
 		//transform param to object
 		var newParams = {};
 		if (typeof name === 'object') {
@@ -63,7 +62,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		//update search params
 		for (var key in newParams) {
 			if (pathChangingParams.indexOf(key) == -1) {
-				$location.search(name, value);
+				$location.search(key, newParams[key]);
 				$routeParams[key] = newParams[key];
 			} else {
 				pathChangeNeeded = true;
