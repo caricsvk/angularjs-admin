@@ -22,7 +22,7 @@
 			<label class="pv1" for="sellUntil">{{_('Sell until')}}</label>
 			<input type="date" id="sellUntil" ng-model="current.sellUntil" class="form-control" placeholder="{{_('sellUntil')}}" />
 		</div>
-		<label class="pv1" for="category">{{_('Categories')}}</label>
+		<label class="pv1">{{_('Categories')}}</label>
 		<div class="pv1 input-group" ng-repeat="cat in current.categories track by $index">
 			<select ng-model="current.categories[$index]" class="form-control" milo-match-entity="'categories'"></select>
 			<span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="current.categories.splice($index, 1);">{{_('Remove')}}</button></span>

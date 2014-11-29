@@ -1,18 +1,18 @@
 <nav class="menu">
 	<ul>
 		<li ng-repeat="item in menu" ng-class="{active: routeParams.nav == item.name, notactive: routeParams.nav != item.name, 'menu-hover': routeParams.nav != item.name}">
-			<h3 class="submenu-h3"><a ng-href="#/{{item.name}}">{{_(item.name)}}</a></h3>
+			<h3 class="submenu-h3"><a ng-href="{{_l(item.name)}}">{{_(item.name)}}</a></h3>
 			<nav class="submenu">
 				<ul>
 					<li class="submenu-li" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views[item.name]">
-						<a ng-href="{{'#/' + routeParams.nav + '/' + view}}">{{_(item.name + ' ' +  view)}}</a>
+						<a ng-href="{{_l(routeParams.nav + '/' + view)}}">{{_(item.name + ' ' +  view)}}</a>
 					</li>
 					<li class="submenu-li-id" ng-show="routeParams.id" ng-class="{active: routeParams.view == view || ! routeParams.view && $index == 0}" ng-repeat="view in views['id' + item.name]">
-						<a ng-href="{{'#/' + routeParams.nav + '/' + view + '/' + routeParams.id}}">{{_(item.name + ' ' +  view)}}</a>
+						<a ng-href="{{_l(routeParams.nav + '/' + view + '/' + routeParams.id)}}">{{_(item.name + ' ' +  view)}}</a>
 					</li>
 				</ul>
 			</nav>
-			<a ng-href="#/{{item.name}}">
+			<a ng-href="{{_l(item.name)}}">
 				<i class="fa {{item.class}} fa-fw fa-3x"></i>
 				<span>{{_(item.name)}}</span>
 			</a>
@@ -24,7 +24,7 @@
 <nav class="login p2 pv2">
 	<ul>
 		<li class="p2 pv2" ng-class="{active: routeParams.view == 'login'}">
-			<a ng-href="#/login/login">{{_('Log In')}}</a>
+			<a ng-href="{{_l('login/login')">{{_('Log In')}}</a>
 		</li>
 		<!--<li class="p2 pv2" ng-class="{active: routeParams.view == 'signup'}">-->
 			<!--<a ng-href="#/login/signup">{{_('Sign Up')}}</a>-->

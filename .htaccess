@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} config/app-settings.js
+RewriteRule .* config/app-settings.js [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !index.html
+RewriteCond %{REQUEST_URI} !^.*(json|js|css|map|eot|woff|ttf|svg|png|jpg|jpeg|gif)$
+RewriteRule (.*) index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^.+/.*(json|js|css|map|eot|woff|ttf|svg|png|jpg|jpeg|gif)$
+RewriteRule [^/]+/(.*) $1

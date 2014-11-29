@@ -68,7 +68,11 @@ APP.controller('ProductsCtrl', ['$scope', '$rootScope', '$resource', '$routePara
 	//private
 	var showPut = function () {
 		if ($routeParams.id) {
-			$scope.current = Service.get({param: $routeParams.id});
+			Service.get({param: $routeParams.id}, function (response) {
+				response.sellFrom = new Date(response.sellFrom);
+				response.sellUntil = new Date(response.sellUntil);
+				$scope.current = response;
+			});
 		} else {
 			$scope.current = {categories: []};
 		}

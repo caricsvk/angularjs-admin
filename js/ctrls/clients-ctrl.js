@@ -2,7 +2,6 @@
 
 APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParams', '$location', '$http', 'GlobalService',
 						function ($scope, $rootScope, $resource, $routeParams, $location, $http, GlobalService) {
-
 	//public methods
 	$scope.put = function () {
 		if ($scope.current.birth) {
@@ -21,7 +20,7 @@ APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParam
 
 	$scope.delete = function (index) {
 		var entity = $scope.tableData[index];
-		entity.$delete({param: entity.id}, 
+		entity.$delete({param: entity.id},
 			function () {
 				$scope.tableData.splice(index, 1);
 			}, function () {
@@ -50,7 +49,7 @@ APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParam
 					columns: ['id', 'name', 'surname', 'birth', '-orders'],
 					actions: [
 						{name: "Edit", class: "btn-inverse", trigger: function (row) {$scope.updateRoute({view: 'put', id: row.id})}}
-					], 
+					],
 				};
 				break;
 		}
@@ -74,7 +73,6 @@ APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParam
 		}
 	};
 
-
 	//construct
 	var Service = GlobalService.getTableService('clients');
 
@@ -85,6 +83,6 @@ APP.controller('ClientsCtrl', ['$scope', '$rootScope', '$resource', '$routeParam
 	$scope.setViews(['list', 'put']);
 	routeUpdate();
 
-	console.log("UsersCtrl", $scope);
+	console.log("ClientsCtrl", $scope);
 
 }]);

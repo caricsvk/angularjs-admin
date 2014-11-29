@@ -19,7 +19,11 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 			}
 		}
 		return message;
-	}
+	};
+
+	$scope._l = function (link) {
+		return history.pushState ? link : '#/' + link;
+	};
 
 	$scope.setErrors = function (newErrors) {
 		errors = {};
@@ -47,35 +51,44 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		// console.log("APP updateRoute");
 		errors = {};
 
-		function processParam(name, value) {
-			if (name == 'url') {
-				$location.path(value);
-			} else if (typeof name !== 'undefined' && name != "nav" && name !== "view" && name !== "id") {
+		//transform param to object
+		var newParams = {};
+		if (typeof name === 'object') {
+			newParams = name;
+		} else {
+			newParams[name] = value;
+		}
+		var pathChangingParams = ['url', 'nav', 'view', 'id'];
+		var pathChangeNeeded = false;
+		//update search params
+		for (var key in newParams) {
+			if (pathChangingParams.indexOf(key) == -1) {
 				$location.search(name, value);
+				$routeParams[key] = newParams[key];
 			} else {
-				var currentPath = $location.path();
-				var newBuildPath = "/" + $routeParams.nav + "/" + ($routeParams.view ? $routeParams.view + "/" : "") + ($routeParams.id ? $routeParams.id : "");
-				if (currentPath !== newBuildPath) {
-					$location.path(newBuildPath);
-				} else {
-					$route.reload();
-				}
+				pathChangeNeeded = true;
 			}
 		}
-
-		if (typeof name === 'object') {
-			for (var key in name) {
-				$routeParams[key] = name[key];	
-				processParam(key, name[key]);
+		//update path if needed
+		if (pathChangeNeeded) {
+			var newBuildPath = newParams.url || "/" + getRouteParam('nav', newParams) + "/"
+				+ getRouteParam('view', newParams) + "/" + getRouteParam('id', newParams);
+			if (newBuildPath !== $location.path()) {
+				$location.path(newBuildPath);
+			} else {
+				$route.reload();
 			}
-		} else {
-			$routeParams[name] = value;
-			processParam(name, value);
 		}
 	};
 
-	$scope.fixDateOffset = function (timestamp, b, segment) {
-		// return COMMON.angularFixDate(timestamp);
+	var getRouteParam = function (key, newParams) {
+		if (newParams[key]) {
+			return newParams[key];
+		} else if ($routeParams[key]) {
+			return $routeParams[key];
+		} else {
+			return '';
+		}
 	};
 
 	$scope.showAjaxMessage = function(message, type) {
@@ -147,6 +160,10 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		return GlobalService.getCookie(key);
 	};
 
+	$scope.getTitle = function () {
+		return  $scope._($routeParams.nav) + " | " + $scope.getConfig('titlePostfix');
+	};
+
 	var routeUpdate = function () {
 
 		// console.log("APP routeUpdate");
@@ -158,8 +175,9 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		$scope.show.settings = false;
 		$scope.ajax.message = "";
 		//check if is route empty
-		if (! location.hash && location.hash !== '#/' + $scope.getConfig('initCtrl')) {
-			location.href = '#/' + $scope.getConfig('initCtrl');
+		var path = $location.path();
+		if (path === '/' && path !== '/' + $scope.getConfig('initCtrl')) {
+			$location.path($scope.getConfig('initCtrl'));
 		}
 	};
 

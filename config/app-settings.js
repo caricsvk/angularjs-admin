@@ -14,6 +14,8 @@ window.SETTINGS = {
 	color: 'light green',
 	languages: ['en', 'sk', 'cz'],
 	language: 'en',
+	base: '/milo/admin/',
+	titlePostfix: 'Ng-Admin',
 	menu: [
 		{name: 'home', class: 'fa-home'},
 		{name: 'clients', class: 'fa-user'},

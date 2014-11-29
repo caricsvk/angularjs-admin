@@ -51,10 +51,22 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 	}
 
 	self.getEntityInstances = function (entityEndpoint) {
-		if (! entityInstances[entityEndpoint]) {
-			entityInstances[entityEndpoint] = $resource(self.getConfig().servicesLocation + '/' + entityEndpoint).query();
+		if (! entityInstances[entityEndpoint] || ! entityInstances[entityEndpoint].$promise) {
+			entityInstances[entityEndpoint] = $resource(self.getConfig().servicesLocation + '/' + entityEndpoint)
+				.query(function (response) {
+					/* dirty fix when request is cancelled/aborted
+					the error block is implementing the same because
+					I assume after fix it will be handled through that
+					 */
+//					if (! response || ! response.$resolved) {
+//						delete entityInstances[entityEndpoint];
+//					}
+				}, function () {
+					delete entityInstances[entityEndpoint];
+				}
+			);
 		}
-		return entityInstances[entityEndpoint]; 
+		return entityInstances[entityEndpoint];
 	};
 
 	self.removeEntityInstances = function (entityEndpoint) {

@@ -32,6 +32,8 @@
 			APP.controller = $controllerProvider.register;
 		}).config(function ($compileProvider) {
 			APP.directive = $compileProvider.directive;
+		}).config(function ($locationProvider) {
+			$locationProvider.html5Mode(true);
 		}).config(function ($httpProvider) {
 			$httpProvider.interceptors.push(function($q, $injector, $rootScope, $timeout) {
 				return {
