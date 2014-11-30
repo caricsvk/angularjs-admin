@@ -1,7 +1,7 @@
 'use strict';
 
-APP.service('AuthService', ['$rootScope', '$resource', '$http', '$q', 'GlobalService',
-	function ($rootScope, $resource, $http, $q, GlobalService) {
+APP.service('AuthService', ['$rootScope', '$resource', '$http', '$q', 'GlobalService', '$location',
+	function ($rootScope, $resource, $http, $q, GlobalService, $location) {
 
 	var self = this;
 	var lastHit = null;
@@ -13,7 +13,7 @@ APP.service('AuthService', ['$rootScope', '$resource', '$http', '$q', 'GlobalSer
 		var deferred = $q.defer();
 		Service.save(user, function (response) {
 			principal = response;
-			deferred.resolve(lastHit && lastHit != loginUrl ? lastHit : "#");
+			deferred.resolve(lastHit && lastHit != loginUrl ? lastHit : GlobalService.getConfig("initCtrl"));
 		}, function () {
 			deferred.resolve(false);
 		});
@@ -33,9 +33,10 @@ APP.service('AuthService', ['$rootScope', '$resource', '$http', '$q', 'GlobalSer
 	}
 
 	$rootScope.$on('authError', function (e, rejection) {
-		if (location.hash !== loginUrl) {
-			lastHit = location.hash;
-			location.href = loginUrl;
+		console.log('authError', $location.path(), loginUrl)
+		if ($location.path() !== loginUrl) {
+			lastHit = $location.path();
+			$location.path(loginUrl);
 		}
 	});
 

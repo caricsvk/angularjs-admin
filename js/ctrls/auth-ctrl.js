@@ -1,13 +1,14 @@
 'use strict';
 
-APP.controller('AuthCtrl', ['$scope', '$rootScope', '$resource', '$routeParams', 'AuthService',
-	function ($scope, $rootScope, $resource, $routeParams, AuthService) {
+APP.controller('AuthCtrl', ['$scope', '$rootScope', '$resource', '$routeParams', '$location', 'AuthService',
+	function ($scope, $rootScope, $resource, $routeParams, $location, AuthService) {
 
 		//public methods
 		$scope.login = function () {
 			AuthService.login($scope.current).then(function (redirectUrl) {
 				if (redirectUrl) {
-					location.href = redirectUrl;
+					console.log('login successful', redirectUrl)
+					$location.path(redirectUrl);
 				} else {
 					$scope.showAjaxMessage('Your login or password is incorrect.','danger');
 				}

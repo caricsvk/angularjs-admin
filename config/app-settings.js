@@ -6,7 +6,7 @@ window.SETTINGS = {
 	initCtrl: 'home',
 	urlHeader: 'tpl/header.html',
 	urlFooter: 'tpl/footer.html',
-	loginUrl: '#/auth',
+	loginUrl: 'auth',
 	servicesLocation: '//127.0.0.1/gf/jersey',
 	layouts: ['top'],//, 'left'],
 	layout: 'top',
