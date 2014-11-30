@@ -70,7 +70,7 @@
 	<script type="text/javascript" src="config/app-settings.js"></script>
 	<script type="text/javascript">
 		document.write('<base href="' + window.SETTINGS.base + '" />');
-		window.REQUIRE = new MiloRequire(window.SETTINGS.jsPrefix, window.SETTINGS.base);
+		window.REQUIRE = new MiloRequire(window.SETTINGS.jsPrefix, window.SETTINGS.base, window.SETTINGS.version);
 	</script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/services/global-service.js"></script>
