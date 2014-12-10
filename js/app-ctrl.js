@@ -81,7 +81,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	};
 
 	var getRouteParam = function (key, newParams) {
-		if (newParams[key]) {
+		if (typeof newParams[key] !== 'undefined') {
 			return newParams[key];
 		} else if ($routeParams[key]) {
 			return $routeParams[key];
