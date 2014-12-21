@@ -4,6 +4,7 @@
 	var RouteCtrl = function($scope, $routeParams, $q, $log, $templateCache, GlobalService) {
 		$scope.setViews(null);
 		//lazy load needed sources (js/css/i18n) by URL
+		//TODO preload HTML too
 		var nav = $routeParams.nav;
 		window.REQUIRE.load("../i18n/app_" + GlobalService.getConfig('language') + ".json", null, function (response) {
 			GlobalService.setI18N('app', response);
@@ -21,7 +22,7 @@
 			}
 		);
 	};
-	window.APP = angular.module("Web", ["ngResource", "ngAnimate", "ngRoute", "ui.tinymce"])
+	window.APP = angular.module("Web", window.SETTINGS.ngModules)
 		.config(function($routeProvider) {
 			$routeProvider.when('/:nav?/:view?/:id?', {
 				templateUrl: "url-router.html",

@@ -16,6 +16,7 @@ window.SETTINGS = {
 	language: 'en',
 	base: '/milo/admin/',
 	titlePostfix: 'Ng-Admin',
+	ngModules: ["ngResource", "ngAnimate", "ngRoute", "ui.tinymce"],
 	menu: [
 		{name: 'home', class: 'fa-home'},
 		{name: 'clients', class: 'fa-user'},
