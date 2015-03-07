@@ -84,23 +84,9 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 		var service = tableServices[name];
 		if (! service) {
 			service = $resource(self.getConfig("servicesLocation") + "/" + name + "/:param/:param1/:param2", null, {'put': {method: "PUT"}});
-			service.getColumnIsEnum = self.getColumnIsEnum;
 		}
 		return service;
 	};
-
-	self.getColumnIsEnum = function (type) {
-		var deferred = $q.defer();
-		if (type) {
-			$http.get(self.getConfig('servicesLocation') + '/reflection/' + type + '/is-enum')
-				.success(function (data) {
-					deferred.resolve(data.isEnum)
-				});
-		} else {
-			deferred.resolve(false);
-		}
-		return deferred.promise;
-	}
 
 	self.getCookie = function (key) {
 		var name = key + "=";
