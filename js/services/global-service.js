@@ -52,7 +52,7 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 
 	self.getEntityInstances = function (entityEndpoint) {
 		if (! entityInstances[entityEndpoint] || ! entityInstances[entityEndpoint].$promise) {
-			entityInstances[entityEndpoint] = $resource(self.getConfig().servicesLocation + '/' + entityEndpoint)
+			entityInstances[entityEndpoint] = $resource(self.getConfig().servicesLocation + entityEndpoint)
 				.query(function (response) {
 					/* dirty fix when request is cancelled/aborted
 					the error block is implementing the same because
@@ -75,7 +75,7 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 
 	self.getEnumValues = function (enumName) {
 		if (! enums[enumName]) {
-			enums[enumName] = $resource(self.getConfig('servicesLocation') + '/reflection/' + enumName + '/enum-values').query();
+			enums[enumName] = $resource(self.getConfig('servicesLocation') + 'reflection/' + enumName + '/enum-values').query();
 		}
 		return enums[enumName];
 	};
