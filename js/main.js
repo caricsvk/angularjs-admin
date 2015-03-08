@@ -35,6 +35,8 @@
 			APP.directive = $compileProvider.directive;
 		}).config(function ($locationProvider) {
 			$locationProvider.html5Mode(true);
+		}).config(function($resourceProvider) {
+			$resourceProvider.defaults.stripTrailingSlashes = false;
 		}).config(function ($httpProvider) {
 			$httpProvider.interceptors.push(function($q, $injector, $rootScope, $timeout) {
 				return {
