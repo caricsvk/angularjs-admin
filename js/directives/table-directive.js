@@ -129,7 +129,12 @@ APP.directive('miloTable', function() {
 									return $filter('currency')(value, '');
 									break;
 								case 'localdatetime':
-									value = new Date(value[0], value[1] - 1, value[2], value[3], value[4], value[5]).getTime();
+									if (value) {
+										while(value.length < 6) {
+											value.push(0);
+										}
+										value = new Date(value[0], value[1] - 1, value[2], value[3], value[4], value[5]).getTime();
+									}
 								case 'timestamp':
 								case 'date':
 								case 'calendar':

@@ -14,7 +14,7 @@
 			</th>
 		</tr>
 		<tr class="filter" ng-if="showFilters">
-			<th class="{{::column.filterType}}" ng-repeat="column in ::columns" ng-switch="::column.filterType">
+			<th class="{{::column.filterType}}" ng-repeat="column in columns" ng-switch="::column.filterType">
 				<div ng-if="::column.isFilterable" ng-class="{'empty-handling': state[column.name + '_empty']}">
 					<span ng-switch-when="date">
 						<div ng-hide="show.date.substr(1)==column.name">
