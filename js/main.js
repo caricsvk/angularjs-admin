@@ -2,7 +2,6 @@
 
 (function () {
 	var RouteCtrl = function($scope, $routeParams, $q, $log, $templateCache, GlobalService) {
-		$scope.setViews(null);
 		//lazy load needed sources (js/css/i18n) by URL
 		//TODO preload HTML too
 		var nav = $routeParams.nav;

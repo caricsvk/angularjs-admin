@@ -121,7 +121,15 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		$scope.isOverlayShowed = null;
 	};
 
-	$scope.setViews = function (views, idViews) {
+	var getCurrentMenu = function () {
+		for (var i = 0; i < $scope.menu.length; i ++) {
+			if ($routeParams.nav === $scope.menu[i].name) {
+				return $scope.menu[i];
+			}
+		}
+	};
+
+	var setViews = function (views, idViews) {
 		if (views && (! $scope.views[$routeParams.nav] || $scope.views[$routeParams.nav].length == 0)) {
 			for (var key in $scope.views) { //release views
 				setView(key, null);
@@ -177,7 +185,11 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		var path = $location.path();
 		if (path === '/' && path !== '/' + $scope.getConfig('initCtrl')) {
 			$location.path($scope.getConfig('initCtrl'));
+		} else {
+			var menu = getCurrentMenu();
+			setViews(menu.sub || [], menu.subId || []);
 		}
+
 	};
 
 	$scope.$on('$routeChangeSuccess', function() {
