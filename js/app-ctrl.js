@@ -13,7 +13,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		var message = "";
 		if (errors[index]) {
 			var splited = errors[index].split("|");
-			var message = $scope.t(splited[0] + (splited.length - 1 ? splited.length - 1 : ""));
+			var message = $scope._(splited[0] + (splited.length - 1 ? splited.length - 1 : ""));
 			for (var i = 1; i < splited.length; i ++) {
 				message = message.replace("{{" + i + "}}", splited[i]);
 			}
