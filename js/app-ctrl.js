@@ -4,6 +4,8 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, $q, GlobalService, AuthService) {
 
 	//common public methods
+	var currentController = null;
+	var viewCallbackMap = {};
 	var errors = {};
 	$scope._ = function (index) {
 		return GlobalService.i18n($routeParams.nav, index);
@@ -121,6 +123,24 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		$scope.isOverlayShowed = null;
 	};
 
+	$scope.registerView = function (controller, viewName, callback) {
+		if (controller != currentController) {
+			currentController = controller;
+			viewCallbackMap = {};
+		}
+		viewCallbackMap[viewName ? viewName : '/'] = callback;
+		if (viewName == $routeParams.view) {
+			processViewChange();
+		}
+	};
+
+	var processViewChange = function () {
+		var view = $routeParams.view ? $routeParams.view : '/';
+		if (typeof viewCallbackMap[view] == 'function') { //is registered
+			viewCallbackMap[view].call(currentController);
+		}
+	};
+
 	var getCurrentMenu = function () {
 		for (var i = 0; i < $scope.menu.length; i ++) {
 			if ($routeParams.nav === $scope.menu[i].name) {
@@ -194,6 +214,10 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 
 	$scope.$on('$routeChangeSuccess', function() {
 		routeUpdate();
+	});
+
+	$scope.$on('$routeUpdate', function() {
+		processViewChange();
 	});
 
 	//listners
