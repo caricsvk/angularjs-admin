@@ -26,8 +26,8 @@ APP.directive('miloTable', function() {
 	return {
 		templateUrl: window.SETTINGS && window.SETTINGS.libPrefix ? window.SETTINGS.libPrefix + tplUrl : tplUrl,
 		scope: {init: '=miloTable'},
-		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce',
-			function($scope, $rootScope, $filter, $location, $q, $sce) {
+		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce', '$timeout',
+			function($scope, $rootScope, $filter, $location, $q, $sce, $timeout) {
 
 				// console.log('controller', $scope);
 				if ($scope.init) {
@@ -52,15 +52,19 @@ APP.directive('miloTable', function() {
 					$scope.loadings.filtering = true;
 					$scope.state.offset = ($scope.state.page - 1) * $scope.state.limit;
 					$scope.state.param = null;
-					$scope.data = $scope.service.query($scope.state, function () {
+					if ($scope.data.length) {
+						$scope.data = new Array(parseInt($scope.state.limit));
+					}
+					$scope.service.query($scope.state, function (data) {
 						$scope.loadings.filtering = false;
+						$scope.showData(data, $scope.data.length ? 0 : 5);
 					});
 					$scope.changeCount();
 				};
 
 				$scope.changeCount = function () {
 					$scope.state.param = 'count';
-					$scope.dataCount = $scope.service.get($scope.state, function (count) {
+					$scope.service.get($scope.state, function (count) {
 						if ($scope.state.page > Math.ceil(parseInt(count.count) / $scope.state.limit)) {
 							$scope.updateRoute("page", 1);
 						}
@@ -68,15 +72,36 @@ APP.directive('miloTable', function() {
 					});
 				};
 
-				$scope.applyAngularFilters = function () {
-
-					for (var i = 0; i < $scope.data.length; i ++) {
-						var row = $scope.data[i];
-						for (var key in row) {
-							row[key + "_filtered"] = applyNgFilter(row[key], key);
-						}
+				$scope.showData = function (data, initPause) {
+					for (var i = 0; i < data.length; i ++) {
+						(function (i) {
+							$timeout(function () {
+								var row = data[i];
+								for (var key in row) {
+									row[key + "_filtered"] = applyNgFilter(row[key], key);
+									for (var j = 0; j < $scope.columns.length; j ++) {
+										if ($scope.columns[j].filter) {
+											try {
+												row[$scope.columns[j].name + "_filtered"] = $sce.trustAsHtml(
+													'' + $scope.columns[j].filter(newValue[i])
+												);
+											} catch (e) {
+												row[$scope.columns[j].name + "_filtered"] = $sce.trustAsHtml('');
+											}
+										}
+									}
+								}
+								if ($scope.data.length != $scope.state.limit) {
+									$scope.data.push(data[i]);
+								} else {
+									$scope.data[i] = data[i];
+								}
+								if (i + 1 == data.length) {
+									$scope.rendered = true;
+								}
+							}, (i + initPause) * 90);
+						} (i));
 					}
-					self.addEmptyLines($scope.data);
 				};
 
 				$scope.updateOrder = function (columnName) {
@@ -150,29 +175,6 @@ APP.directive('miloTable', function() {
 				};
 
 				//public
-				self.addEmptyLines = function (newValue) {
-					if (! newValue) {
-						newValue = [];
-					}
-					for (var i = 0; i < $scope.state.limit; i ++) {
-						if (i >= newValue.length) {
-							newValue.push(undefined);
-						} else {
-							for (var j = 0; j < $scope.columns.length; j ++) {
-								if ($scope.columns[j].filter) {
-									try {
-										newValue[i][$scope.columns[j].name + "_filtered"] = $sce.trustAsHtml(
-												'' + $scope.columns[j].filter(newValue[i])
-										);
-									} catch (e) {
-										newValue[i][$scope.columns[j].name + "_filtered"] = $sce.trustAsHtml('');
-									}
-
-								}
-							}
-						}
-					}
-				};
 				self.getFilterType = function (type) {
 					switch (type) {
 						case 'long':
@@ -222,7 +224,9 @@ APP.directive('miloTable', function() {
 			$scope.limits = $scope.init.limits ? $scope.init.limits : [5, 10, 20, 50, 100];
 			$scope.actions = $scope.init.actions ? $scope.init.actions : [];
 			$scope.show = {};
-			$scope.columns = $scope.init.columns ? $scope.init.columns : [];
+			$scope.columns = [];
+			$scope.data = [];
+			var columns = $scope.init.columns ? $scope.init.columns : []; //dont want to pre-render them - cause DOM lag
 
 
 			var knownState = ['limit', 'offset', 'page', 'order', 'orderType', 'param'];
@@ -261,44 +265,38 @@ APP.directive('miloTable', function() {
 					};
 
 					// update column if exists
-					for (var i = 0; i < $scope.columns.length; i ++) {
-						if (typeof $scope.columns[i] !== 'string' && $scope.columns[i].name == key) {
+					for (var i = 0; i < columns.length; i ++) {
+						if (typeof columns[i] !== 'string' && columns[i].name == key) {
 							for (var mergeKey in column) {
-								if (typeof $scope.columns[i][mergeKey] === 'undefined') {
-									$scope.columns[i][mergeKey] = column[mergeKey];
+								if (typeof columns[i][mergeKey] === 'undefined') {
+									columns[i][mergeKey] = column[mergeKey];
 								}
 							}
 							break;
-						} else if ($scope.columns[i] === key) {
-							$scope.columns[i] = column;
+						} else if (columns[i] === key) {
+							columns[i] = column;
 							break;
 						}
 					}
 					//remove column
-					if ($scope.columns.indexOf('-' + key) > -1) {
-						$scope.columns.splice($scope.columns.indexOf('-' + key), 1);
+					if (columns.indexOf('-' + key) > -1) {
+						columns.splice(columns.indexOf('-' + key), 1);
 						// add column
-					} else if (i === $scope.columns.length) {
-						$scope.columns.push(column);
+					} else if (i === columns.length) {
+						columns.push(column);
 					}
 				}
 
-				//must be here because of it need to have all column params
-				$scope.$watch('data', function (newData) {
-					ctrl.addEmptyLines(newData);
-					newData.$promise.then($scope.applyAngularFilters);
-				});
-
-
-				for (var i = 0; i < $scope.columns.length; i ++) {
-					if ($scope.columns[i].filterType == 'string') {
+				for (var i = 0; i < columns.length; i ++) {
+					if (columns[i].filterType == 'string') {
 						(function (column) {
 							$scope.service.get({param: 'is-enum', fullClassName: column.originalType}, function (isEnum) {
 								column.isEnum = isEnum.isEnum;
 							});
-						} ($scope.columns[i]));
+						} (columns[i]));
 					}
 				}
+				$scope.columns = columns;
 			});
 
 			//just because HTML 5 input:number does not show number when they are as strings in angular

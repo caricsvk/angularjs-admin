@@ -67,7 +67,7 @@
 		</tr>
     </tbody>
 	<tfoot>
-	<tr>
+	<tr ng-if="rendered == true">
 		<td class="limits" colspan="{{columns.length / 2 + 1}}">
 			<button type="button" class="small" ng-class="{active: limit == state.limit}" ng-repeat="limit in ::limits" ng-click="updateRoute('limit', limit)">{{::limit}}</button>
 			{{::_('Entries per page')}}
