@@ -83,7 +83,7 @@ APP.directive('miloTable', function() {
 										if ($scope.columns[j].filter) {
 											try {
 												row[$scope.columns[j].name + "_filtered"] = $sce.trustAsHtml(
-													'' + $scope.columns[j].filter(newValue[i])
+													'' + $scope.columns[j].filter(row)
 												);
 											} catch (e) {
 												row[$scope.columns[j].name + "_filtered"] = $sce.trustAsHtml('');
