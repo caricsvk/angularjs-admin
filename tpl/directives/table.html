@@ -36,7 +36,11 @@
 					<div ng-switch-default>
 						<input ng-if="column.isEnum==false" type="text" style="width: 100%;" ng-model="state[column.isFilterable + '_wild']" ng-change="changeCount()" />
 						<div class="enum" ng-if="column.isEnum==true">
-							<select ng-model="state[column.isFilterable + '_wild']" ng-change="changeCount()" milo-enum="column.originalType"></select>
+							<select ng-model="state[column.isFilterable + '_wild']"
+							        ng-change="changeCount()"
+							        milo-service="service.getName()"
+							        milo-enum="column.originalType" ng-options="">
+							</select>
 						</div>
 					</div>
 				</div>

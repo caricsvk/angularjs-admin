@@ -33,7 +33,7 @@ APP.directive('miloMatchEntity', function() {
 			}
 			$attrs['ngOptions'] = 'value.' + $scope.entityName + ' for value in miloSelectData["' + $scope.entityEndpoint + '"]';
 
-			$scope.$watch('ngModel', function (newData) {
+			$scope.$watch('ngModel', function () {
 					matchEntity(scope.miloSelectData[$scope.entityEndpoint]);
 			});
     	}]

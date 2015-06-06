@@ -73,19 +73,20 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 		delete entityInstances[entityEndpoint];
 	}
 
-	self.getEnumValues = function (enumName) {
-		if (! enums[enumName]) {
-			enums[enumName] = $resource(self.getConfig('servicesLocation') + 'reflection/' + enumName + '/enum-values').query();
-		}
-		return enums[enumName];
-	};
-
 	self.getTableService = function (name) {
-		var service = tableServices[name];
-		if (! service) {
-			service = $resource(self.getConfig("servicesLocation") + name + "/:param/:param1/:param2", null, {'put': {method: "PUT"}});
+		if (! tableServices[name]) {
+			var resource = $resource(self.getConfig("servicesLocation") + name + "/:param/:param1/:param2", null, {'put': {method: "PUT"}});
+			//extends original resource
+			var F = function (resourceName) {
+				var name = resourceName;
+				this.getName = function () {
+					return name;
+				};
+			};
+			F.prototype = resource;
+			tableServices[name] = new F(name);
 		}
-		return service;
+		return tableServices[name];
 	};
 
 	self.getCookie = function (key) {
