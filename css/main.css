@@ -107,7 +107,7 @@ button.small {padding: 4px 10px; margin: 2px;}
 form.table-form {overflow-x: scroll;}
 
 table.table thead tr th {border-bottom: 6px double;}
-table.table thead tr.filter th {font-size: 1rem; font-weight: normal; padding: 4px 2px; vertical-align: baseline;}
+table.table thead tr.filter th {font-size: 1rem; font-weight: normal; padding: 4px 10px 4px 0; vertical-align: baseline;}
 table.table thead tr.filter th.date {min-width: 165px;}
 table.table thead tr.filter th.number input {width: 40%;}
 table.table thead tr.filter th button {padding: 4px 10px; margin: 2px;}
@@ -115,11 +115,11 @@ table.table thead tr.filter th input {padding: 2px; margin: 2px;}
 table.table thead tr.filter th .empty-handling {visibility: hidden;}
 table.table thead tr.filter th .empty-handler {}
 table.table thead tr.filter th .empty-handler i {cursor: pointer;}
-table.table thead tr.title th {font-size: 1.1rem; text-transform: capitalize; font-weight: 600;}
-table.table thead tr.title th i.fa {display: none; position: absolute; right: 5px; bottom: 33%;}
+table.table thead tr.title th {font-size: 1.0rem; text-transform: capitalize; font-weight: normal;}
+table.table thead tr.title th i.fa {display: none; position: absolute; left: 5px; bottom: 33%;}
 table.table thead tr.title th.sorting,
 table.table thead tr.title th.sorting-asc,
-table.table thead tr.title th.sorting-desc {padding-right: 25px; cursor: pointer;}
+table.table thead tr.title th.sorting-desc {padding-left: 19px; cursor: pointer;}
 table.table thead tr.title th.sorting i.fa-caret-up {display: block;}
 table.table thead tr.title th.sorting i.fa-caret-down {display: block; margin-bottom: -10px;}
 table.table thead tr.title th.sorting-desc i.fa-caret-down {display: block; margin-bottom: -10px;}

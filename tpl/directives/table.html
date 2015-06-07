@@ -3,9 +3,9 @@
 	<thead>
 		<tr class="title">
 			<th class="{{::column.filterType}}" ng-class="{sorting: column.isSortable && state.order!=column.name, 'sorting-asc': state.order==column.name && state.orderType=='ASC', 'sorting-desc': state.order==column.name && state.orderType =='DESC'}" ng-repeat="column in columns" ng-click="updateOrder(column.name)">
-				{{::_(column.name)}}
 				<i class="fa fa-caret-up"></i>
 				<i class="fa fa-caret-down"></i>
+				{{::_(column.name)}}
 			</th>
 			<th style="width: 250px; font-weight: normal; text-align: right;">
 				<button class="small" ng-click="showFilters=!showFilters" type="button">
@@ -33,8 +33,8 @@
 						<input type="number" ng-model="state[column.name + '_min']" ng-change="changeCount()" placeholder="{{::_('Min')}}" />
 						<input type="number" ng-model="state[column.name + '_max']" ng-change="changeCount()" placeholder="{{::_('Max')}}" />
 					</span>
-					<div ng-switch-default>
-						<input ng-if="column.isEnum==false" type="text" style="width: 100%;" ng-model="state[column.isFilterable + '_wild']" ng-change="changeCount()" />
+					<div style="margin-left: 16px;" ng-switch-default>
+						<input style="width: 100%;" ng-if="column.isEnum==false" type="text" ng-model="state[column.isFilterable + '_wild']" ng-change="changeCount()" />
 						<div class="enum" ng-if="column.isEnum==true">
 							<select ng-model="state[column.isFilterable + '_wild']"
 							        ng-change="changeCount()"
@@ -44,16 +44,15 @@
 						</div>
 					</div>
 				</div>
-				<div ng-if="::column.isFilterable" class="empty-handler">
+				<div style="position: absolute; top: 0; left: 0; width: 16px;" ng-if="::column.isFilterable" class="empty-handler">
 					<i class="fa fa-circle fa-fw" ng-class="{active: state[column.name + '_empty'] == 'show'}" ng-click="setEmptyState(column.name, 'show')"></i>
 					<i class="fa fa-circle-o fa-fw" ng-class="{active: state[column.name + '_empty'] == 'hide'}" ng-click="setEmptyState(column.name, 'hide')"></i>
 					<i class="fa fa-refresh fa-fw" ng-show="column.filterType=='date'" ng-click="clearDateFilter(column.name)"></i>
-					<i class="fa fa-refresh fa-fw" ng-show="column.isEnum==true" ng-click="state[column.name + '_wild']=null;changeCount();"></i>
 				</div>
 			</th>
 			<th style="width: 250px;">
-				<input type="text" style="width: 145px;" placeholder="{{::_('Search everywhere')}}" ng-model="state.filter" ng-change="changeCount()" />
-				<button ng-class="{disabled: dataCount || dataCount == 0}">{{::_('Filter')}} = {{dataCount}}</button>
+				<input type="text" style="width: 100%;" placeholder="{{::_('Search everywhere')}}" ng-model="state.filter" ng-change="changeCount()" />
+				<button style="position: absolute; right: 0; top: 2px;" ng-class="{disabled: dataCount || dataCount == 0}"><i class="fa fa-search"></i> &nbsp;{{dataCount}}</button>
 			</th>
 		</tr>
     </thead>

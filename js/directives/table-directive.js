@@ -227,9 +227,8 @@ APP.directive('miloTable', function() {
 			$scope.columns = [];
 			$scope.data = [];
 			var columns = $scope.init.columns ? $scope.init.columns : []; //dont want to pre-render them - cause DOM lag
-
-
 			var knownState = ['limit', 'offset', 'page', 'order', 'orderType', 'param'];
+
 			$scope.showFilters = false;
 			for (var key in $scope.state) {
 				if (knownState.indexOf(key) == -1) {
@@ -241,53 +240,36 @@ APP.directive('miloTable', function() {
 
 			//setup column types and filter for columns by them
 			$scope.service.get({param: "entity-field-types"}, function (entityFieldTypes) {
-
+				var allEntityColumns = {};
 				for (var key in entityFieldTypes) {
-
-					if (typeof entityFieldTypes[key] === 'object'
-						|| typeof entityFieldTypes[key] === 'function'
-						|| key.indexOf("_") !== -1
-						|| key.substr(0, 1) === "$"
-						|| key === "serialVersionUID") {
-
-						continue;
-					}
-
-					var type = entityFieldTypes[key].split(".");
-					type = type[type.length - 1].toLowerCase();
-					var column = {
-						name: key,
-						originalType: entityFieldTypes[key].split(' ')[1],
-						type: type,
-						filterType: ctrl.getFilterType(type),
-						isSortable: true,
-						isFilterable: key
-					};
-
-					// update column if exists
-					for (var i = 0; i < columns.length; i ++) {
-						if (typeof columns[i] !== 'string' && columns[i].name == key) {
-							for (var mergeKey in column) {
-								if (typeof columns[i][mergeKey] === 'undefined') {
-									columns[i][mergeKey] = column[mergeKey];
-								}
-							}
-							break;
-						} else if (columns[i] === key) {
-							columns[i] = column;
-							break;
-						}
-					}
-					//remove column
-					if (columns.indexOf('-' + key) > -1) {
-						columns.splice(columns.indexOf('-' + key), 1);
-						// add column
-					} else if (i === columns.length) {
-						columns.push(column);
+					if (typeof entityFieldTypes[key] !== 'object' && typeof entityFieldTypes[key] !== 'function'
+						&& key.indexOf("_") === -1 && key.substr(0, 1) !== "$" && key !== "serialVersionUID")
+					{
+						var type = entityFieldTypes[key].split(".");
+						allEntityColumns[key] = {
+							name: key,
+							originalType: entityFieldTypes[key].split(' ')[1],
+							type: type[type.length - 1].toLowerCase(),
+							filterType: ctrl.getFilterType(type),
+							isSortable: true,
+							isFilterable: key
+						};
 					}
 				}
-
+				// update table defined columns to fully set objects
 				for (var i = 0; i < columns.length; i ++) {
+					var defaultColumn = allEntityColumns[columns[i]];
+					if (defaultColumn) {
+						columns[i] = defaultColumn;
+						// put defaults to column-object from table definition
+					} else if (columns[i] !== 'string' && allEntityColumns[columns[i].name]) {
+						defaultColumn = allEntityColumns[columns[i].name];
+						for (var key in defaultColumn) {
+							if (typeof columns[i][key] === 'undefined') {
+								columns[i][key] = defaultColumn[key];
+							}
+						}
+					}
 					if (columns[i].filterType == 'string') {
 						(function (column) {
 							$scope.service.get({param: 'is-enum', fullClassName: column.originalType}, function (isEnum) {
