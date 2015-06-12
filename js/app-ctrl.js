@@ -49,7 +49,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		return GlobalService.setConfig(key, value, storeInCookie);
 	}
 
-	$scope.updateRoute = function(name, value) {
+	$scope.updateRoute = function(name, value, replace) {
 		// console.log("APP updateRoute");
 		errors = {};
 		//transform param to object
@@ -64,7 +64,12 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		//update search params
 		for (var key in newParams) {
 			if (pathChangingParams.indexOf(key) == -1) {
-				$location.search(key, newParams[key]);
+				if (replace) {
+					$location.search(key, newParams[key]).replace();
+				} else {
+					$location.search(key, newParams[key]);
+				}
+
 				$routeParams[key] = newParams[key];
 			} else {
 				pathChangeNeeded = true;
@@ -75,7 +80,12 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 			var newBuildPath = newParams.url || "/" + getRouteParam('nav', newParams) + "/"
 				+ getRouteParam('view', newParams) + "/" + getRouteParam('id', newParams);
 			if (newBuildPath !== $location.path()) {
-				$location.path(newBuildPath);
+				if (replace) {
+					console.log('replacing');
+					$location.path(newBuildPath).replace();
+				} else {
+					$location.path(newBuildPath);
+				}
 			} else {
 				$route.reload();
 			}

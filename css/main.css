@@ -20,7 +20,7 @@ body.left .wrapper {left: 15%;}
 input[type=date], input[type=time], input[type=datetime-local], input[type=month] {line-height: normal;}
 
 /* common */
-html, body {margin: 0; padding: 0; height: 100%; width: 100; font-size: 14px; overflow-x: hidden; position: relative;}
+html, body {margin: 0; padding: 0; height: 100%; width: 100%; font-size: 14px; overflow-x: hidden; position: relative;}
 
 body.auth header {height: 300px; width: 100%; text-align: left;}
 body.auth header > * {margin-top: 0; display: none;}
@@ -104,12 +104,12 @@ button.active,
 button:hover {cursor: pointer;}
 button.small {padding: 4px 10px; margin: 2px;}
 
-form.table-form {overflow-x: scroll;}
-
+form.table-form {overflow-x: scroll; padding: 0 10px; border-radius: 5px; margin: 1% 0;}
+table.table {margin-bottom: 0;}
 table.table thead tr th {border-bottom: 6px double;}
-table.table thead tr.title th {font-size: 1.0rem; text-transform: capitalize; font-weight: normal;}
+table.table thead tr.title th {font-size: 1.0rem; text-transform: capitalize; font-weight: normal; padding-bottom: 17px;}
 table.table thead tr.title th.filter-toggle {width: 250px; font-weight: normal; text-align: right;}
-table.table thead tr.title th > i.fa {display: none; position: absolute; left: 5px; bottom: 33%;}
+table.table thead tr.title th > i.fa {display: none; position: absolute; left: 5px; bottom: 25px;}
 table.table thead tr.title th.sorting,
 table.table thead tr.title th.sorting-asc,
 table.table thead tr.title th.sorting-desc {padding-left: 19px; cursor: pointer;}

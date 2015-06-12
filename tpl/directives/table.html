@@ -8,7 +8,7 @@
 				{{::_(column.name)}}
 			</th>
 			<th class="filter-toggle">
-				<button ng-click="showFilters=!showFilters" type="button">
+				<button ng-click="showFilters=!showFilters" type="button" class="small">
 					<i class="fa fa-filter"></i>
 				</button>
 			</th>
@@ -16,23 +16,23 @@
 		<tr class="filter" ng-if="showFilters">
 			<th class="{{::column.filterType}}" ng-repeat="column in columns" ng-switch="::column.filterType">
 				<div ng-if="::column.isFilterable" ng-class="{'empty-handling': state[column.name + '_empty']}">
-					<span ng-switch-when="date">
-						<div ng-hide="show.date.substr(1)==column.name">
-							<button class="date-filter" ng-click="show.date='f'+column.name" type="button">
-								<span ng-if="stateDate[column.name + '_min']">{{stateDate[column.name + '_min'] | date:'shortDate'}}</span>
-								<span ng-if="! stateDate[column.name + '_min']">{{::_('From')}}</span></button> -
-							<button class="date-filter" ng-click="show.date='t'+column.name" type="button">
-								<span ng-if="stateDate[column.name + '_max']">{{stateDate[column.name + '_max'] | date:'shortDate'}}</span>
-								<span ng-if="! stateDate[column.name + '_max']">{{::_('To')}}</span>
-							</button>
-						</div>
-						<input type="date" ng-init="stateDate[column.name + '_min']=initDate(column.name + '_min')" ng-show="show.date=='f'+column.name" ng-model="stateDate[column.name + '_min']" ng-change="onDateFilterChange(column.name + '_min')" />
-						<input type="date" ng-init="stateDate[column.name + '_min']=initDate(column.name + '_min')" ng-show="show.date=='t'+column.name" ng-model="stateDate[column.name + '_max']" ng-change="onDateFilterChange(column.name + '_max')" />
-					</span>
-					<span ng-switch-when="number">
-						<input type="number" ng-model="state[column.name + '_min']" ng-change="changeCount()" placeholder="{{::_('Min')}}" />
-						<input type="number" ng-model="state[column.name + '_max']" ng-change="changeCount()" placeholder="{{::_('Max')}}" />
-					</span>
+						<span ng-switch-when="date">
+							<div ng-hide="show.date.substr(1)==column.name">
+								<button class="date-filter" ng-click="show.date='f'+column.name" type="button">
+									<span ng-if="stateDate[column.name + '_min']">{{stateDate[column.name + '_min'] | date:'shortDate'}}</span>
+									<span ng-if="! stateDate[column.name + '_min']">{{::_('From')}}</span></button> -
+								<button class="date-filter" ng-click="show.date='t'+column.name" type="button">
+									<span ng-if="stateDate[column.name + '_max']">{{stateDate[column.name + '_max'] | date:'shortDate'}}</span>
+									<span ng-if="! stateDate[column.name + '_max']">{{::_('To')}}</span>
+								</button>
+							</div>
+							<input type="date" ng-init="stateDate[column.name + '_min']=initDate(column.name + '_min')" ng-show="show.date=='f'+column.name" ng-model="stateDate[column.name + '_min']" ng-change="onDateFilterChange(column.name + '_min')" />
+							<input type="date" ng-init="stateDate[column.name + '_min']=initDate(column.name + '_min')" ng-show="show.date=='t'+column.name" ng-model="stateDate[column.name + '_max']" ng-change="onDateFilterChange(column.name + '_max')" />
+						</span>
+						<span ng-switch-when="number">
+							<input type="number" ng-model="state[column.name + '_min']" ng-change="changeCount()" placeholder="{{::_('Min')}}" />
+							<input type="number" ng-model="state[column.name + '_max']" ng-change="changeCount()" placeholder="{{::_('Max')}}" />
+						</span>
 					<div style="margin-left: 16px;" ng-switch-default>
 						<input style="width: 100%;" ng-if="column.isEnum==false" type="text" ng-model="state[column.isFilterable + '_wild']" ng-change="changeCount()" />
 						<div class="enum" ng-if="column.isEnum==true">

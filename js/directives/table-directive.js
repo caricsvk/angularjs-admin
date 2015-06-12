@@ -24,6 +24,7 @@
 APP.directive('miloTable', function() {
 	var tplUrl = 'tpl/directives/table.html';
 	return {
+		transclude: true,
 		templateUrl: window.SETTINGS && window.SETTINGS.libPrefix ? window.SETTINGS.libPrefix + tplUrl : tplUrl,
 		scope: {init: '=miloTable'},
 		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce', '$timeout',
@@ -203,7 +204,7 @@ APP.directive('miloTable', function() {
 				$scope.state = $location.search();
 
 			}
-		], link: function($scope, $element, attr, ctrl) {
+		], link: function($scope, $element, attr, ctrl, transclude) {
 
 			if (! $scope.init) {
 				return;
@@ -291,6 +292,9 @@ APP.directive('miloTable', function() {
 				}
 			});
 
+			transclude($scope, function(clone) {
+				$element.prepend(clone);
+			});
 			// console.log('peTable', $scope);
 		}
 	};
