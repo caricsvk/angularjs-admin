@@ -7,9 +7,9 @@
 				<i class="fa fa-caret-down"></i>
 				{{::_(column.name)}}
 			</th>
-			<th style="width: 250px; font-weight: normal; text-align: right;">
-				<button class="small" ng-click="showFilters=!showFilters" type="button">
-					<i class="fa fa-filter"></i>&nbsp;&nbsp; {{showFilters ? _('Hide filters') : _('Show filters')}}
+			<th class="filter-toggle">
+				<button ng-click="showFilters=!showFilters" type="button">
+					<i class="fa fa-filter"></i>
 				</button>
 			</th>
 		</tr>
@@ -44,15 +44,15 @@
 						</div>
 					</div>
 				</div>
-				<div style="position: absolute; top: 0; left: 0; width: 16px;" ng-if="::column.isFilterable" class="empty-handler">
+				<div ng-if="::column.isFilterable" class="empty-handler">
 					<i class="fa fa-circle fa-fw" ng-class="{active: state[column.name + '_empty'] == 'show'}" ng-click="setEmptyState(column.name, 'show')"></i>
 					<i class="fa fa-circle-o fa-fw" ng-class="{active: state[column.name + '_empty'] == 'hide'}" ng-click="setEmptyState(column.name, 'hide')"></i>
 					<i class="fa fa-refresh fa-fw" ng-show="column.filterType=='date'" ng-click="clearDateFilter(column.name)"></i>
 				</div>
 			</th>
-			<th style="width: 250px;">
-				<input type="text" style="width: 100%;" placeholder="{{::_('Search everywhere')}}" ng-model="state.filter" ng-change="changeCount()" />
-				<button style="position: absolute; right: 0; top: 2px;" ng-class="{disabled: dataCount || dataCount == 0}"><i class="fa fa-search"></i> &nbsp;{{dataCount}}</button>
+			<th class="search">
+				<input type="text" placeholder="{{::_('Search everywhere')}}" ng-model="state.filter" ng-change="changeCount()" />
+				<button class="search" ng-class="{disabled: dataCount || dataCount == 0}"><i class="fa fa-search"></i> &nbsp;{{dataCount}}</button>
 			</th>
 		</tr>
     </thead>
@@ -76,10 +76,14 @@
 			{{::_('Entries per page')}}
 		</td>
 		<td class="cpagination" colspan="{{columns.length / 2 + (columns.length % 2)}}">
-			<button type="button" class="small" ng-class="{'disabled': state.page <= 1}" ng-click="updateRoute('page', state.page - 1)">{{::_('Previous')}}</button>
+			<button type="button" class="small" ng-class="{'disabled': state.page <= 1}" ng-click="updateRoute('page', state.page - 1)">
+				<i class="fa fa-angle-left"></i>
+			</button>
 			<button type="button" class="small active">{{state.page}}</button>
 			<span>{{::_('of')}} {{getPagesCount()}}&nbsp;</span>
-			<button type="button" class="small" ng-class="{'disabled': state.page >= getPagesCount()}" ng-click="updateRoute('page', 1 + 1*state.page)">{{::_('Next')}}</button>
+			<button type="button" class="small" ng-class="{'disabled': state.page >= getPagesCount()}" ng-click="updateRoute('page', 1 + 1*state.page)">
+				<i class="fa fa-angle-right"></i>
+			</button>
 		</td>
 	</tr>
 	</tfoot>
