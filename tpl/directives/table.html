@@ -55,8 +55,8 @@
 				<button class="search" ng-class="{disabled: dataCount || dataCount == 0}"><i class="fa fa-search"></i> &nbsp;{{dataCount}}</button>
 			</th>
 		</tr>
-    </thead>
-    <tbody>
+	</thead>
+	<tbody>
 		<tr ng-repeat="row in data track by $index">
 			<td ng-repeat="column in columns">
 				<span ng-if="column.filter" ng-bind-html="row[column.name + '_filtered']"></span>
@@ -70,22 +70,23 @@
 		</tr>
     </tbody>
 	<tfoot>
-	<tr ng-if="rendered == true">
-		<td class="limits" colspan="{{columns.length / 2 + 1}}">
-			<button type="button" class="small" ng-class="{active: limit == state.limit}" ng-repeat="limit in ::limits" ng-click="updateRoute('limit', limit)">{{::limit}}</button>
-			{{::_('Entries per page')}}
-		</td>
-		<td class="cpagination" colspan="{{columns.length / 2 + (columns.length % 2)}}">
-			<button type="button" class="small" ng-class="{'disabled': state.page <= 1}" ng-click="updateRoute('page', state.page - 1)">
-				<i class="fa fa-angle-left"></i>
-			</button>
-			<button type="button" class="small active">{{state.page}}</button>
-			<span>{{::_('of')}} {{getPagesCount()}}&nbsp;</span>
-			<button type="button" class="small" ng-class="{'disabled': state.page >= getPagesCount()}" ng-click="updateRoute('page', 1 + 1*state.page)">
-				<i class="fa fa-angle-right"></i>
-			</button>
-		</td>
-	</tr>
+		<!--<tr ng-if="rendered == true"><td colspan="8">Hromadne akcie</td></tr>-->
+		<tr ng-if="rendered == true">
+			<td class="limits" colspan="{{columns.length / 2 + 1}}">
+				<button type="button" class="small" ng-class="{active: limit == state.limit}" ng-repeat="limit in ::limits" ng-click="updateRoute('limit', limit)">{{::limit}}</button>
+				{{::_('Entries per page')}}
+			</td>
+			<td class="cpagination" colspan="{{columns.length / 2 + (columns.length % 2)}}">
+				<button type="button" class="small" ng-class="{'disabled': state.page <= 1}" ng-click="updateRoute('page', state.page - 1)">
+					<i class="fa fa-angle-left"></i>
+				</button>
+				<button type="button" class="small active">{{state.page}}</button>
+				<span>{{::_('of')}} {{getPagesCount()}}&nbsp;</span>
+				<button type="button" class="small" ng-class="{'disabled': state.page >= getPagesCount()}" ng-click="updateRoute('page', 1 + 1*state.page)">
+					<i class="fa fa-angle-right"></i>
+				</button>
+			</td>
+		</tr>
 	</tfoot>
 </table>
 </form>

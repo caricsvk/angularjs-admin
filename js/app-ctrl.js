@@ -4,9 +4,10 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 					function ($scope, $rootScope, $route, $routeParams, $location, $http, $timeout, $q, GlobalService, AuthService) {
 
 	//common public methods
-	var currentController = null;
-	var viewCallbackMap = {};
-	var errors = {};
+	var currentController = null,
+		lastUpdateRouteReload = 0,
+		viewCallbackMap = {},
+		errors = {};
 	$scope._ = function (index) {
 		return GlobalService.i18n($routeParams.nav, index);
 	};
@@ -50,7 +51,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	}
 
 	$scope.updateRoute = function(name, value, replace) {
-		// console.log("APP updateRoute");
+		//console.log("APP updateRoute", name, value);
 		errors = {};
 		//transform param to object
 		var newParams = {};
@@ -60,35 +61,33 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 			newParams[name] = value;
 		}
 		var pathChangingParams = ['url', 'nav', 'view', 'id'];
-		var pathChangeNeeded = false;
+		var urlNotChanged = true;
 		//update search params
 		for (var key in newParams) {
-			if (pathChangingParams.indexOf(key) == -1) {
+			if (pathChangingParams.indexOf(key) != -1 && $routeParams[key] != newParams[key]) {
+				urlNotChanged = false;
 				if (replace) {
 					$location.search(key, newParams[key]).replace();
 				} else {
 					$location.search(key, newParams[key]);
 				}
-
 				$routeParams[key] = newParams[key];
-			} else {
-				pathChangeNeeded = true;
 			}
 		}
 		//update path if needed
-		if (pathChangeNeeded) {
-			var newBuildPath = newParams.url || "/" + getRouteParam('nav', newParams) + "/"
-				+ getRouteParam('view', newParams) + "/" + getRouteParam('id', newParams);
-			if (newBuildPath !== $location.path()) {
-				if (replace) {
-					console.log('replacing');
-					$location.path(newBuildPath).replace();
-				} else {
-					$location.path(newBuildPath);
-				}
+		var newBuildPath = newParams.url || "/" + getRouteParam('nav', newParams) + "/"
+			+ getRouteParam('view', newParams) + "/" + getRouteParam('id', newParams);
+		if (newBuildPath !== $location.path()) {
+			urlNotChanged = false;
+			if (replace) {
+				$location.path(newBuildPath).replace();
 			} else {
-				$route.reload();
+				$location.path(newBuildPath);
 			}
+		}
+		if (urlNotChanged && lastUpdateRouteReload + 1000 < Date.now()) {
+			lastUpdateRouteReload = Date.now();
+			$route.reload();
 		}
 	};
 
