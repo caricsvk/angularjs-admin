@@ -64,7 +64,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		var urlNotChanged = true;
 		//update search params
 		for (var key in newParams) {
-			if (pathChangingParams.indexOf(key) != -1 && $routeParams[key] != newParams[key]) {
+			if (pathChangingParams.indexOf(key) == -1 && $location.search()[key] != newParams[key]) {
 				urlNotChanged = false;
 				if (replace) {
 					$location.search(key, newParams[key]).replace();
