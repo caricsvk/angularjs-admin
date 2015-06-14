@@ -60,13 +60,13 @@ APP.directive('miloTable', function() {
 						$scope.loadings.filtering = false;
 						$scope.showData(data, $scope.data.length ? 0 : 5);
 					});
-					$scope.changeCount();
+					$scope.changeCount(true);
 				};
 
-				$scope.changeCount = function () {
+				$scope.changeCount = function (isFilterCall) {
 					$scope.state.param = 'count';
 					$scope.service.get($scope.state, function (count) {
-						if ($scope.state.page > Math.ceil(parseInt(count.count) / $scope.state.limit)) {
+						if (isFilterCall && $scope.state.page > Math.ceil(parseInt(count.count) / $scope.state.limit)) {
 							$scope.updateRoute("page", 1);
 						}
 						$scope.dataCount = count.count;
