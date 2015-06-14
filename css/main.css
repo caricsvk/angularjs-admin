@@ -1,7 +1,7 @@
 
 /* layout variants */
 body.top header {min-height: 0;}
-body.top nav.nav-2 {right: 20px;}
+body.top nav.nav-2 {right: 120px;}
 body.top nav.pane {min-height: 0; padding: 1ex 0;}
 body.top .pane {width: 100%; float: none;}
 body.top nav li {list-style-type: none; display: inline-block;}
@@ -21,6 +21,9 @@ input[type=date], input[type=time], input[type=datetime-local], input[type=month
 
 /* common */
 html, body {margin: 0; padding: 0; height: 100%; width: 100%; font-size: 14px; overflow-x: hidden; position: relative;}
+
+#loading {position: absolute; right: 0; top: 0; z-index: 5; float: right; cursor: pointer;}
+#loading * {font-weight: bold;}
 
 body.auth header {height: 300px; width: 100%; text-align: left;}
 body.auth header > * {margin-top: 0; display: none;}

@@ -29,8 +29,6 @@ body.gray .layouts li a {border-color: #ccc;}
 body.gray .layouts li a {border-color: #ccc;}
 body.gray .layouts li.active,
 body.gray .layouts li.active a {/*background-color: #4D4D4D;*/ border-color: #4D4D4D;}
-body.gray .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
-body.gray .panel * {background-color: #EEE;}
 body.gray .loading { border-color: transparent #343434 transparent transparent;}
 body.gray .loading .spinner-1 .spinner {background-color: #4D4D4D;}
 body.gray .mce-tinymce button {background-color: transparent;}
@@ -66,9 +64,7 @@ body.brown .layouts li a {border-color: #ffffff;}
 body.brown .layouts li a {border-color: #ffffff;}
 body.brown .layouts li.active,
 body.brown .layouts li.active a {/*background-color: #F7E2CC;*/ border-color: #F7E2CC;}
-body.brown .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
-body.brown .panel * {background-color: #EEE;}
-body.brown .loading { border-color: transparent #E39748 transparent transparent;}
+body.brown .panel-default > .panel-heading,
 body.brown .loading .spinner-1 .spinner {background-color: #F7E2CC;}
 body.brown .mce-tinymce button {background-color: transparent;}
 
@@ -102,8 +98,8 @@ body.blue .layouts li a {border-color: #ffffff;}
 body.blue .layouts li a {border-color: #ffffff;}
 body.blue .layouts li.active,
 body.blue .layouts li.active a {/*background-color: #9ACBC6;*/ border-color: #9ACBC6;}
-body.blue .panel-default>.panel-heading {color: #333; background-color: #C2D1E0; border-color: #ddd;}
-body.blue .panel * {background-color: #EEE;}
+body.blue .panel-default > .panel-heading,
+body.blue .panel-default > .panel-heading * {color: #FFFFFF; background-color: #9ACBC6; border-color: #ddd;}
 body.blue .loading { border-color: transparent #45867F transparent transparent;}
 body.blue .loading .spinner-1 .spinner {background-color: #9ACBC6;}
 body.blue .mce-tinymce button {background-color: transparent;}

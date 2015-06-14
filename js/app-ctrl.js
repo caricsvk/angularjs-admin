@@ -143,6 +143,10 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		}
 	};
 
+	$scope.reload = function () {
+		$route.reload();
+	}
+
 	var processViewChange = function () {
 		var view = $routeParams.view ? $routeParams.view : '/';
 		if (typeof viewCallbackMap[view] == 'function') { //is registered
@@ -200,6 +204,15 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		return  $scope._($routeParams.nav) + " | " + $scope.getConfig('titlePostfix');
 	};
 
+	var resizeLoading = function (size) {
+		$scope.animationResize = size;
+		document.getElementById("svg-small-circle-animation").setAttribute('dur', '1.5s');
+		document.getElementById('loading-resizer').beginElement();
+		setTimeout(function () {
+			document.getElementById('loading').setAttribute("height", size);
+		}, 950);
+	};
+
 	var routeUpdate = function () {
 
 		// console.log("APP routeUpdate");
@@ -249,6 +262,22 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		}, 2000);
 	});
 
+	$scope.$on('xhrLoading', function(e, value) {
+		$scope.loadings.global += value;
+		if (!$scope.loadings.delay && $scope.loadings.global) {
+			$scope.loadings.delay = true;
+			resizeLoading('100px');
+		}
+		$timeout(function () {
+			if ($scope.loadings.delay && $scope.loadings.global === 0) {
+				resizeLoading('60px');
+				$timeout(function () {
+					$scope.loadings.delay = false;
+				}, 1100);
+			}
+		}, 1000);
+	});
+
 	//construct
 	$scope.isOverlayShowed = null;
 	$scope.ajax = {
@@ -265,8 +294,9 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	$scope.layout = GlobalService.getConfig('layout');
 	$scope.color = GlobalService.getConfig('color');
 	$scope.routeParams = $routeParams;
-	$rootScope.loadings = {
-		global: 0
+	$scope.loadings = {
+		global: 0,
+		delay: true
 	};
 	$scope.views = {};
 	$scope.menu = GlobalService.getConfig('menu');

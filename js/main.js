@@ -43,13 +43,13 @@
 						if ($rootScope.httpRequestTimeout) {
 							config.timeout = $rootScope.httpRequestTimeout.promise;
 						}
-			    		$rootScope.loadings.global ++;
+					    $rootScope.$broadcast('xhrLoading', 1);
 						return config;
 					}, 'response': function(response) {
-						$rootScope.loadings.global --;
+						$rootScope.$broadcast('xhrLoading', -1);
 						return response;
 					},'responseError': function(rejection) {
-						$rootScope.loadings.global --;
+						$rootScope.$broadcast('xhrLoading', -1);
 						if (rejection.status >= 500 || rejection.status === 404) {
 							$rootScope.$broadcast('responseError', rejection);
 						} else if (rejection.status <= 403 && rejection.status >= 401) {
