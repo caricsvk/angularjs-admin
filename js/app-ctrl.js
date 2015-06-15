@@ -258,9 +258,13 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		if ($scope.loadings.global === 0) {
 			document.getElementById("svg-small-circle-animation").setAttribute('dur', '1.5s');
 			$scope.loadingClass = 'small';
-		} else {
-			$scope.loadingClass = 'big';
+			$scope.init = false;
 		}
+		$timeout(function () { // make loading noticable if it takes longer than 1 second
+			if ($scope.loadings.global > 0) {
+				$scope.loadingClass = 'big';
+			}
+		}, 1000);
 	});
 
 	//construct
@@ -275,6 +279,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	var animationClassMap = GlobalService.getConfig('animations');;
 	var responseErrors = [];
 	var responseErrorLastTime = 0;
+	$scope.init = true;
 	$scope.loadingClass = '';
 	$scope.animationClass = animationClassMap.default;
 	$scope.layout = GlobalService.getConfig('layout');
