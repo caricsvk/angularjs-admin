@@ -204,15 +204,6 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		return  $scope._($routeParams.nav) + " | " + $scope.getConfig('titlePostfix');
 	};
 
-	var resizeLoading = function (size) {
-		$scope.animationResize = size;
-		document.getElementById("svg-small-circle-animation").setAttribute('dur', '1.5s');
-		document.getElementById('loading-resizer').beginElement();
-		setTimeout(function () {
-			document.getElementById('loading').setAttribute("height", size);
-		}, 950);
-	};
-
 	var routeUpdate = function () {
 
 		// console.log("APP routeUpdate");
@@ -264,18 +255,12 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 
 	$scope.$on('xhrLoading', function(e, value) {
 		$scope.loadings.global += value;
-		if (!$scope.loadings.delay && $scope.loadings.global) {
-			$scope.loadings.delay = true;
-			resizeLoading('100px');
+		if ($scope.loadings.global === 0) {
+			document.getElementById("svg-small-circle-animation").setAttribute('dur', '1.5s');
+			$scope.loadingClass = 'small';
+		} else {
+			$scope.loadingClass = 'big';
 		}
-		$timeout(function () {
-			if ($scope.loadings.delay && $scope.loadings.global === 0) {
-				resizeLoading('60px');
-				$timeout(function () {
-					$scope.loadings.delay = false;
-				}, 1100);
-			}
-		}, 1000);
 	});
 
 	//construct
@@ -290,6 +275,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	var animationClassMap = GlobalService.getConfig('animations');;
 	var responseErrors = [];
 	var responseErrorLastTime = 0;
+	$scope.loadingClass = '';
 	$scope.animationClass = animationClassMap.default;
 	$scope.layout = GlobalService.getConfig('layout');
 	$scope.color = GlobalService.getConfig('color');

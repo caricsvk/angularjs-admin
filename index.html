@@ -44,19 +44,18 @@
 	<footer class="g100 p2 pv1" ng-include="getConfig('urlFooter')">
 	</footer>
 
-	<svg id="loading" ng-click="reload()" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-		<animate id="loading-resizer" restart="whenNotActive" attributeName="height" ng-attr-to="{{animationResize}}" dur="1s" />
+	<svg id="loading" ng-click="reload()" ng-class="loadingClass" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 		<path d="M 0 0 H 100 V 100 Z" fill="#555" />
 		<circle cx="50" cy="50" r="50" fill="#aaa" />
 		<path id="inner-circle-path" d="M81.5 17.5 A 45 45, 0, 1, 0, 82.5 18.5 Z" fill="transparent" />
-		<path ng-show="!loadings.delay" d="M70 25 A 32 32, 0, 1, 0, 75 70" fill="transparent" stroke="white" stroke-width="7" />
-		<path ng-show="!loadings.delay" d="M69 25, 63 32 h 13 v -15 Z" fill="#fff" />
-		<circle ng-show="loadings.delay" cx="0" cy="0" r="5" fill="#555">
+		<path class="reload" ng-show="loadings.global == 0" d="M70 25 A 32 32, 0, 1, 0, 75 70" fill="transparent" stroke="white" stroke-width="7" />
+		<path class="reload" ng-show="loadings.global == 0" d="M69 25, 63 32 h 13 v -15 Z" fill="#fff" />
+		<circle class="load" ng-show="loadings.global != 0" cx="0" cy="0" r="5" fill="#555">
 			<animateMotion id="svg-small-circle-animation" dur="4s" repeatCount="indefinite">
 				<mpath xlink:href="#inner-circle-path" />
 			</animateMotion>
 		</circle>
-		<text ng-show="loadings.delay" x="50" y="55" font-size="20" text-anchor="middle" fill="white" ng-bind="loadings.global">
+		<text class="load" x="50" y="60" text-anchor="middle" fill="white" ng-bind="loadings.global">
 		</text>
 	</svg>
 
