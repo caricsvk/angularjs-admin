@@ -32,7 +32,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		errors = {};
 		for (var i = 0; i < newErrors.length; i ++) {
 			var error = newErrors[i];
-			errors[error.path.split("arg0.")[1]] = error.message;
+			errors[error.path.split("arg")[1].substr(2)] = error.message;
 		}
 		//scroll to errors
 		setTimeout(function () {
