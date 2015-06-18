@@ -17,6 +17,7 @@ body.left .wrapper {left: 15%;}
 
 /* bootstrap extension */
 .panel * {color: #555;}
+.dropdown-menu {min-width: 325px;}
 input[type=date], input[type=time], input[type=datetime-local], input[type=month] {line-height: normal;}
 
 /* common */

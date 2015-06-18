@@ -153,6 +153,7 @@ body.light .loading {color: #bbb;}
 body.light .settings h4 {color: #ccc;}
 body.light footer {border-top: 0 none;}
 body.light .footer {color: #FFFFFF}
+body.light .panel button * {color: #FFFFFF;}
 body.light.top nav li.active:after {border-color: transparent transparent #eee transparent;}
 body.light.green button {background-color: #145252; border-color: #0F3D3D; color: #ddd; font-weight: normal;}
 body.light.green button.active,

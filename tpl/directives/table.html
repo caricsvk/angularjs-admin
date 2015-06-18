@@ -9,7 +9,7 @@
 			</th>
 			<th class="filter-toggle">
 				<button ng-click="showFilters=!showFilters" type="button" class="small">
-					<i class="fa fa-filter"></i>
+					<i class="fa fa-filter"></i> &nbsp;{{dataCount}}
 				</button>
 			</th>
 		</tr>
@@ -52,7 +52,7 @@
 			</th>
 			<th class="search">
 				<input type="text" placeholder="{{::_('Search everywhere')}}" ng-model="state.filter" ng-change="changeCount()" />
-				<button class="search" ng-class="{disabled: dataCount || dataCount == 0}"><i class="fa fa-search"></i> &nbsp;{{dataCount}}</button>
+				<button class="search" ng-class="{disabled: dataCount || dataCount == 0}"><i class="fa fa-search"></i></button>
 			</th>
 		</tr>
 	</thead>
