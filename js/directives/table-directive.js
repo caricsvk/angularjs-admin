@@ -274,7 +274,7 @@ APP.directive('miloTable', function() {
 					if (columns[i].filterType == 'string') {
 						(function (column) {
 							$scope.service.get({param: 'is-enum', fullClassName: column.originalType}, function (isEnum) {
-								column.isEnum = isEnum.isEnum;
+								column.isEnum = isEnum && isEnum.value;
 							});
 						} (columns[i]));
 					}
