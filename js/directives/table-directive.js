@@ -107,7 +107,7 @@ APP.directive('miloTable', function() {
 
 				$scope.updateOrder = function (columnName) {
 					var oppositeOrderType = $scope.state.orderType === 'DESC' ? 'ASC' : 'DESC';
-					var orderType = $scope.state.order === columnName ? oppositeOrderType : 'DESC';
+					var orderType = $scope.state.order === columnName ? oppositeOrderType : 'ASC';
 					$scope.updateRoute({'order': columnName, 'orderType': orderType});
 				};
 
