@@ -99,7 +99,8 @@ body.blue .layouts li a {border-color: #ffffff;}
 body.blue .layouts li.active,
 body.blue .layouts li.active a {/*background-color: #9ACBC6;*/ border-color: #9ACBC6;}
 body.blue .panel-default > .panel-heading,
-body.blue .panel-default > .panel-heading * {color: #FFFFFF; background-color: #9ACBC6; border-color: #ddd;}
+body.blue .panel-default > .panel-heading > * {color: #FFFFFF; background-color: #9ACBC6; border-color: #ddd;}
+body.blue .panel-default > .panel-heading * {color: white;}
 body.blue .loading { border-color: transparent #45867F transparent transparent;}
 body.blue .loading .spinner-1 .spinner {background-color: #9ACBC6;}
 body.blue .mce-tinymce button {background-color: transparent;}
