@@ -7,7 +7,11 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 	var currentController = null,
 		lastUpdateRouteReload = 0,
 		viewCallbackMap = {},
-		errors = {};
+		errors = {},
+		self = this;
+
+	self.views = {};
+
 	$scope._ = function (index) {
 		return GlobalService.i18n($routeParams.nav, index);
 	};
@@ -77,7 +81,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		//update path if needed
 		var newBuildPath = newParams.url || "/" + getRouteParam('nav', newParams) + "/"
 			+ getRouteParam('view', newParams) + "/" + getRouteParam('id', newParams);
-		if (newBuildPath !== $location.path()) {
+		if (newBuildPath.replace(/\//g, '') !== $location.path().replace(/\//g, '')) {
 			urlNotChanged = false;
 			if (replace) {
 				$location.path(newBuildPath).replace();
@@ -145,7 +149,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 
 	$scope.reload = function () {
 		$route.reload();
-	}
+	};
 
 	var processViewChange = function () {
 		var view = $routeParams.view ? $routeParams.view : '/';
@@ -162,20 +166,21 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 		}
 	};
 
-	var setViews = function (views, idViews) {
-		if (views && (! $scope.views[$routeParams.nav] || $scope.views[$routeParams.nav].length == 0)) {
+	var setViews = function (views, viewsWithId) {
+		if (views && self.views != views) {
+			self.views = views;
 			for (var key in $scope.views) { //release views
 				setView(key, null);
 			}
 			$scope.views[$routeParams.nav] = [];
 			setView($routeParams.nav, views || []);
 			$scope.views['id' + $routeParams.nav] = [];
-			setView('id' + $routeParams.nav, idViews || []);
+			setView('id' + $routeParams.nav, viewsWithId || []);
 		}
 	};
 
 	var setView = function (key, views) {
-		var release = ! views;
+		var release = views == null;
 		if (release) {
 			views = $scope.views[key];
 		}
@@ -220,7 +225,7 @@ APP.controller('AppCtrl', ['$scope', '$rootScope', '$route', '$routeParams', '$l
 			$location.path($scope.getConfig('initCtrl'));
 		} else {
 			var menu = getCurrentMenu();
-			setViews(menu.sub || [], menu.subId || []);
+			setViews(menu.sub || [], menu.subWithIds || []);
 		}
 
 	};
