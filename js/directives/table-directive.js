@@ -29,7 +29,6 @@ APP.directive('miloTable', function() {
 		scope: {init: '=miloTable'},
 		controller: ['$scope', '$rootScope', '$filter', '$location', '$q', '$sce', '$timeout',
 			function($scope, $rootScope, $filter, $location, $q, $sce, $timeout) {
-
 				// console.log('controller', $scope);
 				if ($scope.init) {
 					$scope.service = $scope.init.service;
@@ -74,6 +73,7 @@ APP.directive('miloTable', function() {
 				};
 
 				$scope.showData = function (data, initPause) {
+					$scope.init.rowData = data;
 					for (var i = 0; i < data.length; i ++) {
 						(function (i) {
 							$timeout(function () {
@@ -155,7 +155,7 @@ APP.directive('miloTable', function() {
 									return $filter('currency')(value, '');
 									break;
 								case 'localdatetime':
-									if (value) {
+									if (value && typeof value !== 'string') {
 										while(value.length < 6) {
 											value.push(0);
 										}
