@@ -117,7 +117,11 @@ APP.directive('miloTable', function() {
 
 				$scope.onDateFilterChange = function (stateKey) {
 					$scope.show.date = null;
-					$scope.state[stateKey] = $scope.stateDate[stateKey] ? new Date(parseInt($scope.stateDate[stateKey])).getTime() : null;
+					var date = parseInt($scope.stateDate[stateKey]);
+					if (isNaN(date)) {
+						date = $scope.stateDate[stateKey];
+					}
+					$scope.state[stateKey] = $scope.stateDate[stateKey] ? new Date(date).getTime() : null;
 					$scope.changeCount();
 				};
 
@@ -154,6 +158,7 @@ APP.directive('miloTable', function() {
 								case 'float':
 									return $filter('currency')(value, '');
 									break;
+								case 'timestamp':
 								case 'localdatetime':
 									if (value && typeof value !== 'string') {
 										while(value.length < 6) {
@@ -161,7 +166,6 @@ APP.directive('miloTable', function() {
 										}
 										value = new Date(value[0], value[1] - 1, value[2], value[3], value[4], value[5]).getTime();
 									}
-								case 'timestamp':
 								case 'date':
 								case 'calendar':
 									return $filter('date')(value, 'medium');
@@ -189,6 +193,7 @@ APP.directive('miloTable', function() {
 						case 'timestamp':
 						case 'date':
 						case 'calendar':
+						case 'localdatetime':
 							return 'date';
 							break;
 						default:
@@ -247,10 +252,11 @@ APP.directive('miloTable', function() {
 						&& key.indexOf("_") === -1 && key.substr(0, 1) !== "$" && key !== "serialVersionUID")
 					{
 						var type = entityFieldTypes[key].split(".");
+						type = type[type.length - 1].toLowerCase();
 						allEntityColumns[key] = {
 							name: key,
 							originalType: entityFieldTypes[key].split(' ')[1],
-							type: type[type.length - 1].toLowerCase(),
+							type: type,
 							filterType: ctrl.getFilterType(type),
 							isSortable: true,
 							isFilterable: key
