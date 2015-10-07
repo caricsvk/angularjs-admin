@@ -121,7 +121,8 @@ APP.directive('miloTable', function() {
 					if (isNaN(date)) {
 						date = $scope.stateDate[stateKey];
 					}
-					$scope.state[stateKey] = $scope.stateDate[stateKey] ? new Date(date).getTime() : null;
+					date = new Date(date);
+					$scope.state[stateKey] = $scope.stateDate[stateKey] ? date.getTime() - date.getTimezoneOffset()*60*1000 : null;
 					$scope.changeCount();
 				};
 
