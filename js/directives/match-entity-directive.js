@@ -26,6 +26,7 @@ APP.directive('miloMatchEntity', function() {
 			if (! scope.miloSelectData[$scope.entityEndpoint]) {
 				GlobalService.getEntityInstances($scope.entityEndpoint).$promise.then(function (data) {
 					scope.miloSelectData[$scope.entityEndpoint] = data;
+					scope.miloSelectData[$scope.entityEndpoint].unshift({});
 					matchEntity(scope.miloSelectData[$scope.entityEndpoint]);
 				});
 			} else {
