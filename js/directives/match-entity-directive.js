@@ -25,8 +25,13 @@ APP.directive('miloMatchEntity', function() {
 			}
 			if (! scope.miloSelectData[$scope.entityEndpoint]) {
 				GlobalService.getEntityInstances($scope.entityEndpoint).$promise.then(function (data) {
+					if (data && data.length) { // add empty line at the beginning
+						delete data[0]['$$hashKey'];
+						if (JSON.stringify(data[0]) != '{"name":""}') {
+							data.unshift({"name":""});
+						}
+					}
 					scope.miloSelectData[$scope.entityEndpoint] = data;
-					scope.miloSelectData[$scope.entityEndpoint].unshift({});
 					matchEntity(scope.miloSelectData[$scope.entityEndpoint]);
 				});
 			} else {
