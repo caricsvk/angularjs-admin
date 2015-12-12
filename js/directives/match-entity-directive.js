@@ -24,13 +24,7 @@ APP.directive('miloMatchEntity', function() {
 				$scope.entityId = 'id';
 			}
 			if (! scope.miloSelectData[$scope.entityEndpoint]) {
-				GlobalService.getEntityInstances($scope.entityEndpoint).$promise.then(function (data) {
-					if (data && data.length) { // add empty line at the beginning
-						delete data[0]['$$hashKey'];
-						if (JSON.stringify(data[0]) != '{"name":""}') {
-							data.unshift({"name":""});
-						}
-					}
+				GlobalService.getEntityInstances($scope.entityEndpoint).then(function (data) {
 					scope.miloSelectData[$scope.entityEndpoint] = data;
 					matchEntity(scope.miloSelectData[$scope.entityEndpoint]);
 				});

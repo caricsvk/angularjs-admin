@@ -51,22 +51,27 @@ APP.service('GlobalService', ['$resource', '$http', '$q', function ($resource, $
 	}
 
 	self.getEntityInstances = function (entityEndpoint) {
-		if (! entityInstances[entityEndpoint] || ! entityInstances[entityEndpoint].$promise) {
-			entityInstances[entityEndpoint] = $resource(self.getConfig().servicesLocation + entityEndpoint)
-				.query(function (response) {
+		if (! entityInstances[entityEndpoint]) {
+			entityInstances[entityEndpoint] = $q.defer();
+			$resource(self.getConfig().servicesLocation + entityEndpoint)
+				.query(function (data) {
+					if (data && data.length) { // add empty line at the beginning
+						data.unshift({"name":""});
+					}
 					/* dirty fix when request is cancelled/aborted
-					the error block is implementing the same because
-					I assume after fix it will be handled through that
+					 the error block is implementing the same because
+					 I assume after fix it will be handled through that
 					 */
 //					if (! response || ! response.$resolved) {
 //						delete entityInstances[entityEndpoint];
 //					}
+					entityInstances[entityEndpoint].resolve(data);
 				}, function () {
 					delete entityInstances[entityEndpoint];
 				}
 			);
 		}
-		return entityInstances[entityEndpoint];
+		return entityInstances[entityEndpoint].promise;
 	};
 
 	self.removeEntityInstances = function (entityEndpoint) {
