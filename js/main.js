@@ -63,6 +63,14 @@
 			});
 		}).value('$anchorScroll', angular.noop);
 
+	// performance directive
+	window.APP.directive("miloDisableAnimations", function ($animate) {
+		return function (scope, element) {
+			$animate.enabled(false, element);
+		};
+	});
+
+
 	// preload first controller - performance improvement
 	var hashParsed = location.hash.split("/");
 	if (hashParsed && hashParsed[1]) {
